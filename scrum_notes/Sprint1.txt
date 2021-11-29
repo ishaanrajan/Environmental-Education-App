@@ -1,0 +1,23 @@
+Sprint1
+
+11/29/21
+	Began setting up our project board
+
+	Added features as user stories
+
+	Scrum Questions:
+		What did you do yestarday?
+			It was a holiday weekend so no one did anything
+		What will you do today?
+			Everyone: create project board, team meeting
+			Ishaan: work on a drag drop thing for ui in game
+			Audrey: make a start screen
+			Tanner: make google drive shared folder, setup QT and Box2D
+			Michael: Setup QT and Box2D
+			Victor: Research sprites to be used in game
+		What is in your way?
+			Ishaan: Not familiar with QT drag and drop structure
+			Audrey: QT background setup
+			Tanner: Inexpierence with QT and Box2d lib
+			Michael: Inexpierence with QT and Box2d lib
+			Victor: Artistic abilities are not the best, so we will need to find some online
