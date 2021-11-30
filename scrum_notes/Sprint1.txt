@@ -21,3 +21,24 @@ Sprint1
 			Tanner: Inexpierence with QT and Box2d lib
 			Michael: Inexpierence with QT and Box2d lib
 			Victor: Artistic abilities are not the best, so we will need to find some online
+
+11/30/21
+	Scrum Questions:
+		What did you do yestarday?
+			Ishaan: Worked on drag and drop buttons
+			Audrey: Finding graphic elements we can use
+			Tanner: Set up Box2d and integrated with QT
+			Victor: Searched for sprite sheets for game
+			Michael: Set up Box2d and integrated with QT
+		What will you do today?
+			Ishaan: Debugged drag and drop buttons
+			Audrey: Looking for graphical elements
+			Tanner: Looking for graphical elements, fix QT
+			Victor: Game design development
+			Michael: Game design development
+		What is in your way?
+			Ishaan: Learning new QObjects
+			Audrey: Lack of resources
+			Tanner:	QT being funky
+			Victor:	Not knowing how the game plays
+			Michael: What makes a game good
