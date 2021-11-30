@@ -69,11 +69,11 @@ MainWindow::MainWindow(QWidget *parent)
     addToolBar(toolBar);
 
     addAction = new QAction(this);
-    addAction->setIcon(QIcon(":/resources/add.png")); //not showing up for some reason
+    addAction->setIcon(QIcon(":/new/prefix1/resources/add.png")); //not showing up for some reason
     connect(addAction, &QAction::triggered, this, &MainWindow::onAdd);
 
     removeAction = new QAction(this);
-    removeAction->setIcon(QIcon(":/resources/delete.png")); //not showing up for some reason
+    removeAction->setIcon(QIcon(":/new/prefix1/resources/delete.png")); //not showing up for some reason
     connect(removeAction, &QAction::triggered, this, &MainWindow::onRemove);
 
     toolBar->addAction(addAction);
