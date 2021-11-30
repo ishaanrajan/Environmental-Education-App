@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-private slots:
+protected slots:
     void onAdd();
     void onRemove();
 
@@ -24,8 +24,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QListView* pendingView = nullptr;
-    QListView* completedView = nullptr;
+    QListView* category1View = nullptr;
+    QListView* category2View = nullptr;
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;
