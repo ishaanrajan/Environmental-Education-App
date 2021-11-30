@@ -29,3 +29,6 @@ macx: PRE_TARGETDEPS += $$PWD/../box2d/build/bin/libbox2d.a
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
