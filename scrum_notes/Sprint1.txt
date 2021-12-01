@@ -42,3 +42,5 @@ Sprint1
 			Tanner:	QT being funky
 			Victor:	Not knowing how the game plays
 			Michael: What makes a game good
+
+	Talk does not cook rice
