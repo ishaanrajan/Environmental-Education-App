@@ -70,11 +70,11 @@ MainWindow::MainWindow(QWidget *parent)
     addToolBar(toolBar);
 
     addAction = new QAction(this);
-    addAction->setIcon(QIcon(":/new/prefix1/resources/add.png"));
+    addAction->setIcon(QIcon(":/resources/add.png"));
     connect(addAction, &QAction::triggered, this, &MainWindow::onAdd);
 
     removeAction = new QAction(this);
-    removeAction->setIcon(QIcon(":/new/prefix1/resources/delete.png"));
+    removeAction->setIcon(QIcon(":/resources/delete.png"));
     connect(removeAction, &QAction::triggered, this, &MainWindow::onRemove);
 
     toolBar->addAction(addAction);
