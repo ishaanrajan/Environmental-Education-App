@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     QHBoxLayout* categories = new QHBoxLayout();
     dragMainLayout->addLayout(categories);
 
+    //This is where "category sections" are added to the main window
     QLabel* category1Label = new QLabel("Dirty Energy", this);
     category1Label->setStyleSheet("font-size: 15pt;");
     categories->addWidget(category1Label);
@@ -69,11 +70,11 @@ MainWindow::MainWindow(QWidget *parent)
     addToolBar(toolBar);
 
     addAction = new QAction(this);
-    addAction->setIcon(QIcon(":/resources/add.png")); //not showing up for some reason
+    addAction->setIcon(QIcon(":/new/prefix1/resources/add.png"));
     connect(addAction, &QAction::triggered, this, &MainWindow::onAdd);
 
     removeAction = new QAction(this);
-    removeAction->setIcon(QIcon(":/resources/delete.png")); //not showing up for some reason
+    removeAction->setIcon(QIcon(":/new/prefix1/resources/delete.png"));
     connect(removeAction, &QAction::triggered, this, &MainWindow::onRemove);
 
     toolBar->addAction(addAction);
@@ -87,16 +88,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd()
 {
+    //This is where instances of category sections are added to respective categories
     category1View->model()->insertRow(category1View->model()->rowCount());
     QModelIndex indexA = category1View->model()->
             index(category1View->model()->rowCount() - 1, 0);
-    category1View->edit(indexA);
+    category1View->edit(indexA); //this is where 'edit: editing failed' is being thrown
 }
 
 void MainWindow::onRemove()
 {
     QModelIndex indexR = category1View->currentIndex();
     category1View->model()->removeRow(indexR.row());
-    category1View->edit(indexR);
 }
 
