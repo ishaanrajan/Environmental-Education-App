@@ -203,12 +203,129 @@ border-width: 2px;
    <widget class="QListWidget" name="structureSpaceListWidget">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>210</y>
-      <width>121</width>
-      <height>341</height>
+      <x>870</x>
+      <y>290</y>
+      <width>256</width>
+      <height>192</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>160</y>
+      <width>801</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,100,100,100,100" columnstretch="100,100,100,100,100,100,100">
+     <item row="1" column="3">
+      <widget class="QListWidget" name="listWidget2_4"/>
+     </item>
+     <item row="4" column="2">
+      <widget class="QListWidget" name="listWidget5_3"/>
+     </item>
+     <item row="4" column="5">
+      <widget class="QListWidget" name="listWidget5_6"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QListWidget" name="listWidget4_2"/>
+     </item>
+     <item row="3" column="2">
+      <widget class="QListWidget" name="listWidget4_3"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QListWidget" name="listWidget2_1"/>
+     </item>
+     <item row="2" column="3">
+      <widget class="QListWidget" name="listWidget3_4"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QListWidget" name="listWidget2_2"/>
+     </item>
+     <item row="4" column="4">
+      <widget class="QListWidget" name="listWidget5_5"/>
+     </item>
+     <item row="0" column="4">
+      <widget class="QListWidget" name="listWidget1_5"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QListWidget" name="listWidget1_2"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QListWidget" name="listWidget5_1"/>
+     </item>
+     <item row="1" column="5">
+      <widget class="QListWidget" name="listWidget2_6"/>
+     </item>
+     <item row="4" column="3">
+      <widget class="QListWidget" name="listWidget5_4"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QListWidget" name="listWidget5_2"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QListWidget" name="listWidget3_2"/>
+     </item>
+     <item row="2" column="5">
+      <widget class="QListWidget" name="listWidget3_6"/>
+     </item>
+     <item row="1" column="2">
+      <widget class="QListWidget" name="listWidget2_3"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QListWidget" name="listWidget3_1"/>
+     </item>
+     <item row="3" column="3">
+      <widget class="QListWidget" name="listWidget4_4"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QListWidget" name="listWidget1_1"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QListWidget" name="listWidget1_3"/>
+     </item>
+     <item row="0" column="5">
+      <widget class="QListWidget" name="listWidget1_6"/>
+     </item>
+     <item row="0" column="3">
+      <widget class="QListWidget" name="listWidget1_4"/>
+     </item>
+     <item row="1" column="4">
+      <widget class="QListWidget" name="listWidget2_5"/>
+     </item>
+     <item row="3" column="5">
+      <widget class="QListWidget" name="listWidget4_6"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QListWidget" name="listWidget3_3"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QListWidget" name="listWidget4_1"/>
+     </item>
+     <item row="2" column="4">
+      <widget class="QListWidget" name="listWidget3_5"/>
+     </item>
+     <item row="3" column="4">
+      <widget class="QListWidget" name="listWidget4_5"/>
+     </item>
+     <item row="0" column="6">
+      <widget class="QListWidget" name="listWidget1_7"/>
+     </item>
+     <item row="1" column="6">
+      <widget class="QListWidget" name="listWidget2_7"/>
+     </item>
+     <item row="2" column="6">
+      <widget class="QListWidget" name="listWidget3_7"/>
+     </item>
+     <item row="3" column="6">
+      <widget class="QListWidget" name="listWidget4_7"/>
+     </item>
+     <item row="4" column="6">
+      <widget class="QListWidget" name="listWidget5_7"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

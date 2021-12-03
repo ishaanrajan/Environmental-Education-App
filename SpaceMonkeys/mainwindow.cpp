@@ -28,6 +28,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMaximumWidth(100);
     ui->selectStructureListWidget->setMinimumHeight(300);
 
+    for(QListWidget* currWidgetPtr : gameSquares){
+        currWidgetPtr->setAcceptDrops(true);
+        currWidgetPtr->setDragEnabled(true);
+        currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
+    }
+
+
     ui->structureSpaceListWidget->setAcceptDrops(true);
     ui->structureSpaceListWidget->setDragEnabled(true);
     ui->structureSpaceListWidget->setDefaultDropAction(Qt::MoveAction);
@@ -125,5 +132,42 @@ void MainWindow::onRemove()
 {
 //    QModelIndex indexR = ui->structureSelectionListView->currentIndex();
 //    ui->structureSelectionListView->model()->removeRow(indexR.row());
+}
+
+void MainWindow::createListOfGameSquares(){
+    gameSquares.push_back(ui->listWidget1_1);
+    gameSquares.push_back(ui->listWidget1_2);
+    gameSquares.push_back(ui->listWidget1_3);
+    gameSquares.push_back(ui->listWidget1_4);
+    gameSquares.push_back(ui->listWidget1_5);
+    gameSquares.push_back(ui->listWidget1_6);
+    gameSquares.push_back(ui->listWidget1_7);
+    gameSquares.push_back(ui->listWidget2_1);
+    gameSquares.push_back(ui->listWidget2_2);
+    gameSquares.push_back(ui->listWidget2_3);
+    gameSquares.push_back(ui->listWidget2_4);
+    gameSquares.push_back(ui->listWidget2_5);
+    gameSquares.push_back(ui->listWidget2_6);
+    gameSquares.push_back(ui->listWidget2_7);
+    gameSquares.push_back(ui->listWidget3_1);
+    gameSquares.push_back(ui->listWidget3_2);
+    gameSquares.push_back(ui->listWidget3_4);
+    gameSquares.push_back(ui->listWidget3_5);
+    gameSquares.push_back(ui->listWidget3_6);
+    gameSquares.push_back(ui->listWidget3_7);
+    gameSquares.push_back(ui->listWidget4_1);
+    gameSquares.push_back(ui->listWidget4_2);
+    gameSquares.push_back(ui->listWidget4_3);
+    gameSquares.push_back(ui->listWidget4_4);
+    gameSquares.push_back(ui->listWidget4_5);
+    gameSquares.push_back(ui->listWidget4_6);
+    gameSquares.push_back(ui->listWidget4_7);
+    gameSquares.push_back(ui->listWidget5_1);
+    gameSquares.push_back(ui->listWidget5_2);
+    gameSquares.push_back(ui->listWidget5_3);
+    gameSquares.push_back(ui->listWidget5_4);
+    gameSquares.push_back(ui->listWidget5_5);
+    gameSquares.push_back(ui->listWidget5_6);
+    gameSquares.push_back(ui->listWidget5_7);
 }
 
