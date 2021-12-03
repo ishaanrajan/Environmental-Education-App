@@ -29,5 +29,8 @@ private:
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;
+
+    int SPRITE_COUNT = 10;
+    std::vector<std::string> images;
 };
 #endif // MAINWINDOW_H

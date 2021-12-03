@@ -190,22 +190,22 @@ border-width: 2px;
      </item>
     </layout>
    </widget>
-   <widget class="QListView" name="cleanEnergyListView">
+   <widget class="QListWidget" name="selectStructureListWidget">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>180</y>
-      <width>256</width>
+      <x>60</x>
+      <y>190</y>
+      <width>121</width>
       <height>341</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListView" name="dirtyEnergyListView">
+   <widget class="QListWidget" name="structureSpaceListWidget">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>180</y>
-      <width>256</width>
+      <x>200</x>
+      <y>190</y>
+      <width>121</width>
       <height>341</height>
      </rect>
     </property>
