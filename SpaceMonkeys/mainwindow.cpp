@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     images.push_back(":/resources/commercial.png");
     images.push_back(":/resources/drivein.png");
     images.push_back(":/resources/factory1.png");
@@ -27,13 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setDragEnabled(true);
     ui->selectStructureListWidget->setDefaultDropAction(Qt::MoveAction);
     ui->selectStructureListWidget->setMaximumWidth(100);
-    ui->selectStructureListWidget->setMinimumHeight(100);
+    ui->selectStructureListWidget->setMinimumHeight(300);
 
     ui->structureSpaceListWidget->setAcceptDrops(true);
     ui->structureSpaceListWidget->setDragEnabled(true);
     ui->structureSpaceListWidget->setDefaultDropAction(Qt::MoveAction);
     ui->structureSpaceListWidget->setMaximumWidth(100);
-    ui->structureSpaceListWidget->setMinimumHeight(100);
+    ui->structureSpaceListWidget->setMinimumHeight(900);
 
     for(int i = 0; i < SPRITE_COUNT; i++){
         QPixmap imgPix;
