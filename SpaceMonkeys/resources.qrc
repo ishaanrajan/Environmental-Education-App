@@ -2,5 +2,15 @@
     <qresource prefix="/">
         <file>resources/add.png</file>
         <file>resources/delete.png</file>
+        <file>resources/commercial.png</file>
+        <file>resources/drivein.png</file>
+        <file>resources/factory1.png</file>
+        <file>resources/factory2.png</file>
+        <file>resources/highdensityhousing.png</file>
+        <file>resources/neighborhood.png</file>
+        <file>resources/powerplant.png</file>
+        <file>resources/solar.png</file>
+        <file>resources/theater.png</file>
+        <file>resources/windfarm.png</file>
     </qresource>
 </RCC>
