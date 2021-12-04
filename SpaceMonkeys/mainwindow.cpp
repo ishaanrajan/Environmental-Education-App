@@ -28,18 +28,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMaximumWidth(100);
     ui->selectStructureListWidget->setMinimumHeight(300);
 
-    for(QListWidget* currWidgetPtr : gameSquares){
+    /*Find all QListWidgets on the central widget. NOTE: Bugs may appear here if
+     * QListWidgets are added that don't correspond to gameboard utility.
+    */
+    QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>();
+    std::cout << "GAME BOARD SIZE : " << allSquares.size() << std::endl; //Debugging purposes -- TODO: Delete
+    for(QListWidget* currWidgetPtr : allSquares){
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
     }
-
-
-    ui->structureSpaceListWidget->setAcceptDrops(true);
-    ui->structureSpaceListWidget->setDragEnabled(true);
-    ui->structureSpaceListWidget->setDefaultDropAction(Qt::MoveAction);
-    ui->structureSpaceListWidget->setMaximumWidth(100);
-    ui->structureSpaceListWidget->setMinimumHeight(900);
 
     for(int i = 0; i < SPRITE_COUNT; i++){
         QPixmap imgPix;
@@ -49,47 +47,6 @@ MainWindow::MainWindow(QWidget *parent)
         itm->setSizeHint(QSize(0, 100));
         ui->selectStructureListWidget->insertItem(i, itm);
     }
-//    ui->structureSelectionListView->setDragEnabled(true);
-//    ui->structureSelectionListView->setAcceptDrops(true);
-//    ui->structureSelectionListView->setDefaultDropAction(Qt::MoveAction);
-
-//    ui->cleanEnergyListView->setDragEnabled(true);
-//    ui->cleanEnergyListView->setAcceptDrops(true);
-//    ui->cleanEnergyListView->setDefaultDropAction(Qt::MoveAction);
-
-//    ui->cleanEnergyListView->setModel(new QStringListModel());
-//    ui->structureSelectionListView->setModel(new QStringListModel());
-
-//    ui->structureSelectionListView->setStyleSheet
-//                ("QListView { font-size: 20pt; font-weight: bold; }"
-//                 "QListView::item { border-image: url(:/resources/commercial.png);; padding: 10%;"
-//                 "border: 1pt solid #C0392B; }");
-
-//    ui->cleanEnergyListView->setStyleSheet
-//            ("QListView { font-size: 20pt; font-weight: bold; }"
-//                        "QListView::item { background-color: #2ECC71; padding: 10%;"
-//                        "border: 1pt solid #27AE60; }"
-//                        "QListView::item::hover {background-color: #27AE60 }");
-
-//    ui->structureSelectionListView->model()->insertRows(0,SPRITE_COUNT);
-//    for(int i = 0; i < SPRITE_COUNT; i++){
-//        QPixmap imgPix;
-//        bool converted = imgPix.convertFromImage(QImage(QString(":/resources/commercial.png")));
-//        ui->structureSelectionListView->model()->setData(ui->structureSelectionListView->model()->index(i,0),imgPix,Qt::DecorationRole);
-//    }
-//    QToolBar* toolBar = new QToolBar(this);
-//    addToolBar(toolBar);
-
-//    addAction = new QAction(this);
-//    addAction->setIcon(QIcon(":/resources/add.png"));
-//   // connect(addAction, &QAction::triggered, this, &MainWindow::onAdd);
-
-//    removeAction = new QAction(this);
-//    removeAction->setIcon(QIcon(":/resources/delete.png"));
-//    connect(removeAction, &QAction::triggered, this, &MainWindow::onRemove);
-
-//    toolBar->addAction(addAction);
-//    toolBar->addAction(removeAction);
 
     ui->funProgressBar->setValue(0);
     ui->funProgressBar->setMinimum(0);
@@ -121,17 +78,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd()
 {
-//    //This is where instances of category sections are added to respective categories
-//    ui->structureSelectionListView->model()->insertRow(ui->structureSelectionListView->model()->rowCount());
-//    QModelIndex indexA = ui->structureSelectionListView->model()->
-//            index(ui->structureSelectionListView->model()->rowCount() - 1, 0);
-//    ui->structureSelectionListView->edit(indexA); //this is where 'edit: editing failed' is being thrown
+    //Not being used at the moment, leaving this here for when we likely do
 }
 
 void MainWindow::onRemove()
 {
-//    QModelIndex indexR = ui->structureSelectionListView->currentIndex();
-//    ui->structureSelectionListView->model()->removeRow(indexR.row());
+    //Not being used at the moment, leaving this here for when we likely do
 }
 
 void MainWindow::createListOfGameSquares(){
