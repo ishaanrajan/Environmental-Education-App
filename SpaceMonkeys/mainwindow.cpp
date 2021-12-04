@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <QListView>
+#include <QFileInfo>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -42,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
         currWidgetPtr->addAction(addAction);
-        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;}");
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
     }
 
     for(int i = 0; i < SPRITE_COUNT; i++){
@@ -51,6 +52,8 @@ MainWindow::MainWindow(QWidget *parent)
         QListWidgetItem *itm = new QListWidgetItem;
         itm->setBackground(imgPix);
         itm->setSizeHint(QSize(0, 100));
+        QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
+        itm->setToolTip(buildingType);
         ui->selectStructureListWidget->insertItem(i, itm);
     }
 

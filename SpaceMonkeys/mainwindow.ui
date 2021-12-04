@@ -209,6 +209,10 @@ border-width: 2px;
       <height>900</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{background: transparent;}
+</string>
+    </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
