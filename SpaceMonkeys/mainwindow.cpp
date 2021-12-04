@@ -28,10 +28,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMaximumWidth(100);
     ui->selectStructureListWidget->setMinimumHeight(300);
 
-    /*Find all QListWidgets on the central widget. NOTE: Bugs may appear here if
-     * QListWidgets are added that don't correspond to gameboard utility.
+    /*Find all game board QListWidgets on the central widget.
+     * NOTE: Bugs may appear here if QListWidgets are added
+     * that don't represent gameboard pieces.
     */
-    QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>();
+    QRegularExpression re("listWidget(\\d)_(\\d)");
+    QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>(re);
     std::cout << "GAME BOARD SIZE : " << allSquares.size() << std::endl; //Debugging purposes -- TODO: Delete
     for(QListWidget* currWidgetPtr : allSquares){
         currWidgetPtr->setAcceptDrops(true);
