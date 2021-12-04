@@ -1,5 +1,4 @@
 #include <QLabel>
-#include <QToolBar>
 #include <QBoxLayout>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -28,10 +27,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMaximumWidth(100);
     ui->selectStructureListWidget->setMinimumHeight(300);
 
+    addAction = new QAction(this);
+    connect(addAction, &QAction::triggered, this, &MainWindow::onAdd); //TODO: This isn't working
+
     /*Find all game board QListWidgets on the central widget.
      * NOTE: Bugs may appear here if QListWidgets are added
      * that don't represent gameboard pieces.
-    */
+     */
     QRegularExpression re("listWidget(\\d)_(\\d)");
     QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>(re);
     std::cout << "GAME BOARD SIZE : " << allSquares.size() << std::endl; //Debugging purposes -- TODO: Delete
@@ -39,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
+        currWidgetPtr->addAction(addAction);
     }
 
     for(int i = 0; i < SPRITE_COUNT; i++){
@@ -80,7 +83,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd()
 {
-    //Not being used at the moment, leaving this here for when we likely do
+    std::cout << "ADDED" << std::endl;
+    /*I want this slot to set dropEnabled to false. This should be called
+     * once the user drops an image into a gameboard piece
+     */
 }
 
 void MainWindow::onRemove()
