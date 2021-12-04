@@ -7,11 +7,21 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>900</height>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget#MainWindow
+{
+	background-image: url(:/resources/background.png);
+	background-position: center;
+	background-size: cover;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QProgressBar" name="environmentalImpactProgressBar">
@@ -193,8 +203,8 @@ border-width: 2px;
    <widget class="QListWidget" name="selectStructureListWidget">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>0</y>
+      <x>1090</x>
+      <y>20</y>
       <width>100</width>
       <height>900</height>
      </rect>
@@ -203,8 +213,8 @@ border-width: 2px;
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>160</y>
+      <x>140</x>
+      <y>340</y>
       <width>801</width>
       <height>581</height>
      </rect>
@@ -324,7 +334,7 @@ border-width: 2px;
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

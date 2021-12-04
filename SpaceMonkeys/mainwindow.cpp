@@ -42,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
         currWidgetPtr->addAction(addAction);
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;}");
     }
 
     for(int i = 0; i < SPRITE_COUNT; i++){
