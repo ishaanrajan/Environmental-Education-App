@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
         imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))));
         QListWidgetItem *itm = new QListWidgetItem;
         itm->setBackground(imgPix);
-        itm->setSizeHint(QSize(0, 100));
+        itm->setSizeHint(QSize(0, 96));
         QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
         itm->setToolTip(buildingType);
         ui->selectStructureListWidget->insertItem(i, itm);
