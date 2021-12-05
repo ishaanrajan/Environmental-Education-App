@@ -1,84 +1,83 @@
 #include <QLabel>
-#include <QToolBar>
 #include <QBoxLayout>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include <QListView>
+#include <QFileInfo>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QWidget* dragWidget = new QWidget(this);
-    dragWidget->setStyleSheet("background-color: #ECF0F1");
-    setCentralWidget(dragWidget);
+    images.push_back(":/resources/commercial.png");
+    images.push_back(":/resources/drivein.png");
+    images.push_back(":/resources/factory1.png");
+    images.push_back(":/resources/factory2.png");
+    images.push_back(":/resources/highdensityhousing.png");
+    images.push_back(":/resources/neighborhood.png");
+    images.push_back(":/resources/powerplant.png");
+    images.push_back(":/resources/solar.png");
+    images.push_back(":/resources/theater.png");
+    images.push_back(":/resources/windfarm.png");
 
-    QVBoxLayout* dragMainLayout = new QVBoxLayout();
-    dragWidget->setLayout(dragMainLayout);
-
-    QLabel* title = new QLabel("Build Your Eco City", this);
-    dragMainLayout->addWidget(title);
-    title->setAlignment(Qt::AlignCenter);
-    title->setStyleSheet("font-size: 30pt; margin: 10%;");
-
-    QHBoxLayout* categories = new QHBoxLayout();
-    dragMainLayout->addLayout(categories);
-
-    //This is where "category sections" are added to the main window
-    QLabel* category1Label = new QLabel("Dirty Energy", this);
-    category1Label->setStyleSheet("font-size: 15pt;");
-    categories->addWidget(category1Label);
-
-    QLabel* category2Label = new QLabel("Clean Energy", this);
-    category2Label->setStyleSheet("font-size: 15pt;");
-    categories->addWidget(category2Label);
-
-    QHBoxLayout* layout = new QHBoxLayout();
-    dragMainLayout->addLayout(layout);
-
-    category1View = new QListView(this);
-    category1View->setDragEnabled(true);
-    category1View->setAcceptDrops(true);
-    category1View->setDropIndicatorShown(true);
-    category1View->setDefaultDropAction(Qt::MoveAction);
-    layout->addWidget(category1View);
-
-    category2View = new QListView(this);
-    category2View->setDragEnabled(true);
-    category2View->setAcceptDrops(true);
-    category2View->setDropIndicatorShown(true);
-    category2View->setDefaultDropAction(Qt::MoveAction);
-    layout->addWidget(category2View);
-
-    category1View->setModel(new QStringListModel());
-    category2View->setModel(new QStringListModel());
-
-    category1View->setStyleSheet
-            ("QListView { font-size: 20pt; font-weight: bold; }"
-             "QListView::item { background-color: #E74C3C; padding: 10%;"
-             "border: 1pt solid #C0392B; }"
-             "QListView::item::hover {background-color: #C0392B }");
-
-    category2View->setStyleSheet
-            ("QListView { font-size: 20pt; font-weight: bold; }"
-             "QListView::item { background-color: #2ECC71; padding: 10%;"
-             "border: 1pt solid #27AE60; }"
-             "QListView::item::hover {background-color: #27AE60 }");
-
-    QToolBar* toolBar = new QToolBar(this);
-    addToolBar(toolBar);
+    ui->selectStructureListWidget->setAcceptDrops(true);
+    ui->selectStructureListWidget->setDragEnabled(true);
+    ui->selectStructureListWidget->setDefaultDropAction(Qt::MoveAction);
+    ui->selectStructureListWidget->setMaximumWidth(100);
+    ui->selectStructureListWidget->setMinimumHeight(300);
 
     addAction = new QAction(this);
-    addAction->setIcon(QIcon(":/new/prefix1/resources/add.png"));
-    connect(addAction, &QAction::triggered, this, &MainWindow::onAdd);
+    connect(addAction, &QAction::triggered, this, &MainWindow::onAdd); //TODO: This isn't working
 
-    removeAction = new QAction(this);
-    removeAction->setIcon(QIcon(":/new/prefix1/resources/delete.png"));
-    connect(removeAction, &QAction::triggered, this, &MainWindow::onRemove);
+    /*Find all game board QListWidgets on the central widget.
+     * NOTE: Bugs may appear here if QListWidgets are added
+     * that don't represent gameboard pieces.
+     */
+    QRegularExpression re("listWidget(\\d)_(\\d)");
+    QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>(re);
+    std::cout << "GAME BOARD SIZE : " << allSquares.size() << std::endl; //Debugging purposes -- TODO: Delete
+    for(QListWidget* currWidgetPtr : allSquares){
+        currWidgetPtr->setAcceptDrops(true);
+        currWidgetPtr->setDragEnabled(true);
+        currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
+        currWidgetPtr->addAction(addAction);
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
+    }
 
-    toolBar->addAction(addAction);
-    toolBar->addAction(removeAction);
+    for(int i = 0; i < SPRITE_COUNT; i++){
+        QPixmap imgPix;
+        bool converted = imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))));
+        QListWidgetItem *itm = new QListWidgetItem;
+        itm->setBackground(imgPix);
+        itm->setSizeHint(QSize(0, 100));
+        QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
+        itm->setToolTip(buildingType);
+        ui->selectStructureListWidget->insertItem(i, itm);
+    }
+
+    ui->funProgressBar->setValue(0);
+    ui->funProgressBar->setMinimum(0);
+    ui->funProgressBar->setMaximum(100);
+    ui->funProgressBar->show();
+
+    ui->foodProgressBar->setValue(0);
+    ui->foodProgressBar->setMinimum(0);
+    ui->foodProgressBar->setMaximum(100);
+
+    ui->amenitiesProgressBar->setValue(0);
+    ui->amenitiesProgressBar->setMinimum(0);
+    ui->amenitiesProgressBar->setMaximum(100);
+
+    ui->energyProgressBar->setValue(0);
+    ui->energyProgressBar->setMinimum(0);
+    ui->energyProgressBar->setMaximum(100);
+
+    ui->environmentalImpactProgressBar->setValue(0);
+    ui->environmentalImpactProgressBar->setMinimum(0);
+    ui->environmentalImpactProgressBar->setMaximum(100);
+
 }
 
 MainWindow::~MainWindow()
@@ -88,16 +87,51 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd()
 {
-    //This is where instances of category sections are added to respective categories
-    category1View->model()->insertRow(category1View->model()->rowCount());
-    QModelIndex indexA = category1View->model()->
-            index(category1View->model()->rowCount() - 1, 0);
-    category1View->edit(indexA); //this is where 'edit: editing failed' is being thrown
+    std::cout << "ADDED" << std::endl;
+    /*I want this slot to set dropEnabled to false. This should be called
+     * once the user drops an image into a gameboard piece
+     */
 }
 
 void MainWindow::onRemove()
 {
-    QModelIndex indexR = category1View->currentIndex();
-    category1View->model()->removeRow(indexR.row());
+    //Not being used at the moment, leaving this here for when we likely do
+}
+
+void MainWindow::createListOfGameSquares(){
+    gameSquares.push_back(ui->listWidget1_1);
+    gameSquares.push_back(ui->listWidget1_2);
+    gameSquares.push_back(ui->listWidget1_3);
+    gameSquares.push_back(ui->listWidget1_4);
+    gameSquares.push_back(ui->listWidget1_5);
+    gameSquares.push_back(ui->listWidget1_6);
+    gameSquares.push_back(ui->listWidget1_7);
+    gameSquares.push_back(ui->listWidget2_1);
+    gameSquares.push_back(ui->listWidget2_2);
+    gameSquares.push_back(ui->listWidget2_3);
+    gameSquares.push_back(ui->listWidget2_4);
+    gameSquares.push_back(ui->listWidget2_5);
+    gameSquares.push_back(ui->listWidget2_6);
+    gameSquares.push_back(ui->listWidget2_7);
+    gameSquares.push_back(ui->listWidget3_1);
+    gameSquares.push_back(ui->listWidget3_2);
+    gameSquares.push_back(ui->listWidget3_4);
+    gameSquares.push_back(ui->listWidget3_5);
+    gameSquares.push_back(ui->listWidget3_6);
+    gameSquares.push_back(ui->listWidget3_7);
+    gameSquares.push_back(ui->listWidget4_1);
+    gameSquares.push_back(ui->listWidget4_2);
+    gameSquares.push_back(ui->listWidget4_3);
+    gameSquares.push_back(ui->listWidget4_4);
+    gameSquares.push_back(ui->listWidget4_5);
+    gameSquares.push_back(ui->listWidget4_6);
+    gameSquares.push_back(ui->listWidget4_7);
+    gameSquares.push_back(ui->listWidget5_1);
+    gameSquares.push_back(ui->listWidget5_2);
+    gameSquares.push_back(ui->listWidget5_3);
+    gameSquares.push_back(ui->listWidget5_4);
+    gameSquares.push_back(ui->listWidget5_5);
+    gameSquares.push_back(ui->listWidget5_6);
+    gameSquares.push_back(ui->listWidget5_7);
 }
 

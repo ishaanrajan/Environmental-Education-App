@@ -5,6 +5,7 @@
 #include <QListView>
 #include <QStringListModel>
 #include <box2d/box2d.h>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,5 +30,11 @@ private:
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;
+
+    int SPRITE_COUNT = 10;
+    std::vector<std::string> images;
+    std::vector<QListWidget *> gameSquares;
+
+    void createListOfGameSquares();
 };
 #endif // MAINWINDOW_H

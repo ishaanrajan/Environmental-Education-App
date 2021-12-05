@@ -6,15 +6,342 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget#MainWindow
+{
+	background-image: url(:/resources/background.png);
+	background-position: center;
+	background-size: cover;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QProgressBar" name="environmentalImpactProgressBar">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>100</y>
+      <width>591</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar {
+border-color: white;
+border-radius: 5px;
+border-width: 2px;
+	color: white;
+
+ }
+
+ QProgressBar::chunk {
+     background-color: rgb(89, 163, 72);
+ }
+</string>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>30</y>
+      <width>731</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QProgressBar" name="foodProgressBar">
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+border-color: white;
+border-radius: 5px;
+border-width: 2px;
+	color: white;
+
+ }
+
+ QProgressBar::chunk {
+     background-color: rgb(89, 163, 72);
+ }
+</string>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="funProgressBar">
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+border-color: white;
+border-radius: 5px;
+border-width: 2px;
+	color: white;
+
+ }
+
+ QProgressBar::chunk {
+     background-color: rgb(89, 163, 72);
+ }
+</string>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="amenitiesProgressBar">
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+border-color: white;
+border-radius: 5px;
+border-width: 2px;
+	color: white;
+
+ }
+
+ QProgressBar::chunk {
+     background-color: rgb(89, 163, 72);
+ }
+</string>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="energyProgressBar">
+       <property name="styleSheet">
+        <string notr="true">QProgressBar {
+border-color: white;
+border-radius: 5px;
+border-width: 2px;
+	color: white;
+
+ }
+
+ QProgressBar::chunk {
+     background-color: rgb(89, 163, 72);
+ }
+</string>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>80</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Environmental &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Impact:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>0</y>
+      <width>731</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Fun:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Food:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Amenities:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Energy:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QListWidget" name="selectStructureListWidget">
+    <property name="geometry">
+     <rect>
+      <x>1090</x>
+      <y>20</y>
+      <width>100</width>
+      <height>900</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget{background: transparent;}
+</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>340</y>
+      <width>801</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,100,100,100,100" columnstretch="100,100,100,100,100,100,100">
+     <item row="1" column="3">
+      <widget class="QListWidget" name="listWidget2_4"/>
+     </item>
+     <item row="4" column="2">
+      <widget class="QListWidget" name="listWidget5_3"/>
+     </item>
+     <item row="4" column="5">
+      <widget class="QListWidget" name="listWidget5_6"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QListWidget" name="listWidget4_2"/>
+     </item>
+     <item row="3" column="2">
+      <widget class="QListWidget" name="listWidget4_3"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QListWidget" name="listWidget2_1"/>
+     </item>
+     <item row="2" column="3">
+      <widget class="QListWidget" name="listWidget3_4"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QListWidget" name="listWidget2_2"/>
+     </item>
+     <item row="4" column="4">
+      <widget class="QListWidget" name="listWidget5_5"/>
+     </item>
+     <item row="0" column="4">
+      <widget class="QListWidget" name="listWidget1_5"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QListWidget" name="listWidget1_2"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QListWidget" name="listWidget5_1"/>
+     </item>
+     <item row="1" column="5">
+      <widget class="QListWidget" name="listWidget2_6"/>
+     </item>
+     <item row="4" column="3">
+      <widget class="QListWidget" name="listWidget5_4"/>
+     </item>
+     <item row="4" column="1">
+      <widget class="QListWidget" name="listWidget5_2"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QListWidget" name="listWidget3_2"/>
+     </item>
+     <item row="2" column="5">
+      <widget class="QListWidget" name="listWidget3_6"/>
+     </item>
+     <item row="1" column="2">
+      <widget class="QListWidget" name="listWidget2_3"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QListWidget" name="listWidget3_1"/>
+     </item>
+     <item row="3" column="3">
+      <widget class="QListWidget" name="listWidget4_4"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QListWidget" name="listWidget1_1"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QListWidget" name="listWidget1_3"/>
+     </item>
+     <item row="0" column="5">
+      <widget class="QListWidget" name="listWidget1_6"/>
+     </item>
+     <item row="0" column="3">
+      <widget class="QListWidget" name="listWidget1_4"/>
+     </item>
+     <item row="1" column="4">
+      <widget class="QListWidget" name="listWidget2_5"/>
+     </item>
+     <item row="3" column="5">
+      <widget class="QListWidget" name="listWidget4_6"/>
+     </item>
+     <item row="2" column="2">
+      <widget class="QListWidget" name="listWidget3_3"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QListWidget" name="listWidget4_1"/>
+     </item>
+     <item row="2" column="4">
+      <widget class="QListWidget" name="listWidget3_5"/>
+     </item>
+     <item row="3" column="4">
+      <widget class="QListWidget" name="listWidget4_5"/>
+     </item>
+     <item row="0" column="6">
+      <widget class="QListWidget" name="listWidget1_7"/>
+     </item>
+     <item row="1" column="6">
+      <widget class="QListWidget" name="listWidget2_7"/>
+     </item>
+     <item row="2" column="6">
+      <widget class="QListWidget" name="listWidget3_7"/>
+     </item>
+     <item row="3" column="6">
+      <widget class="QListWidget" name="listWidget4_7"/>
+     </item>
+     <item row="4" column="6">
+      <widget class="QListWidget" name="listWidget5_7"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>

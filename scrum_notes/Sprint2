@@ -1,0 +1,23 @@
+Sprint 2
+
+12/02/2021
+
+  Scrum Questions:
+		What did you do yestarday?
+      Ishaan: Tried to get the grid working
+      Mikey: Also tried to get the grid working, and project management
+      Victor: Ripped the sprites for our game/isometric images
+      Audrey: Added progress bars to our game, changed the ui elements to be in main window
+      Tanner: Made the game background
+		What will you do today?
+      Ishaan: Tried to get the grid working
+      Mikey: Continue to work on the grid
+      Victor: Working on the smoke and game design doc
+      Audrey: Get drag and drop of sprite working
+      Tanner: Work on assigning numbers to different buildings
+		What is in your way?
+      Ishaan: Grids are represented as QListViews
+      Mikey: Understand how some new QObjects work
+      Victor: Learn how to incorporate Box2D
+      Audrey: Tricky to get stuff from one QListView to another
+      Tanner: Qt isnt working
