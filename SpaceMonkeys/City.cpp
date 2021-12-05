@@ -38,7 +38,7 @@ void City::addCoalPlant(){
     environmentEffect += 100;
 
     allBuilds.push_back("CoalPlant");
-    
+
 }
 
 void City::addCattleFarm(){
@@ -91,4 +91,4 @@ int City::getHousingGenerated(){
 
 int City::getProduceGenerated(){
     return produceGenerated;
-} 
+}
