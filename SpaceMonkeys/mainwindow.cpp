@@ -48,10 +48,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     for(int i = 0; i < SPRITE_COUNT; i++){
         QPixmap imgPix;
-        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))));
+        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))).scaled(109,109));
         QListWidgetItem *itm = new QListWidgetItem;
         itm->setBackground(imgPix);
-        itm->setSizeHint(QSize(0, 96));
+        itm->setSizeHint(QSize(0, 108));
         QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
         itm->setToolTip(buildingType);
         ui->selectStructureListWidget->insertItem(i, itm);
