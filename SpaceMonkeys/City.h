@@ -19,7 +19,7 @@ public:
    /*
     This is the constructor for the City class for new rounds.
     */
-    City::City(int population, std::vector<std::string> prevBuilds);
+    City(int population, std::vector<std::string> prevBuilds);
 
     /**
      * @brief This method is used when the user decides
@@ -105,7 +105,7 @@ public:
      * @brief Meant for the end of the round to save progress.
      * 
      */
-    std::vector<std::string> City::getAllBuilds();
+    std::vector<std::string> getAllBuilds();
 
 
 

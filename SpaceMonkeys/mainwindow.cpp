@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     for(int i = 0; i < SPRITE_COUNT; i++){
         QPixmap imgPix;
-        bool converted = imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))));
+        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))));
         QListWidgetItem *itm = new QListWidgetItem;
         itm->setBackground(imgPix);
         itm->setSizeHint(QSize(0, 100));
@@ -134,4 +134,3 @@ void MainWindow::createListOfGameSquares(){
     gameSquares.push_back(ui->listWidget5_6);
     gameSquares.push_back(ui->listWidget5_7);
 }
-

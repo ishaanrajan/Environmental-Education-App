@@ -285,7 +285,7 @@ border-width: 2px;
       <widget class="QListWidget" name="listWidget4_4"/>
      </item>
      <item row="0" column="0">
-      <widget class="QListWidget" name="listWidget1_1"/>
+      <widget class="GridBlocks" name="listWidget1_1"/>
      </item>
      <item row="0" column="2">
       <widget class="QListWidget" name="listWidget1_3"/>
@@ -338,12 +338,19 @@ border-width: 2px;
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GridBlocks</class>
+   <extends>QListWidget</extends>
+   <header>gridblocks.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

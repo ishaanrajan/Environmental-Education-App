@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     city.cpp \
+    gridblocks.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     city.h \
+    gridblocks.h \
     mainwindow.h
 
 FORMS += \
