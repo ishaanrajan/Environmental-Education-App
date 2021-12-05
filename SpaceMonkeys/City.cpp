@@ -6,25 +6,38 @@
 
 City::City(int population){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = 900 * population; // (in KWH per month)
+    energyConsumptionRequired = 5 * population; // (in MWH per month)
+    // environmental effect is in gCO2
 
 }
 
 City::City(int population, std::vector<std::string> prevBuilds){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = 900 * population; // (in KWH per month)
+    energyConsumptionRequired = 5 * population; // (in MWH per month)
 
-    // add a stich statement
-    // for(std::string build : prevBuilds)
-    // {
+    // loop and add appropriate values
+    for(std::string build : prevBuilds)
+    {
+        if(build == "WindMill")
+        {
+            addWindMill();
+        } 
+        else if(build == "CoalPlant")
+        {
+            addCoalPlant();
+        }
+        else if(build == "SolarFarm")
+        {
+            addSolarFarm();
+        }
 
-    // }
+    }
 
 }
 
 void City::addWindMill(){
-    // some constant More research here
-    energyGenerated += 1000;
+    // from diagram in megaWatt hours
+    energyGenerated += 6800 * 30;
     environmentEffect += 0;
 
     allBuilds.push_back("WindMill");
@@ -32,20 +45,30 @@ void City::addWindMill(){
 }
 
 void City::addCoalPlant(){
-    // some constant More research here
-    energyGenerated += 1000;
+    // this is an average based on research
+    energyGenerated += 50000 * 30;
     // some constant effect on enviornment
-    environmentEffect += 100;
+    environmentEffect += 1500;
 
     allBuilds.push_back("CoalPlant");
+    
+}
 
+void City::addSolarFarm(){
+    // some constant More research he all in MWH
+    energyGenerated += 7200 * 30;
+    // some constant effect on enviornment
+    environmentEffect += 0;
+
+    allBuilds.push_back("SolarFarm");
+    
 }
 
 void City::addCattleFarm(){
     // some constant penalties and additions
-    energyGenerated -= 10;
+    energyGenerated -= 100;
     produceGenerated += 1000;
-    environmentEffect -= 100;
+    environmentEffect -= 500;
 
     allBuilds.push_back("CattleFarm");
 }
@@ -91,4 +114,4 @@ int City::getHousingGenerated(){
 
 int City::getProduceGenerated(){
     return produceGenerated;
-}
+} 
