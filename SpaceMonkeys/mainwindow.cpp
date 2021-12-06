@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setAcceptDrops(true);
     ui->selectStructureListWidget->setDragEnabled(true);
     ui->selectStructureListWidget->setDefaultDropAction(Qt::MoveAction);
-    ui->selectStructureListWidget->setMaximumWidth(100);
+    ui->selectStructureListWidget->setMaximumWidth(109);
     ui->selectStructureListWidget->setMinimumHeight(300);
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
 
