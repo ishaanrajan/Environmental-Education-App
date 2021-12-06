@@ -22,11 +22,13 @@ MainWindow::MainWindow(QWidget *parent)
     images.push_back(":/resources/theater.png");
     images.push_back(":/resources/windfarm.png");
 
+    ui->statusBarTextBrowser->lower();
     ui->selectStructureListWidget->setAcceptDrops(true);
     ui->selectStructureListWidget->setDragEnabled(true);
     ui->selectStructureListWidget->setDefaultDropAction(Qt::MoveAction);
     ui->selectStructureListWidget->setMaximumWidth(100);
     ui->selectStructureListWidget->setMinimumHeight(300);
+    ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
 
     addAction = new QAction(this);
     connect(addAction, &QAction::triggered, this, &MainWindow::onAdd); //TODO: This isn't working
@@ -43,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
         currWidgetPtr->addAction(addAction);
-        //currWidgetPtr->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
     for(int i = 0; i < SPRITE_COUNT; i++){
