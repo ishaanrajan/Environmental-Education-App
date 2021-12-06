@@ -12,12 +12,15 @@ SOURCES += \
     city.cpp \
     gridblocks.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    particlemanager.cpp
 
 HEADERS += \
     city.h \
+    gamedata.h \
     gridblocks.h \
-    mainwindow.h
+    mainwindow.h \
+    particlemanager.h
 
 FORMS += \
     mainwindow.ui
@@ -36,3 +39,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2d
+else:unix: LIBS += -L$$PWD/../box2d/bin/ -lbox2
+
+INCLUDEPATH += $$PWD/../box2d/bin
+DEPENDPATH += $$PWD/../box2d/bin

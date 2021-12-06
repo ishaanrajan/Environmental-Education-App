@@ -80,6 +80,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->environmentalImpactProgressBar->setMinimum(0);
     ui->environmentalImpactProgressBar->setMaximum(100);
 
+
+    // TEMP: this is bullshit just to show smoke working
+//    connect(ui->genSmokeBtn, &QPushButton::clicked, this, [this](){
+//        particleManager.simulate();
+//    });
+
+//    particleManager.addSpawner(data::Demands::CLIMATE, 100, 100, 10);
+//    particleManager.addSpawner(data::Demands::CLIMATE, 200, 250, 30);
+//    particleManager.setAttractionPoint(data::Demands::CLIMATE, 0, 0);
+//    particleManager.setWindVec(10.0f, -20.0f);
+
+    ui->graphicsView->setScene(&particleManager.getScene());
+    ui->graphicsView->setSceneRect(0, 0, 461, 381);
+    ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
+    ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
 }
 
 MainWindow::~MainWindow()

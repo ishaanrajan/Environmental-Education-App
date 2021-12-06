@@ -222,39 +222,9 @@ border-width: 2px;
       <height>571</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,100,100,100,100" columnstretch="100,100,100,100,100,100,100">
-     <item row="1" column="3">
-      <widget class="GridBlocks" name="listWidget2_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="GridBlocks" name="listWidget5_3">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="5">
-      <widget class="GridBlocks" name="listWidget5_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="GridBlocks" name="listWidget4_2">
+    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,0,0,0,0" columnstretch="100,0,0,0,0,0,0">
+     <item row="0" column="6">
+      <widget class="GridBlocks" name="listWidget1_7">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -273,8 +243,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="GridBlocks" name="listWidget2_1">
+     <item row="2" column="0">
+      <widget class="GridBlocks" name="listWidget3_1">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -283,8 +253,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <widget class="GridBlocks" name="listWidget3_4">
+     <item row="0" column="0">
+      <widget class="GridBlocks" name="listWidget1_1">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -293,38 +263,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="GridBlocks" name="listWidget2_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="4">
-      <widget class="GridBlocks" name="listWidget5_5">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <widget class="GridBlocks" name="listWidget1_5">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="GridBlocks" name="listWidget1_2">
+     <item row="4" column="5">
+      <widget class="GridBlocks" name="listWidget5_6">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -343,48 +283,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="1" column="5">
-      <widget class="GridBlocks" name="listWidget2_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="GridBlocks" name="listWidget5_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="GridBlocks" name="listWidget5_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="GridBlocks" name="listWidget3_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="5">
-      <widget class="GridBlocks" name="listWidget3_6">
+     <item row="4" column="6">
+      <widget class="GridBlocks" name="listWidget5_7">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -403,8 +303,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="GridBlocks" name="listWidget3_1">
+     <item row="1" column="0">
+      <widget class="GridBlocks" name="listWidget2_1">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -413,8 +313,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="3" column="3">
-      <widget class="GridBlocks" name="listWidget4_4">
+     <item row="2" column="1">
+      <widget class="GridBlocks" name="listWidget3_2">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -423,8 +323,68 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="GridBlocks" name="listWidget1_1">
+     <item row="2" column="2">
+      <widget class="GridBlocks" name="listWidget3_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="GridBlocks" name="listWidget3_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="6">
+      <widget class="GridBlocks" name="listWidget4_7">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="GridBlocks" name="listWidget5_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="GridBlocks" name="listWidget1_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="GridBlocks" name="listWidget5_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="GridBlocks" name="listWidget2_4">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -453,26 +413,6 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="GridBlocks" name="listWidget1_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
-      <widget class="GridBlocks" name="listWidget2_5">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="5">
       <widget class="GridBlocks" name="listWidget4_6">
        <property name="verticalScrollBarPolicy">
@@ -483,8 +423,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
-      <widget class="GridBlocks" name="listWidget3_3">
+     <item row="3" column="1">
+      <widget class="GridBlocks" name="listWidget4_2">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -493,28 +433,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="GridBlocks" name="listWidget4_1">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="4">
-      <widget class="GridBlocks" name="listWidget3_5">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="4">
-      <widget class="GridBlocks" name="listWidget4_5">
+     <item row="0" column="4">
+      <widget class="GridBlocks" name="listWidget1_5">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -533,6 +453,36 @@ border-width: 2px;
        </property>
       </widget>
      </item>
+     <item row="1" column="4">
+      <widget class="GridBlocks" name="listWidget2_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="GridBlocks" name="listWidget3_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="GridBlocks" name="listWidget3_6">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="6">
       <widget class="GridBlocks" name="listWidget3_7">
        <property name="verticalScrollBarPolicy">
@@ -543,8 +493,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="3" column="6">
-      <widget class="GridBlocks" name="listWidget4_7">
+     <item row="1" column="5">
+      <widget class="GridBlocks" name="listWidget2_6">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -553,8 +503,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="4" column="6">
-      <widget class="GridBlocks" name="listWidget5_7">
+     <item row="3" column="3">
+      <widget class="GridBlocks" name="listWidget4_4">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -563,8 +513,58 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="0" column="6">
-      <widget class="GridBlocks" name="listWidget1_7">
+     <item row="0" column="3">
+      <widget class="GridBlocks" name="listWidget1_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="GridBlocks" name="listWidget4_1">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="GridBlocks" name="listWidget4_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="GridBlocks" name="listWidget2_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="GridBlocks" name="listWidget5_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="GridBlocks" name="listWidget5_4">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -611,6 +611,41 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
 }</string>
     </property>
    </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>270</y>
+      <width>461</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="genSmokeBtn">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>200</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sim</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -618,7 +653,7 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

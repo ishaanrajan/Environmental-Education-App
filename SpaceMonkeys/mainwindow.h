@@ -6,6 +6,7 @@
 #include <QStringListModel>
 #include <box2d/box2d.h>
 #include <QListWidget>
+#include "particlemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,6 +36,8 @@ private:
     int SPRITE_COUNT = 10;
     std::vector<std::string> images;
     std::vector<QListWidget *> gameSquares;
+
+    ParticleManager particleManager;
 
     void createListOfGameSquares();
 };
