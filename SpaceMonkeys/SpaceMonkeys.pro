@@ -40,9 +40,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources.qrc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2d
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2d
-else:unix: LIBS += -L$$PWD/../box2d/bin/ -lbox2
+else:unix: LIBS += -L$$PWD/../box2d/bin/ -lbox2d
 
 INCLUDEPATH += $$PWD/../box2d/bin
 DEPENDPATH += $$PWD/../box2d/bin
