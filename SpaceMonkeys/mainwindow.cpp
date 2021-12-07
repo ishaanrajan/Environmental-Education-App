@@ -43,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
-        connect(currWidgetPtr->model(), &QAbstractListModel::rowsInserted, this, &MainWindow::onAdd);
+        //connect(currWidgetPtr->model(), &QAbstractListModel::rowsInserted, this, &MainWindow::onAdd);
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
@@ -120,14 +120,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onAdd()
-{
+//void MainWindow::onAdd(GameBlock* currGameBlock)
+//{
+//    //if(currGameBlock->type() == )
 
-    std::cout << "ADDED" << std::endl;
-    /*I want this slot to set dropEnabled to false. This should be called
-     * once the user drops an image into a gameboard piece
-     */
-}
+//}
 
 void MainWindow::onRemove()
 {
