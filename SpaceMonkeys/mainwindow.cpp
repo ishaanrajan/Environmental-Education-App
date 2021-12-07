@@ -73,9 +73,9 @@ MainWindow::MainWindow(QWidget *parent)
         itm->setToolTip(buildingType);
         ui->selectStructureListWidget->insertItem(i, itm);
         //TODO set GameBlock info based on what the filetype is
+
     }
 
-    ui->selectStructureListWidget->setAttribute(Qt::WA_MacShowFocusRect, false);
 
     ui->funProgressBar->setValue(0);
     ui->funProgressBar->setMinimum(0);

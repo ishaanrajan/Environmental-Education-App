@@ -9,6 +9,12 @@ public:
     explicit GameBlockManager(QWidget *parent = nullptr);
 
 
+
+
+
+    // QAbstractItemView interface
+protected:
+    void startDrag(Qt::DropActions supportedActions);
 };
 
 #endif // GAMEBLOCKMANAGER_H
