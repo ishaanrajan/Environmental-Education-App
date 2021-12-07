@@ -10,15 +10,19 @@ CONFIG += c++11
 
 SOURCES += \
     city.cpp \
-    gridtiles.cpp \
+    gameblock.cpp \
+    gameblockmanager.cpp \
+    gridtile.cpp \
     main.cpp \
     mainwindow.cpp \
     particlemanager.cpp
 
 HEADERS += \
     city.h \
+    gameblock.h \
+    gameblockmanager.h \
     gamedata.h \
-    gridtiles.h \
+    gridtile.h \
     mainwindow.h \
     particlemanager.h
 

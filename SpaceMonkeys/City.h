@@ -84,16 +84,16 @@ public:
     int getEnergyGenerated();
 
     /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return amenities generated
      * 
      */
-    int getFunGenerated();
+    int getAmenitiesGenerated();
 
      /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return Food generated
      * 
      */
-    int getProduceGenerated();
+    int getFoodGenerated();
 
     /**
      * @brief This method is used to return fun generated

@@ -1,13 +1,13 @@
-#ifndef GRIDTILES_H
-#define GRIDTILES_H
+#ifndef GRIDTILE_H
+#define GRIDTILE_H
 
 #include <QListWidget>
 
-class GridTiles : public QListWidget
+class GridTile : public QListWidget
 {
     Q_OBJECT
 public:
-    explicit GridTiles(QWidget *parent = nullptr);
+    explicit GridTile(QWidget *parent = nullptr);
 
 signals:
 
@@ -19,4 +19,4 @@ protected:
 
 
 
-#endif // GRIDTILES_H
+#endif // GRIDTILE_H

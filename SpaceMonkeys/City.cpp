@@ -104,7 +104,7 @@ int City::getEnvironmentEffect(){
     return environmentEffect;
 }
 
-int City::getFunGenerated(){
+int City::getAmenitiesGenerated(){
     return funGenerated;
 }
 
@@ -112,6 +112,6 @@ int City::getHousingGenerated(){
     return housingGenerated;
 }
 
-int City::getProduceGenerated(){
+int City::getFoodGenerated(){
     return produceGenerated;
 } 

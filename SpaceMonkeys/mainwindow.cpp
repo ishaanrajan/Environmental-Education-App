@@ -5,6 +5,7 @@
 #include <iostream>
 #include <QListView>
 #include <QFileInfo>
+#include "gameblock.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -39,7 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
      */
     QRegularExpression re("listWidget(\\d)_(\\d)");
     QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>(re);
-    std::cout << "GAME BOARD SIZE : " << allSquares.size() << std::endl; //Debugging purposes -- TODO: Delete
     for(QListWidget* currWidgetPtr : allSquares){
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
@@ -49,17 +49,33 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
 
+//    for(int i = 0; i < SPRITE_COUNT; i++){
+//        QPixmap imgPix;
+//        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))).scaled(109,109));
+//        QListWidgetItem *itm = new QListWidgetItem;
+//        itm->setBackground(imgPix);
+//        itm->setSizeHint(QSize(0, 108));
+//        QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
+//        itm->setToolTip(buildingType);
+//        ui->selectStructureListWidget->insertItem(i, itm);
+//    }
 
-    for(int i = 0; i < SPRITE_COUNT; i++){
+
+    for (int i = 0; i < SPRITE_COUNT; i++)
+    {
         QPixmap imgPix;
-        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))).scaled(109,109));
-        QListWidgetItem *itm = new QListWidgetItem;
-        itm->setBackground(imgPix);
+        imgPix.convertFromImage(QImage(QString::fromStdString(images.at(i))).scaled(109,109));
+        GameBlock *itm = new GameBlock;
+        itm -> setBackground(imgPix);
         itm->setSizeHint(QSize(0, 108));
+        //TODO make a helper method that converts this into the character for the building type if thats what is needed to be done
         QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
         itm->setToolTip(buildingType);
         ui->selectStructureListWidget->insertItem(i, itm);
+        //TODO set GameBlock info based on what the filetype is
     }
+
+    ui->selectStructureListWidget->setAttribute(Qt::WA_MacShowFocusRect, false);
 
     ui->funProgressBar->setValue(0);
     ui->funProgressBar->setMinimum(0);
