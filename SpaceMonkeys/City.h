@@ -30,6 +30,13 @@ public:
 
     /**
      * @brief This method is used when the user decides
+     * to add a windMill.
+     * 
+     */
+    void addNuclear();
+
+    /**
+     * @brief This method is used when the user decides
      * to add a coalPlant.
      * 
      */
@@ -68,7 +75,15 @@ public:
      * to add a windMill.
      * 
      */
-    void addAmusement();
+    void addDriveIn();
+
+
+    /**
+     * @brief This method is used when the user choses to add
+     * a stadium
+     * 
+     */
+    void addStadium();
 
 
     /**
@@ -84,16 +99,16 @@ public:
     int getEnergyGenerated();
 
     /**
-     * @brief This method is used to return amenities generated
+     * @brief This method is used to return fun generated
      * 
      */
-    int getAmenitiesGenerated();
+    int getFunGenerated();
 
      /**
-     * @brief This method is used to return Food generated
+     * @brief This method is used to return fun generated
      * 
      */
-    int getFoodGenerated();
+    int getProduceGenerated();
 
     /**
      * @brief This method is used to return fun generated
@@ -106,7 +121,6 @@ public:
      * 
      */
     std::vector<std::string> getAllBuilds();
-
 
 
 private:
