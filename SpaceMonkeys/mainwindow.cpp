@@ -48,6 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
+
+
     for(int i = 0; i < SPRITE_COUNT; i++){
         QPixmap imgPix;
         imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))).scaled(109,109));
