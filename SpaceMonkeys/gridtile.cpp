@@ -1,13 +1,13 @@
-#include "gridblocks.h"
+#include "gridtile.h"
 #include <QListView>
 #include <QDropEvent>
 
-GridBlocks::GridBlocks(QWidget *parent) : QListWidget(parent)
+GridTile::GridTile(QWidget *parent) : QListWidget(parent)
 {
 
 }
 
-void GridBlocks::dropEvent(QDropEvent *event)
+void GridTile::dropEvent(QDropEvent *event)
 {
     if (this->count() == 0)
     {
