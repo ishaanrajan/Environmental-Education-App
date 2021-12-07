@@ -30,8 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMinimumHeight(300);
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
 
-    addAction = new QAction(this);
-    connect(addAction, &QAction::triggered, this, &MainWindow::onAdd); //TODO: This isn't working
+    //TODO: This isn't working
 
     /*Find all game board QListWidgets on the central widget.
      * NOTE: Bugs may appear here if QListWidgets are added
@@ -44,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
-        currWidgetPtr->addAction(addAction);
+        connect(currWidgetPtr->model(), &QAbstractListModel::rowsInserted, this, &MainWindow::onAdd);
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
@@ -105,6 +104,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd()
 {
+
     std::cout << "ADDED" << std::endl;
     /*I want this slot to set dropEnabled to false. This should be called
      * once the user drops an image into a gameboard piece
