@@ -74,6 +74,8 @@ MainWindow::MainWindow(QWidget *parent)
         ui->selectStructureListWidget->insertItem(i, itm);
     }
 
+    ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-color: rgba(0,0,0,0);}");
+
     ui->funProgressBar->setValue(0);
     ui->funProgressBar->setMinimum(0);
     ui->funProgressBar->setMaximum(100);
