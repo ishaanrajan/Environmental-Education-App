@@ -30,6 +30,10 @@ City::City(int population, std::vector<std::string> prevBuilds){
         {
             addSolarFarm();
         }
+        else if(build == "Nuclear")
+        {
+            addNuclear();
+        }
 
     }
 
@@ -64,6 +68,16 @@ void City::addSolarFarm(){
     
 }
 
+void City::addNuclear(){
+    // some constant More research he all in MWH
+    energyGenerated += 7200 * 30;
+    // some constant effect on enviornment
+    environmentEffect += 0;
+
+    allBuilds.push_back("Nuclear");
+    
+}
+
 void City::addCattleFarm(){
     // some constant penalties and additions
     energyGenerated -= 100;
@@ -85,9 +99,17 @@ void City::addSuburbanHousing(){
     allBuilds.push_back("Suburban");
 }
 
-void City::addAmusement(){
-    funGenerated += 1000;
-    allBuilds.push_back("Amusement");
+void City::addDriveIn(){
+    funGenerated += 100;
+    allBuilds.push_back("DriveIn");
+}
+
+void City::addStadium(){
+    funGenerated += 10000;
+    // look at exact value
+    energyGenerated -= 100;
+    
+    allBuilds.push_back("DriveIn");
 }
 
 // getters for all values in the game.
@@ -104,7 +126,7 @@ int City::getEnvironmentEffect(){
     return environmentEffect;
 }
 
-int City::getAmenitiesGenerated(){
+int City::getFunGenerated(){
     return funGenerated;
 }
 
@@ -112,6 +134,6 @@ int City::getHousingGenerated(){
     return housingGenerated;
 }
 
-int City::getFoodGenerated(){
+int City::getProduceGenerated(){
     return produceGenerated;
 } 

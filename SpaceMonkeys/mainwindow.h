@@ -7,6 +7,7 @@
 #include <box2d/box2d.h>
 #include <QListWidget>
 #include "particlemanager.h"
+#include "gameblock.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,7 +18,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected slots:
-    void onAdd();
+   // void onAdd(GameBlock*);
     void onRemove();
 
 public:

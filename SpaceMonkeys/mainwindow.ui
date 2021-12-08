@@ -19,7 +19,6 @@ QWidget#MainWindow
 {
 	background-image: url(:/resources/background.png);
 	background-position: center;
-	background-size: cover;
 }
 </string>
   </property>
@@ -644,7 +643,7 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

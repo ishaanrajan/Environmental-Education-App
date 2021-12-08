@@ -46,7 +46,7 @@ RESOURCES += \
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2d
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../box2d/bin/ -lbox2d
-else:unix: LIBS += -L$$PWD/../box2d/bin/ -lbox2d
+else:unix: LIBS += -L$$PWD/../box2d/build/bin/ -lbox2d
 
 INCLUDEPATH += $$PWD/../box2d/bin
 DEPENDPATH += $$PWD/../box2d/bin
