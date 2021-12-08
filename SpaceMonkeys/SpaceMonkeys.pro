@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     city.cpp \
+    citymodel.cpp \
     gameblock.cpp \
     gameblockmanager.cpp \
     gridtile.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     city.h \
+    citymodel.h \
     gameblock.h \
     gameblockmanager.h \
     gamedata.h \

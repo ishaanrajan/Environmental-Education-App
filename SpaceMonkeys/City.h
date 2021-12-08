@@ -9,8 +9,10 @@
 /*
 This is the City class. 
 */
-class City {
+class City{
+
 public:
+
     /*
     This is the constructor for the City class.
     */
@@ -121,6 +123,15 @@ public:
      * 
      */
     std::vector<std::string> getAllBuilds();
+
+//public slots:
+//         void emitUpdateSignals();
+//signals:
+//        void updateEnergyBar(int);
+//        void updateFunBar(int);
+//        void updateFoodBar(int);
+//        void updateAmenitiesBar(int);
+//        void updateEnvironmentalImpactBar(int);
 
 
 private:

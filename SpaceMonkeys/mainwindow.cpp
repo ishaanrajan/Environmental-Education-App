@@ -102,17 +102,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
+//    connect(this, &MainWindow::nextRoundBuildingsAdded, city, &City::emitUpdateSignals);
+//    connect(city, &City::updateAmenitiesBar,this, &MainWindow::updateAmenitiesBarView);
+//    connect(city, &City::updateEnergyBar,this, &MainWindow::updateEngeryBarView);
+//    connect(city, &City::updateEnvironmentalImpactBar,this, &MainWindow::updateEnvironmentalImpactBarView);
+//    connect(city, &City::updateFoodBar,this, &MainWindow::updateFoodBarView);
+//    connect(city, &City::updateFunBar,this, &MainWindow::updateFunBarView);
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-void MainWindow::onRemove()
-{
-    //Not being used at the moment, leaving this here for when we likely do
 }
 
 void MainWindow::createListOfGameSquares(){
@@ -156,37 +158,39 @@ void MainWindow::createListOfGameSquares(){
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-//    for(GridTile* tile : gameSquares){
-//        qDebug() << "in here";
-//        GameBlock* currBlock = (GameBlock*)tile->itemAt(0,0);
-//        std::string currBlockName = currBlock->getType();
-//        qDebug() << QString::fromStdString(currBlockName);
-//        if(currBlock->getType() == "drivein"){
-//            city->addDriveIn();
-//        }else if(currBlock->getType() == "factory1"){
-//            city->addCoalPlant();
-//        }else if(currBlock->getType() == "factory2"){
-//            city->addCoalPlant();
+    for(GridTile* tile : gameSquares){
 
-//        }else if(currBlock->getType() == "highdensityhousing"){
-//            city->addApartmentHousing();
+        if(tile->itemAt(0,0)){
+        std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
+        if(currBlockName == "drivein"){
+            city->addDriveIn();
+        }else if(currBlockName == "factory1"){
+            city->addCoalPlant();
+        }else if(currBlockName == "factory2"){
+            city->addCoalPlant();
 
-//        }else if(currBlock->getType() == "neighborhood"){
-//            city->addSuburbanHousing();
+        }else if(currBlockName == "highdensityhousing"){
+            city->addApartmentHousing();
 
-//        }else if(currBlock->getType() == "powerplant"){
-//            city->addNuclear();
+        }else if(currBlockName == "neighborhood"){
+            city->addSuburbanHousing();
 
-//        }else if(currBlock->getType() == "solar"){
-//            city->addSolarFarm();
+        }else if(currBlockName == "powerplant"){
+            city->addNuclear();
 
-//        }else if(currBlock->getType() == "theater"){
-//            city->addStadium();
+        }else if(currBlockName == "solar"){
+            city->addSolarFarm();
 
-//        }else if(currBlock->getType() == "windfarm"){
-//            city->addWindMill();
-//        }
+        }else if(currBlockName == "theater"){
+            city->addStadium();
+
+        }else if(currBlockName == "windfarm"){
+            city->addWindMill();
+        }
+       }
+       ui->energyProgressBar->setValue(city->getEnergyGenerated());
 
     }
 }
+
 

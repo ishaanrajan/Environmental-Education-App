@@ -41,7 +41,6 @@ City::City(int population, std::vector<std::string> prevBuilds){
 }
 
 void City::addWindMill(){
-    qDebug() << "placed windmill";
     // from diagram in megaWatt hours
     energyGenerated += 6800 * 30;
     environmentEffect += 0;
@@ -120,6 +119,7 @@ std::vector<std::string> City::getAllBuilds(){
     return allBuilds;
 }
 
+
 int City::getEnergyGenerated(){
     return energyGenerated;
 }
@@ -138,4 +138,11 @@ int City::getHousingGenerated(){
 
 int City::getProduceGenerated(){
     return produceGenerated;
-} 
+}
+//void City::emitUpdateSignals(){
+//    emit updateAmenitiesBar(housingGenerated);
+//    emit updateEnergyBar(energyGenerated);
+//    emit updateFunBar(funGenerated);
+//    emit updateEnvironmentalImpactBar(environmentEffect);
+//    emit updateFoodBar(produceGenerated);
+//}
