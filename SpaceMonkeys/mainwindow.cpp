@@ -156,36 +156,36 @@ void MainWindow::createListOfGameSquares(){
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-    for(GridTile* tile : gameSquares){
-        qDebug() << "in here";
-        GameBlock* currBlock = (GameBlock*)tile->itemAt(0,0);
-        std::string currBlockName = currBlock->getType();
-        qDebug() << QString::fromStdString(currBlockName);
-        if(currBlock->getType() == "drivein"){
-            city->addDriveIn();
-        }else if(currBlock->getType() == "factory1"){
-            city->addCoalPlant();
-        }else if(currBlock->getType() == "factory2"){
-            city->addCoalPlant();
+//    for(GridTile* tile : gameSquares){
+//        qDebug() << "in here";
+//        GameBlock* currBlock = (GameBlock*)tile->itemAt(0,0);
+//        std::string currBlockName = currBlock->getType();
+//        qDebug() << QString::fromStdString(currBlockName);
+//        if(currBlock->getType() == "drivein"){
+//            city->addDriveIn();
+//        }else if(currBlock->getType() == "factory1"){
+//            city->addCoalPlant();
+//        }else if(currBlock->getType() == "factory2"){
+//            city->addCoalPlant();
 
-        }else if(currBlock->getType() == "highdensityhousing"){
-            city->addApartmentHousing();
+//        }else if(currBlock->getType() == "highdensityhousing"){
+//            city->addApartmentHousing();
 
-        }else if(currBlock->getType() == "neighborhood"){
-            city->addSuburbanHousing();
+//        }else if(currBlock->getType() == "neighborhood"){
+//            city->addSuburbanHousing();
 
-        }else if(currBlock->getType() == "powerplant"){
-            city->addNuclear();
+//        }else if(currBlock->getType() == "powerplant"){
+//            city->addNuclear();
 
-        }else if(currBlock->getType() == "solar"){
-            city->addSolarFarm();
+//        }else if(currBlock->getType() == "solar"){
+//            city->addSolarFarm();
 
-        }else if(currBlock->getType() == "theater"){
-            city->addStadium();
+//        }else if(currBlock->getType() == "theater"){
+//            city->addStadium();
 
-        }else if(currBlock->getType() == "windfarm"){
-            city->addWindMill();
-        }
+//        }else if(currBlock->getType() == "windfarm"){
+//            city->addWindMill();
+//        }
 
     }
 }
