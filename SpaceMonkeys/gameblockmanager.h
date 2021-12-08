@@ -2,6 +2,7 @@
 #define GAMEBLOCKMANAGER_H
 
 #include <QListWidget>
+#include <gameblock.h>
 
 class GameBlockManager : public QListWidget
 {

@@ -17,6 +17,7 @@ public:
     int housing;
 
     void setType(std::string name);
+    std::string getType();
 };
 
 #endif // GAMEBLOCK_H

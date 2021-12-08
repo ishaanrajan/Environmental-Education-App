@@ -12,3 +12,8 @@ void GameBlock::setType(std::string name)
 {
     type = name;
 }
+
+std::string GameBlock::getType()
+{
+    return type;
+}
