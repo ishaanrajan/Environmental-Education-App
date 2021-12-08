@@ -157,34 +157,34 @@ void MainWindow::createListOfGameSquares(){
 void MainWindow::on_nextRoundButton_clicked()
 {
     for(GridTile* tile : gameSquares){
-        qDebug() << "in here";
-        GameBlock* currBlock = (GameBlock*)tile->itemAt(0,0);
-        std::string currBlockName = currBlock->getType();
-        qDebug() << QString::fromStdString(currBlockName);
-        if(currBlock->getType() == "drivein"){
+
+        if(tile->itemAt(0,0)){
+        std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
+        if(currBlockName == "drivein"){
             city->addDriveIn();
-        }else if(currBlock->getType() == "factory1"){
+        }else if(currBlockName == "factory1"){
             city->addCoalPlant();
-        }else if(currBlock->getType() == "factory2"){
+        }else if(currBlockName == "factory2"){
             city->addCoalPlant();
 
-        }else if(currBlock->getType() == "highdensityhousing"){
+        }else if(currBlockName == "highdensityhousing"){
             city->addApartmentHousing();
 
-        }else if(currBlock->getType() == "neighborhood"){
+        }else if(currBlockName == "neighborhood"){
             city->addSuburbanHousing();
 
-        }else if(currBlock->getType() == "powerplant"){
+        }else if(currBlockName == "powerplant"){
             city->addNuclear();
 
-        }else if(currBlock->getType() == "solar"){
+        }else if(currBlockName == "solar"){
             city->addSolarFarm();
 
-        }else if(currBlock->getType() == "theater"){
+        }else if(currBlockName == "theater"){
             city->addStadium();
 
-        }else if(currBlock->getType() == "windfarm"){
+        }else if(currBlockName == "windfarm"){
             city->addWindMill();
+        }
         }
 
     }
