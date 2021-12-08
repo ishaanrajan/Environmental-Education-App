@@ -20,7 +20,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected slots:
-    void onAdd(GameBlock*);
     void onRemove();
 
 signals:
