@@ -79,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->energyProgressBar->setValue(0);
     ui->energyProgressBar->setMinimum(0);
-    ui->energyProgressBar->setMaximum(100);
+    ui->energyProgressBar->setMaximum(city.getEnergyNeeded());
 
     ui->environmentalImpactProgressBar->setValue(0);
     ui->environmentalImpactProgressBar->setMinimum(0);
@@ -163,34 +163,37 @@ void MainWindow::on_nextRoundButton_clicked()
         if(tile->itemAt(0,0)){
         std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
         if(currBlockName == "drivein"){
-            city->addDriveIn();
+            city.addDriveIn();
         }else if(currBlockName == "factory1"){
-            city->addCoalPlant();
+            city.addCoalPlant();
         }else if(currBlockName == "factory2"){
-            city->addCoalPlant();
+            city.addCoalPlant();
 
         }else if(currBlockName == "highdensityhousing"){
-            city->addApartmentHousing();
+            city.addApartmentHousing();
 
         }else if(currBlockName == "neighborhood"){
-            city->addSuburbanHousing();
+            city.addSuburbanHousing();
 
         }else if(currBlockName == "powerplant"){
-            city->addNuclear();
+            city.addNuclear();
 
         }else if(currBlockName == "solar"){
-            city->addSolarFarm();
+            city.addSolarFarm();
 
         }else if(currBlockName == "theater"){
-            city->addStadium();
+            city.addStadium();
 
         }else if(currBlockName == "windfarm"){
-            city->addWindMill();
+            city.addWindMill();
         }
        }
-       ui->energyProgressBar->setValue(city->getEnergyGenerated());
+
 
     }
+    qDebug() << city.getEnergyGenerated();
+    qDebug() << city.getEnergyNeeded();
+   ui->energyProgressBar->setValue(city.getEnergyGenerated());
 }
 
 

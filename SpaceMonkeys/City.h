@@ -13,6 +13,7 @@ class City{
 
 public:
 
+    City();
     /*
     This is the constructor for the City class.
     */
@@ -140,11 +141,14 @@ public:
      */
     int getEnergyNeeded();
 
+    std::vector<std::string> allBuilds;
+
 
 private:
     int population;
 
-    std::vector<std::string> allBuilds;
+    void energyTracker(int energyUpdate);
+
 
     // Default calculated values
     int energyConsumptionRequired;

@@ -42,7 +42,8 @@ private:
     Ui::MainWindow *ui;
     QListView* category1View = nullptr;
     QListView* category2View = nullptr;
-    City* city = new City(100);
+    City city;
+
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;

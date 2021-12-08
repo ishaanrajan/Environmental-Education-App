@@ -4,6 +4,10 @@
 
 #include "City.h"
 
+City::City(){
+    population = 1000000;
+    energyConsumptionRequired = (5 * population) / 100;
+}
 City::City(int population){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
     energyConsumptionRequired = (5 * population) / 100; // (in MWH per month)
@@ -39,10 +43,23 @@ City::City(int population, std::vector<std::string> prevBuilds){
 
 }
 
+void City::energyTracker(int energyUpdate){
+    if(energyGenerated + energyUpdate > energyConsumptionRequired)
+    {
+            energyGenerated = energyConsumptionRequired;
+    }else
+    {
+         energyGenerated += energyUpdate;
+    }
+
+}
+
 void City::addWindMill(){
     // from diagram in megaWatt hours
     // Times 30 days
-    energyGenerated += (7200 * 30)/100;
+    int energyUpdate = (7200 * 30)/100;
+    energyTracker(energyUpdate);
+
     environmentEffect += 0;
 
     allBuilds.push_back("WindMill");
@@ -51,7 +68,9 @@ void City::addWindMill(){
 
 void City::addCoalPlant(){
     // this is an average based on research
-    energyGenerated += (50000 * 30)/100;
+    int energyUpdate = (50000 * 30)/100;
+
+    energyTracker(energyUpdate);
     // some constant effect on enviornment
     environmentEffect += 22;
 
@@ -61,9 +80,9 @@ void City::addCoalPlant(){
 
 void City::addSolarFarm(){
     // some constant More research he all in MWH
-    energyGenerated += (7200 * 30)/100;
+    int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
-    environmentEffect += 0;
+    energyTracker(energyUpdate);
 
     allBuilds.push_back("SolarFarm");
     
@@ -71,8 +90,10 @@ void City::addSolarFarm(){
 
 void City::addNuclear(){
     // some constant More research he all in MWH
-    energyGenerated += (95000 * 30)/100;
+     int energyUpdate = (95000 * 30)/100;
     // some constant effect on enviornment
+    energyTracker(energyUpdate);
+
     environmentEffect += 1;
     allBuilds.push_back("Nuclear");
     
