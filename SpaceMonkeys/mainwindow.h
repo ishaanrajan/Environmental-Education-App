@@ -8,6 +8,7 @@
 #include <QListWidget>
 #include "particlemanager.h"
 #include "gameblock.h"
+#include "gridtile.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,7 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 protected slots:
-   // void onAdd(GameBlock*);
+    void onAdd(GameBlock*);
     void onRemove();
 
 public:
@@ -36,7 +37,7 @@ private:
 
     int SPRITE_COUNT = 10;
     std::vector<std::string> images;
-    std::vector<QListWidget *> gameSquares;
+    std::vector<GridTile *> gameSquares;
 
     ParticleManager particleManager;
 

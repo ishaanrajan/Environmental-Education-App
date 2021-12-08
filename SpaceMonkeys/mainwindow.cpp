@@ -6,6 +6,7 @@
 #include <QListView>
 #include <QFileInfo>
 #include "gameblock.h"
+#include "gridtile.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -38,26 +39,14 @@ MainWindow::MainWindow(QWidget *parent)
      * that don't represent gameboard pieces.
      */
     QRegularExpression re("listWidget(\\d)_(\\d)");
-    QList<QListWidget*> allSquares = centralWidget()->findChildren<QListWidget*>(re);
-    for(QListWidget* currWidgetPtr : allSquares){
+    QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
+    for(GridTile* currWidgetPtr : allSquares){
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
-        //connect(currWidgetPtr->model(), &QAbstractListModel::rowsInserted, this, &MainWindow::onAdd);
+        connect(currWidgetPtr, &GridTile::addGameBlock, this, &MainWindow::onAdd);
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
-
-
-//    for(int i = 0; i < SPRITE_COUNT; i++){
-//        QPixmap imgPix;
-//        imgPix.convertFromImage(QImage(QString(QString::fromStdString(images.at(i)))).scaled(109,109));
-//        QListWidgetItem *itm = new QListWidgetItem;
-//        itm->setBackground(imgPix);
-//        itm->setSizeHint(QSize(0, 108));
-//        QString buildingType = QFileInfo(QString(QString::fromStdString(images.at(i)))).baseName();
-//        itm->setToolTip(buildingType);
-//        ui->selectStructureListWidget->insertItem(i, itm);
-//    }
 
 
     for (int i = 0; i < SPRITE_COUNT; i++)
@@ -120,11 +109,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::onAdd(GameBlock* currGameBlock)
-//{
-//    //if(currGameBlock->type() == )
+void MainWindow::onAdd(GameBlock* currGameBlock)
+{
+    qDebug() << "add";
 
-//}
+}
 
 void MainWindow::onRemove()
 {

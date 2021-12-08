@@ -2,6 +2,7 @@
 #define GRIDTILE_H
 
 #include <QListWidget>
+#include "gameblock.h"
 
 class GridTile : public QListWidget
 {
@@ -10,7 +11,7 @@ public:
     explicit GridTile(QWidget *parent = nullptr);
 
 signals:
-
+    void addGameBlock(GameBlock *);
 
     // QWidget interface
 protected:
