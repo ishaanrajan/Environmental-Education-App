@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <QDebug>
 
 #include "City.h"
 
@@ -40,6 +41,7 @@ City::City(int population, std::vector<std::string> prevBuilds){
 }
 
 void City::addWindMill(){
+    qDebug() << "placed windmill";
     // from diagram in megaWatt hours
     energyGenerated += 6800 * 30;
     environmentEffect += 0;

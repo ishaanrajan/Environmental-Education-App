@@ -87,6 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->environmentalImpactProgressBar->setMaximum(100);
 
 
+    createListOfGameSquares();
     // TEMP: this is bullshit just to show smoke working
 //    connect(ui->genSmokeBtn, &QPushButton::clicked, this, [this](){
 //        particleManager.simulate();
@@ -111,10 +112,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd(GameBlock* currGameBlock)
 {
-    qDebug() << QString::fromStdString(currGameBlock->getType());
-//    if(currGameBlock->getType() == "drivein"){
-//        qDebug() << "drivein";
-//    }
 
 }
 
@@ -140,6 +137,7 @@ void MainWindow::createListOfGameSquares(){
     gameSquares.push_back(ui->listWidget2_7);
     gameSquares.push_back(ui->listWidget3_1);
     gameSquares.push_back(ui->listWidget3_2);
+    gameSquares.push_back(ui->listWidget3_3);
     gameSquares.push_back(ui->listWidget3_4);
     gameSquares.push_back(ui->listWidget3_5);
     gameSquares.push_back(ui->listWidget3_6);
@@ -158,5 +156,42 @@ void MainWindow::createListOfGameSquares(){
     gameSquares.push_back(ui->listWidget5_5);
     gameSquares.push_back(ui->listWidget5_6);
     gameSquares.push_back(ui->listWidget5_7);
+}
+
+
+void MainWindow::on_nextRoundButton_clicked()
+{
+    for(GridTile* tile : gameSquares){
+        qDebug() << "in here";
+        GameBlock* currBlock = (GameBlock*)tile->itemAt(0,0);
+        std::string currBlockName = currBlock->getType();
+        qDebug() << QString::fromStdString(currBlockName);
+        if(currBlock->getType() == "drivein"){
+            city->addDriveIn();
+        }else if(currBlock->getType() == "factory1"){
+            city->addCoalPlant();
+        }else if(currBlock->getType() == "factory2"){
+            city->addCoalPlant();
+
+        }else if(currBlock->getType() == "highdensityhousing"){
+            city->addApartmentHousing();
+
+        }else if(currBlock->getType() == "neighborhood"){
+            city->addSuburbanHousing();
+
+        }else if(currBlock->getType() == "powerplant"){
+            city->addNuclear();
+
+        }else if(currBlock->getType() == "solar"){
+            city->addSolarFarm();
+
+        }else if(currBlock->getType() == "theater"){
+            city->addStadium();
+
+        }else if(currBlock->getType() == "windfarm"){
+            city->addWindMill();
+        }
+
+    }
 }
 

@@ -9,6 +9,7 @@
 #include "particlemanager.h"
 #include "gameblock.h"
 #include "gridtile.h"
+#include "City.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,15 +23,21 @@ protected slots:
     void onAdd(GameBlock*);
     void onRemove();
 
+signals:
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 
+private slots:
+    void on_nextRoundButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QListView* category1View = nullptr;
     QListView* category2View = nullptr;
+    City* city;
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;
