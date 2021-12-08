@@ -1,21 +1,20 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <QDebug>
 
 #include "City.h"
 
 City::City(int population){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = 5 * population; // (in MWH per month)
+    energyConsumptionRequired = (5 * population) / 100; // (in MWH per month)
     // environmental effect is in gCO2
 
 }
 
 City::City(int population, std::vector<std::string> prevBuilds){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = 5 * population; // (in MWH per month)
-
+    energyConsumptionRequired = (5 * population)/ 100; // (in MWH per month)
+    environmentEffect = 0;
     // loop and add appropriate values
     for(std::string build : prevBuilds)
     {
@@ -42,7 +41,8 @@ City::City(int population, std::vector<std::string> prevBuilds){
 
 void City::addWindMill(){
     // from diagram in megaWatt hours
-    energyGenerated += 6800 * 30;
+    // Times 30 days
+    energyGenerated += (7200 * 30)/100;
     environmentEffect += 0;
 
     allBuilds.push_back("WindMill");
@@ -51,9 +51,9 @@ void City::addWindMill(){
 
 void City::addCoalPlant(){
     // this is an average based on research
-    energyGenerated += 50000 * 30;
+    energyGenerated += (50000 * 30)/100;
     // some constant effect on enviornment
-    environmentEffect += 1500;
+    environmentEffect += 22;
 
     allBuilds.push_back("CoalPlant");
     
@@ -61,7 +61,7 @@ void City::addCoalPlant(){
 
 void City::addSolarFarm(){
     // some constant More research he all in MWH
-    energyGenerated += 7200 * 30;
+    energyGenerated += (7200 * 30)/100;
     // some constant effect on enviornment
     environmentEffect += 0;
 
@@ -71,31 +71,30 @@ void City::addSolarFarm(){
 
 void City::addNuclear(){
     // some constant More research he all in MWH
-    energyGenerated += 7200 * 30;
+    energyGenerated += (95000 * 30)/100;
     // some constant effect on enviornment
-    environmentEffect += 0;
-
+    environmentEffect += 1;
     allBuilds.push_back("Nuclear");
     
 }
 
 void City::addCattleFarm(){
     // some constant penalties and additions
-    energyGenerated -= 100;
-    produceGenerated += 1000;
-    environmentEffect -= 500;
+    energyGenerated -= 1;
+    produceGenerated += 10;
+    environmentEffect += 5;
 
     allBuilds.push_back("CattleFarm");
 }
 
 void City::addApartmentHousing(){
-    environmentEffect += 100;
+    environmentEffect += 1;
 
     allBuilds.push_back("Apartments");
 }
 
 void City::addSuburbanHousing(){
-    environmentEffect -= 100;
+    environmentEffect += 10;
 
     allBuilds.push_back("Suburban");
 }
@@ -106,11 +105,11 @@ void City::addDriveIn(){
 }
 
 void City::addStadium(){
-    funGenerated += 10000;
+    funGenerated += 10;
     // look at exact value
-    energyGenerated -= 100;
+    energyGenerated -= 10;
     
-    allBuilds.push_back("DriveIn");
+    allBuilds.push_back("Stadium");
 }
 
 // getters for all values in the game.
@@ -139,10 +138,8 @@ int City::getHousingGenerated(){
 int City::getProduceGenerated(){
     return produceGenerated;
 }
-//void City::emitUpdateSignals(){
-//    emit updateAmenitiesBar(housingGenerated);
-//    emit updateEnergyBar(energyGenerated);
-//    emit updateFunBar(funGenerated);
-//    emit updateEnvironmentalImpactBar(environmentEffect);
-//    emit updateFoodBar(produceGenerated);
-//}
+
+
+int City::getEnergyNeeded(){
+    return energyConsumptionRequired;
+}
