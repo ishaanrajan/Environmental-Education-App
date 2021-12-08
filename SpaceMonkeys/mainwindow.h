@@ -19,10 +19,6 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-protected slots:
-    void onRemove();
-
-signals:
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -31,12 +27,22 @@ public:
 
 private slots:
     void on_nextRoundButton_clicked();
+//    void updateAmenitiesBarView(int);
+//    void updateFoodBarView(int);
+//    void updateFunBarView(int);
+//    void updateEngeryBarView(int);
+//    void updateEnvironmentalImpactBarView(int);
+
+
+signals:
+
+    //void nextRoundBuildingsAdded();
 
 private:
     Ui::MainWindow *ui;
     QListView* category1View = nullptr;
     QListView* category2View = nullptr;
-    City* city;
+    City* city = new City(100);
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;

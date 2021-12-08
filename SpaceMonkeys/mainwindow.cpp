@@ -102,17 +102,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
+//    connect(this, &MainWindow::nextRoundBuildingsAdded, city, &City::emitUpdateSignals);
+//    connect(city, &City::updateAmenitiesBar,this, &MainWindow::updateAmenitiesBarView);
+//    connect(city, &City::updateEnergyBar,this, &MainWindow::updateEngeryBarView);
+//    connect(city, &City::updateEnvironmentalImpactBar,this, &MainWindow::updateEnvironmentalImpactBarView);
+//    connect(city, &City::updateFoodBar,this, &MainWindow::updateFoodBarView);
+//    connect(city, &City::updateFunBar,this, &MainWindow::updateFunBarView);
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-void MainWindow::onRemove()
-{
-    //Not being used at the moment, leaving this here for when we likely do
 }
 
 void MainWindow::createListOfGameSquares(){
@@ -185,8 +187,29 @@ void MainWindow::on_nextRoundButton_clicked()
         }else if(currBlockName == "windfarm"){
             city->addWindMill();
         }
-        }
+       }
+       ui->energyProgressBar->setValue(city->getEnergyGenerated());
 
     }
 }
+
+//void MainWindow::updateAmenitiesBarView(int val){
+//    ui->amenitiesProgressBar->setValue(val);
+//}
+//void MainWindow::updateFoodBarView(int val){
+//    ui->foodProgressBar->setValue(val);
+
+//}
+//void MainWindow::updateFunBarView(int val){
+//    ui->funProgressBar->setValue(val);
+
+//}
+//void MainWindow::updateEngeryBarView(int val){
+//    ui->energyProgressBar->setValue(val);
+
+//}
+//void MainWindow::updateEnvironmentalImpactBarView(int val){
+//    ui->environmentalImpactProgressBar->setValue(val);
+
+//}
 
