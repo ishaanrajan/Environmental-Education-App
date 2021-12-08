@@ -8,6 +8,7 @@
 #include "gameblock.h"
 #include "gridtile.h"
 #include <QDebug>
+#include <functional>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -170,6 +171,19 @@ void MainWindow::on_nextRoundButton_clicked()
             else if(currBlockName == "windfarm")
                 city.addWindMill();
         }
+
+        //Disable game widgets for 5 seconds so we can "play" progressbar animations
+        QRegularExpression re("listWidget(\\d)_(\\d)");
+        QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
+        for(GridTile* currWidgetPtr : allSquares){
+            currWidgetPtr->setEnabled(false);
+            QTimer::singleShot(5000,currWidgetPtr,std::bind(&QWidget::setEnabled,currWidgetPtr,true));
+        }
+        ui->genSmokeBtn->setEnabled(false);
+        QTimer::singleShot(5000,ui->genSmokeBtn,std::bind(&QWidget::setEnabled,ui->genSmokeBtn,true));
+
+        ui->nextRoundButton->setEnabled(false);
+        QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
     }
 
     qDebug() << city.getEnergyGenerated();

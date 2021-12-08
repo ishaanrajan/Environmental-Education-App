@@ -146,7 +146,7 @@ border-width: 2px;
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="impact_label">
     <property name="geometry">
      <rect>
       <x>200</x>
