@@ -8,13 +8,15 @@ class GameBlock : public QListWidgetItem
 public:
     GameBlock();
 
-    char type;
+    std::string type;
 
     int enviornment;
     int food;
     int energy;
     int ammenity;
     int housing;
+
+    void setType(std::string name);
 };
 
 #endif // GAMEBLOCK_H

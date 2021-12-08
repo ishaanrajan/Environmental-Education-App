@@ -200,7 +200,7 @@ border-width: 2px;
      </item>
     </layout>
    </widget>
-   <widget class="QListWidget" name="selectStructureListWidget">
+   <widget class="GameBlockManager" name="selectStructureListWidget">
     <property name="geometry">
      <rect>
       <x>1050</x>
@@ -655,6 +655,11 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
    <class>GridTile</class>
    <extends>QListWidget</extends>
    <header>gridtile.h</header>
+  </customwidget>
+  <customwidget>
+   <class>GameBlockManager</class>
+   <extends>QListWidget</extends>
+   <header>gameblockmanager.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

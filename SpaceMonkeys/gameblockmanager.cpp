@@ -1,6 +1,7 @@
 #include "gameblockmanager.h"
 #include <QListWidget>
 #include <QDrag>
+#include "gameblock.h"
 
 GameBlockManager::GameBlockManager(QWidget *parent) : QListWidget(parent)
 {
@@ -16,6 +17,7 @@ void GameBlockManager::startDrag(Qt::DropActions supportedActions)
                 return;
         QMimeData *data = mimeData(m_items);
         QDrag *drag = new QDrag(this);
+
         QPixmap pixmap(":/resources/windfarm.png");
         drag->setPixmap(pixmap);
         drag->setMimeData(data);
