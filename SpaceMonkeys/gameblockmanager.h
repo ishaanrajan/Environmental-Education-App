@@ -9,10 +9,6 @@ class GameBlockManager : public QListWidget
 public:
     explicit GameBlockManager(QWidget *parent = nullptr);
 
-
-
-
-
     // QAbstractItemView interface
 protected:
     void startDrag(Qt::DropActions supportedActions);

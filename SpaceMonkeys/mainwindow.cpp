@@ -67,22 +67,12 @@ MainWindow::MainWindow(QWidget *parent)
         GameBlock *itm = new GameBlock;
         itm->setBackground(imgPix);
         itm->setSizeHint(QSize(0, 108));
-        //TODO make a helper method that converts this into the character for the building type if thats what is needed to be done
         QString buildingName = QString::fromStdString(images.at(i));
         QString buildingType = QFileInfo(buildingName).baseName();
         itm->setToolTip(buildingType);
         itm->setType(buildingType.toStdString());
         ui->selectStructureListWidget->insertItem(i, itm);
     }
-
-    QPalette p = ui->selectStructureListWidget->palette();
-    QColor bgColor = p.color(QPalette::Window);
-    QColor fgColor = p.color(QPalette::Text);
-
-    // Set the item selection color to be the background color of the list widget.
-    ui->selectStructureListWidget->setStyleSheet(QString("QListWidget:item:selected:active { background: %1;} "
-                             "QListWidget:item:selected:active {color: %2; }")
-                             .arg(bgColor.name()).arg(fgColor.name()));
 
     ui->funProgressBar->setValue(0);
     ui->funProgressBar->setMinimum(0);
@@ -175,3 +165,4 @@ void MainWindow::createListOfGameSquares(){
     gameSquares.push_back(ui->listWidget5_6);
     gameSquares.push_back(ui->listWidget5_7);
 }
+
