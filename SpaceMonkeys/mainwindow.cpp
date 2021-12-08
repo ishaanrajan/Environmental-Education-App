@@ -111,7 +111,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::onAdd(GameBlock* currGameBlock)
 {
-    qDebug() << "add";
+    qDebug() << QString::fromStdString(currGameBlock->getType());
+//    if(currGameBlock->getType() == "drivein"){
+//        qDebug() << "drivein";
+//    }
 
 }
 
