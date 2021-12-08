@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include "gameblock.h"
 #include "gridtile.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,8 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMinimumHeight(300);
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
 
-    //TODO: This isn't working
-
     /*Find all game board QListWidgets on the central widget.
      * NOTE: Bugs may appear here if QListWidgets are added
      * that don't represent gameboard pieces.
@@ -47,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
-
+    //Creating the grid
     for (int i = 0; i < SPRITE_COUNT; i++)
     {
         QPixmap imgPix;
@@ -64,10 +63,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-color: rgba(0,0,0,0);}");
 
-    ui->funProgressBar->setValue(0);
-    ui->funProgressBar->setMinimum(0);
-    ui->funProgressBar->setMaximum(100);
-    ui->funProgressBar->show();
+    ui->housingProgressBar->setValue(0);
+    ui->housingProgressBar->setMinimum(0);
+    ui->housingProgressBar->setMaximum(100);
+    ui->housingProgressBar->show();
 
     ui->foodProgressBar->setValue(0);
     ui->foodProgressBar->setMinimum(0);
@@ -101,15 +100,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setSceneRect(0, 0, 461, 381);
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-
-//    connect(this, &MainWindow::nextRoundBuildingsAdded, city, &City::emitUpdateSignals);
-//    connect(city, &City::updateAmenitiesBar,this, &MainWindow::updateAmenitiesBarView);
-//    connect(city, &City::updateEnergyBar,this, &MainWindow::updateEngeryBarView);
-//    connect(city, &City::updateEnvironmentalImpactBar,this, &MainWindow::updateEnvironmentalImpactBarView);
-//    connect(city, &City::updateFoodBar,this, &MainWindow::updateFoodBarView);
-//    connect(city, &City::updateFunBar,this, &MainWindow::updateFunBarView);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -158,42 +148,39 @@ void MainWindow::createListOfGameSquares(){
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-    for(GridTile* tile : gameSquares){
-
-        if(tile->itemAt(0,0)){
-        std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
-        if(currBlockName == "drivein"){
-            city.addDriveIn();
-        }else if(currBlockName == "factory1"){
-            city.addCoalPlant();
-        }else if(currBlockName == "factory2"){
-            city.addCoalPlant();
-
-        }else if(currBlockName == "highdensityhousing"){
-            city.addApartmentHousing();
-
-        }else if(currBlockName == "neighborhood"){
-            city.addSuburbanHousing();
-
-        }else if(currBlockName == "powerplant"){
-            city.addNuclear();
-
-        }else if(currBlockName == "solar"){
-            city.addSolarFarm();
-
-        }else if(currBlockName == "theater"){
-            city.addStadium();
-
-        }else if(currBlockName == "windfarm"){
-            city.addWindMill();
+    for(GridTile* tile : gameSquares)
+    {
+        if(tile->itemAt(0,0))
+        {
+            std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
+            if(currBlockName == "drivein")
+                city.addDriveIn();
+            else if(currBlockName == "factory1" || currBlockName == "factory2")
+                city.addCoalPlant();
+            else if(currBlockName == "highdensityhousing")
+                city.addApartmentHousing();
+            else if(currBlockName == "neighborhood")
+                city.addSuburbanHousing();
+            else if(currBlockName == "powerplant")
+                city.addNuclear();
+            else if(currBlockName == "solar")
+                city.addSolarFarm();
+            else if(currBlockName == "theater")
+                city.addStadium();
+            else if(currBlockName == "windfarm")
+                city.addWindMill();
         }
-       }
-
-
     }
+
     qDebug() << city.getEnergyGenerated();
-    qDebug() << city.getEnergyNeeded();
-   ui->energyProgressBar->setValue(city.getEnergyGenerated());
+    ui->energyProgressBar->setValue(city.getEnergyGenerated());
+    qDebug() << "FUN GENERATED: " << city.getFunGenerated();
+    ui->amenitiesProgressBar->setValue(city.getFunGenerated());
+    qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
+    ui->housingProgressBar->setValue(city.getHousingGenerated());
+    qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
+    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+    //TODO: add food categories to view
 }
 
 

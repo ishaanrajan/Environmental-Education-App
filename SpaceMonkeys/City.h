@@ -33,7 +33,7 @@ public:
 
     /**
      * @brief This method is used when the user decides
-     * to add a windMill.
+     * to add a nuclearPlant.
      * 
      */
     void addNuclear();
@@ -47,7 +47,7 @@ public:
 
      /**
      * @brief This method is used when the user decides
-     * to add a coalPlant.
+     * to add a solarFarm.
      * 
      */
     void addSolarFarm();
@@ -75,12 +75,19 @@ public:
 
     /**
      * @brief This method is used when the user decides
-     * to add a windMill.
+     * to add a theater.
+     * 
+     */
+    void addTheater();
+
+       /**
+     * @brief This method is used when the user decides
+     * to add a DriveIn.
      * 
      */
     void addDriveIn();
 
-
+	
     /**
      * @brief This method is used when the user choses to add
      * a stadium
@@ -108,13 +115,13 @@ public:
     int getFunGenerated();
 
      /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return food generated
      * 
      */
-    int getProduceGenerated();
+    int getFoodGenerated();
 
     /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return housing generated
      * 
      */
     int getHousingGenerated();

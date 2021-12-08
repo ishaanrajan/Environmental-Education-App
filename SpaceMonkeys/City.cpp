@@ -22,19 +22,19 @@ City::City(int population, std::vector<std::string> prevBuilds){
     // loop and add appropriate values
     for(std::string build : prevBuilds)
     {
-        if(build == "WindMill")
+        if(build == "windarm")
         {
             addWindMill();
         } 
-        else if(build == "CoalPlant")
+        else if(build == "factor1")
         {
             addCoalPlant();
         }
-        else if(build == "SolarFarm")
+        else if(build == "solar")
         {
             addSolarFarm();
         }
-        else if(build == "Nuclear")
+        else if(build == "powerplant")
         {
             addNuclear();
         }
@@ -62,7 +62,7 @@ void City::addWindMill(){
 
     environmentEffect += 0;
 
-    allBuilds.push_back("WindMill");
+    allBuilds.push_back("windfarm");
 
 }
 
@@ -74,7 +74,7 @@ void City::addCoalPlant(){
     // some constant effect on enviornment
     environmentEffect += 22;
 
-    allBuilds.push_back("CoalPlant");
+    allBuilds.push_back("factory1"); // TODO: difference between factor1 and factor2?
     
 }
 
@@ -84,7 +84,7 @@ void City::addSolarFarm(){
     // some constant effect on enviornment
     energyTracker(energyUpdate);
 
-    allBuilds.push_back("SolarFarm");
+    allBuilds.push_back("solar");
     
 }
 
@@ -93,14 +93,14 @@ void City::addNuclear(){
      int energyUpdate = (95000 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-
     environmentEffect += 1;
-    allBuilds.push_back("Nuclear");
+    allBuilds.push_back("powerplant");
     
 }
 
 void City::addCattleFarm(){
     // some constant penalties and additions
+    // We don't have any farming categories what is this doing?? --Ishaan
     energyGenerated -= 1;
     produceGenerated += 10;
     environmentEffect += 5;
@@ -110,24 +110,32 @@ void City::addCattleFarm(){
 
 void City::addApartmentHousing(){
     environmentEffect += 1;
+    housingGenerated += 40;
 
-    allBuilds.push_back("Apartments");
+    allBuilds.push_back("highdensityapartments");
 }
 
 void City::addSuburbanHousing(){
     environmentEffect += 10;
+    housingGenerated += 20;
 
-    allBuilds.push_back("Suburban");
+    allBuilds.push_back("neighborhood");
+}
+
+void City::addTheater(){
+    funGenerated += 50;
+    allBuilds.push_back("theater");
 }
 
 void City::addDriveIn(){
     funGenerated += 100;
-    allBuilds.push_back("DriveIn");
+    allBuilds.push_back("drivein");
 }
 
 void City::addStadium(){
     funGenerated += 10;
     // look at exact value
+    // We don't have a stadium what is this doing?? --Ishaan
     energyGenerated -= 10;
     
     allBuilds.push_back("Stadium");
@@ -156,7 +164,7 @@ int City::getHousingGenerated(){
     return housingGenerated;
 }
 
-int City::getProduceGenerated(){
+int City::getFoodGenerated(){
     return produceGenerated;
 }
 

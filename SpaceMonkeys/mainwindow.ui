@@ -61,7 +61,7 @@ border-width: 2px;
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QProgressBar" name="foodProgressBar">
+      <widget class="QProgressBar" name="housingProgressBar">
        <property name="styleSheet">
         <string notr="true">QProgressBar {
 border-color: white;
@@ -82,7 +82,7 @@ border-width: 2px;
       </widget>
      </item>
      <item>
-      <widget class="QProgressBar" name="funProgressBar">
+      <widget class="QProgressBar" name="foodProgressBar">
        <property name="styleSheet">
         <string notr="true">QProgressBar {
 border-color: white;
@@ -170,28 +170,28 @@ border-width: 2px;
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="housing_label">
        <property name="text">
-        <string>Fun:</string>
+        <string>Housing:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="food_label">
        <property name="text">
         <string>Food:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="amenities_label">
        <property name="text">
         <string>Amenities:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="energy_label">
        <property name="text">
         <string>Energy:</string>
        </property>
@@ -656,7 +656,7 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
