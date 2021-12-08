@@ -123,6 +123,13 @@ public:
     std::vector<std::string> getAllBuilds();
 
 
+    /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getEnergyNeeded();
+
+
 private:
     int population;
 
@@ -134,11 +141,11 @@ private:
     int housingRequired;
 
     // Dynamic 
-    int environmentEffect;
-    int energyGenerated;
-    int funGenerated;
-    int produceGenerated;
-    int housingGenerated;
+    int environmentEffect = 0;
+    int energyGenerated = 0;
+    int funGenerated = 0;
+    int produceGenerated = 0;
+    int housingGenerated = 0;
 };
 
 #endif
