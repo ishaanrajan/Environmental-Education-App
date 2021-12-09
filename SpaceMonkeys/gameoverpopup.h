@@ -15,6 +15,11 @@ public:
     explicit gameOverPopup(QWidget *parent = nullptr);
     ~gameOverPopup();
 
+private slots:
+    void on_pushButton_clicked();
+signals:
+    void restartClicked();
+
 private:
     Ui::gameOverPopup *ui;
 };

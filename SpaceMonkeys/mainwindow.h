@@ -10,6 +10,7 @@
 #include "gameblock.h"
 #include "gridtile.h"
 #include "City.h"
+#include "gameoverpopup.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,7 +28,7 @@ public:
 
 private slots:
     void on_nextRoundButton_clicked();
-
+    void resetGame();
     void on_buildingSelectionComboBox_currentIndexChanged(int index);
 
 signals:
@@ -38,6 +39,7 @@ private:
     QListView* category1View = nullptr;
     QListView* category2View = nullptr;
     City city;
+    gameOverPopup gameOverPop;
 
     int gameRound;;
 

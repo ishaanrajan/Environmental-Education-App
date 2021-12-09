@@ -106,6 +106,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setSceneRect(0, 0, 461, 381);
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
+    connect(&gameOverPop, &gameOverPopup::restartClicked, this, &MainWindow::resetGame);
 }
 
 MainWindow::~MainWindow()
@@ -221,7 +223,8 @@ void MainWindow::on_nextRoundButton_clicked()
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
     }else if(ui->environmentalImpactProgressBar->value()  >= 99){
 
-
+        gameOverPop.show();
+        gameOverPop.exec();
     }
     //TODO: add food categories to view
 }
@@ -255,6 +258,38 @@ void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
         itm->setTextAlignment(Qt::AlignLeft);
         itm->setType(buildingType.toStdString());
         ui->selectStructureListWidget->insertItem(i, itm);
+    }
+}
+
+void MainWindow::resetGame(){
+    City newCity;
+    city = newCity;
+    qDebug() << city.getEnergyGenerated();
+    qDebug() << city.getEnvironmentEffect();
+
+    this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");
+    gameRound = 0;
+    ui->housingProgressBar->setValue(0);
+    ui->foodProgressBar->setValue(0);
+    ui->amenitiesProgressBar->setValue(0);
+    ui->energyProgressBar->setValue(0);
+    ui->environmentalImpactProgressBar->setValue(0);
+    ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+    ui->housingProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+    ui->foodProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+    ui->amenitiesProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+    ui->energyProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+
+    QRegularExpression re("listWidget(\\d)_(\\d)");
+    QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
+    for(GridTile* currWidgetPtr : allSquares){
+        if(currWidgetPtr->itemAt(0,0)){
+            currWidgetPtr->clear();
+        }
+        currWidgetPtr->setAcceptDrops(true);
+        currWidgetPtr->setDragEnabled(true);
+        currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 1px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 }
 
