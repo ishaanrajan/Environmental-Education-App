@@ -112,6 +112,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::createListOfGameSquares(){
+
     gameSquares.push_back(ui->listWidget1_1);
     gameSquares.push_back(ui->listWidget1_2);
     gameSquares.push_back(ui->listWidget1_3);
@@ -207,54 +208,30 @@ void MainWindow::on_buildingSelectionComboBox_currentIndexChanged(int index)
 {
     QString currItm =ui->buildingSelectionComboBox->currentText();
     if((currItm.toStdString()) == "Amenities"){
-        ui->selectStructureListWidget->clear();
-        for (int i = 0; i < amenitiesImages.size(); i++)
-        {
-            QPixmap imgPix;
-            imgPix.convertFromImage(QImage(QString::fromStdString(amenitiesImages.at(i))).scaled(109,109));
-            GameBlock *itm = new GameBlock;
-            itm->setBackground(imgPix);
-            itm->setSizeHint(QSize(0, 108));
-            QString buildingName = QString::fromStdString(amenitiesImages.at(i));
-            QString buildingType = QFileInfo(buildingName).baseName();
-            itm->setToolTip(buildingType);
-            itm->setType(buildingType.toStdString());
-            ui->selectStructureListWidget->insertItem(i, itm);
-        }
-        ui->selectStructureListWidget->repaint();
+        redrawListWidget(amenitiesImages);
     }else if((currItm.toStdString()) == "Housing"){
-        ui->selectStructureListWidget->clear();
-        for (int i = 0; i < housingImages.size(); i++)
-        {
-            QPixmap imgPix;
-            imgPix.convertFromImage(QImage(QString::fromStdString(housingImages.at(i))).scaled(109,109));
-            GameBlock *itm = new GameBlock;
-            itm->setBackground(imgPix);
-            itm->setSizeHint(QSize(0, 108));
-            QString buildingName = QString::fromStdString(housingImages.at(i));
-            QString buildingType = QFileInfo(buildingName).baseName();
-            itm->setToolTip(buildingType);
-            itm->setType(buildingType.toStdString());
-            ui->selectStructureListWidget->insertItem(i, itm);
-        }
-        ui->selectStructureListWidget->repaint();
-
+        redrawListWidget(housingImages);
     }else if((currItm.toStdString()) == "Energy"){
-        ui->selectStructureListWidget->clear();
-        for (int i = 0; i < energyImages.size(); i++)
-        {
-            QPixmap imgPix;
-            imgPix.convertFromImage(QImage(QString::fromStdString(energyImages.at(i))).scaled(109,109));
-            GameBlock *itm = new GameBlock;
-            itm->setBackground(imgPix);
-            itm->setSizeHint(QSize(0, 108));
-            QString buildingName = QString::fromStdString(energyImages.at(i));
-            QString buildingType = QFileInfo(buildingName).baseName();
-            itm->setToolTip(buildingType);
-            itm->setType(buildingType.toStdString());
-            ui->selectStructureListWidget->insertItem(i, itm);
-        }
-        ui->selectStructureListWidget->repaint();
+        redrawListWidget(energyImages);
     } // once we have food add it here
+}
+
+void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
+    ui->selectStructureListWidget->clear();
+    for (int i = 0; i < (int)imageVec.size(); i++)
+    {
+        QPixmap imgPix;
+        imgPix.convertFromImage(QImage(QString::fromStdString(imageVec.at(i))).scaled(109,109));
+        GameBlock *itm = new GameBlock;
+        itm->setBackground(imgPix);
+        itm->setSizeHint(QSize(0, 108));
+        QString buildingName = QString::fromStdString(imageVec.at(i));
+        QString buildingType = QFileInfo(buildingName).baseName();
+        itm->setToolTip(buildingType);
+        itm->setType(buildingType.toStdString());
+        ui->selectStructureListWidget->insertItem(i, itm);
+    }
+    ui->selectStructureListWidget->repaint();
+
 }
 

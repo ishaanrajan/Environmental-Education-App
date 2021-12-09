@@ -49,6 +49,8 @@ private:
     std::vector<std::string> amenitiesImages;
     std::vector<std::string> housingImages;
 
+    void redrawListWidget(std::vector<std::string> imageVec);
+
 
     std::vector<GridTile *> gameSquares;
 
