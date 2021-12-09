@@ -14,5 +14,6 @@
         <file>resources/windfarm.png</file>
         <file>resources/background.png</file>
         <file>resources/groundtile.png</file>
+        <file>resources/trees.png</file>
     </qresource>
 </RCC>

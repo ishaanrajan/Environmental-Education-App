@@ -218,89 +218,9 @@ border-width: 2px;
       <height>571</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,100,100,100,100" columnstretch="100,100,100,100,100,100,100">
-     <item row="1" column="3">
-      <widget class="GridTile" name="listWidget2_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="2">
-      <widget class="GridTile" name="listWidget5_3">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="5">
-      <widget class="GridTile" name="listWidget5_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="GridTile" name="listWidget4_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="2">
-      <widget class="GridTile" name="listWidget4_3">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="GridTile" name="listWidget2_1">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="GridTile" name="listWidget3_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="GridTile" name="listWidget2_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="4">
-      <widget class="GridTile" name="listWidget5_5">
+    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,0,0,0,0" columnstretch="100,0,0,0,0,0,0">
+     <item row="3" column="5">
+      <widget class="GridTile" name="listWidget4_6">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -319,168 +239,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="GridTile" name="listWidget1_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0">
-      <widget class="GridTile" name="listWidget5_1">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5">
-      <widget class="GridTile" name="listWidget2_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="GridTile" name="listWidget5_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="1">
       <widget class="GridTile" name="listWidget5_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="GridTile" name="listWidget3_2">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="5">
-      <widget class="GridTile" name="listWidget3_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="GridTile" name="listWidget2_3">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="GridTile" name="listWidget3_1">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="GridTile" name="listWidget4_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="GridTile" name="listWidget1_1">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="GridTile" name="listWidget1_3">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="5">
-      <widget class="GridTile" name="listWidget1_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="GridTile" name="listWidget1_4">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
-      <widget class="GridTile" name="listWidget2_5">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="5">
-      <widget class="GridTile" name="listWidget4_6">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="GridTile" name="listWidget3_3">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -499,6 +259,36 @@ border-width: 2px;
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <widget class="GridTile" name="listWidget2_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="GridTile" name="listWidget3_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="GridTile" name="listWidget2_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="4">
       <widget class="GridTile" name="listWidget3_5">
        <property name="verticalScrollBarPolicy">
@@ -509,8 +299,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="3" column="4">
-      <widget class="GridTile" name="listWidget4_5">
+     <item row="3" column="3">
+      <widget class="GridTile" name="listWidget4_4">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -519,8 +309,8 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="1" column="6">
-      <widget class="GridTile" name="listWidget2_7">
+     <item row="2" column="0">
+      <widget class="GridTile" name="listWidget3_1">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -529,8 +319,28 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="2" column="6">
-      <widget class="GridTile" name="listWidget3_7">
+     <item row="1" column="5">
+      <widget class="GridTile" name="listWidget2_6">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="GridTile" name="listWidget4_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="5">
+      <widget class="GridTile" name="listWidget5_6">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -549,8 +359,78 @@ border-width: 2px;
        </property>
       </widget>
      </item>
-     <item row="4" column="6">
-      <widget class="GridTile" name="listWidget5_7">
+     <item row="1" column="6">
+      <widget class="GridTile" name="listWidget2_7">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="GridTile" name="listWidget2_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="GridTile" name="listWidget5_1">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="GridTile" name="listWidget1_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="GridTile" name="listWidget5_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="GridTile" name="listWidget3_6">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="6">
+      <widget class="GridTile" name="listWidget3_7">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="GridTile" name="listWidget4_5">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -561,6 +441,126 @@ border-width: 2px;
      </item>
      <item row="0" column="6">
       <widget class="GridTile" name="listWidget1_7">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="GridTile" name="listWidget1_1">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="GridTile" name="listWidget5_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="GridTile" name="listWidget2_1">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="GridTile" name="listWidget4_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="GridTile" name="listWidget3_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="6">
+      <widget class="GridTile" name="listWidget5_7">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="GridTile" name="listWidget3_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="GridTile" name="listWidget1_4">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="GridTile" name="listWidget1_2">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="GridTile" name="listWidget5_5">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="GridTile" name="listWidget2_3">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="5">
+      <widget class="GridTile" name="listWidget1_6">
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
@@ -649,6 +649,1311 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
      <string>Next Round</string>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>360</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_2">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>470</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_3">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>580</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_4">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>690</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_5">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>800</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_6">
+    <property name="geometry">
+     <rect>
+      <x>920</x>
+      <y>250</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_7">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>240</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_8">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>240</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_9">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>240</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_10">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>740</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_11">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>820</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_12">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>750</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_13">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>850</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_14">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>630</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_15">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>520</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_16">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>410</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_17">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>300</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_18">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>260</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_19">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_20">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>780</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_21">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>860</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_22">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>710</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_23">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>800</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_24">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>250</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_25">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_26">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>230</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_27">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>230</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_28">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_29">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>260</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_30">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_31">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>230</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_32">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_33">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>230</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_34">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>230</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_35">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>260</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_36">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>240</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_37">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>890</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_38">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>830</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_39">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>740</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_40">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>660</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_41">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>560</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_42">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>480</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_43">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>410</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_44">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>330</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_45">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>900</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_46">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_47">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_48">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>920</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_49">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>920</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_50">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_51">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_52">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>920</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_53">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_54">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>900</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_55">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_56">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>910</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_57">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>920</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_58">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>380</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_59">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>440</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_60">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>470</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_61">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>510</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_62">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>560</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_63">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>530</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_64">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>600</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_65">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>640</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_66">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>690</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_67">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>730</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_68">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>760</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_69">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>800</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_70">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>860</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_71">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>860</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_72">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>880</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_73">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>900</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_74">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>330</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_75">
+    <property name="geometry">
+     <rect>
+      <x>1130</x>
+      <y>300</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_76">
+    <property name="geometry">
+     <rect>
+      <x>1150</x>
+      <y>340</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_77">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>410</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_78">
+    <property name="geometry">
+     <rect>
+      <x>1150</x>
+      <y>480</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_79">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>260</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_80">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>370</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_81">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>430</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_82">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>260</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_83">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>600</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_84">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>890</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_85">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>830</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_86">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>740</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser_87">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>270</y>
+      <width>96</width>
+      <height>96</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border-image: url(:resources/trees.png);
+}</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -656,7 +1961,7 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

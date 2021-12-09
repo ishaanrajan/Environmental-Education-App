@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMaximumWidth(109);
     ui->selectStructureListWidget->setMinimumHeight(300);
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
-
+    ui->selectStructureListWidget->raise();
     /*Find all game board QListWidgets on the central widget.
      * NOTE: Bugs may appear here if QListWidgets are added
      * that don't represent gameboard pieces.
