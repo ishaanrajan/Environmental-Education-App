@@ -15,16 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    images.push_back(":/resources/commercial.png");
-    images.push_back(":/resources/drivein.png");
-    images.push_back(":/resources/factory1.png");
-    images.push_back(":/resources/factory2.png");
-    images.push_back(":/resources/highdensityhousing.png");
-    images.push_back(":/resources/neighborhood.png");
-    images.push_back(":/resources/nuclear.png");
-    images.push_back(":/resources/solar.png");
-    images.push_back(":/resources/theater.png");
-    images.push_back(":/resources/windfarm.png");
 
     ui->statusBarTextBrowser->lower();
     ui->selectStructureListWidget->setAcceptDrops(true);
@@ -35,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
     ui->selectStructureListWidget->raise();
 
-    energyImages.push_back(":/resources/commercial.png");
     energyImages.push_back(":/resources/factory1.png");
     energyImages.push_back(":/resources/factory2.png");
     energyImages.push_back(":/resources/nuclear.png");
@@ -44,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     amenitiesImages.push_back(":/resources/theater.png");
     amenitiesImages.push_back(":/resources/drivein.png");
+    amenitiesImages.push_back(":/resources/commercial.png");
 
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
@@ -74,21 +64,6 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 1px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
-
-    //Creating the grid
-//    for (int i = 0; i < SPRITE_COUNT; i++)
-//    {
-//        QPixmap imgPix;
-//        imgPix.convertFromImage(QImage(QString::fromStdString(images.at(i))).scaled(109,109));
-//        GameBlock *itm = new GameBlock;
-//        itm->setBackground(imgPix);
-//        itm->setSizeHint(QSize(0, 108));
-//        QString buildingName = QString::fromStdString(images.at(i));
-//        QString buildingType = QFileInfo(buildingName).baseName();
-//        itm->setToolTip(buildingType);
-//        itm->setType(buildingType.toStdString());
-//        ui->selectStructureListWidget->insertItem(i, itm);
-//    }
 
     ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-color: rgba(0,0,0,0);}");
 
@@ -280,6 +255,6 @@ void MainWindow::on_buildingSelectionComboBox_currentIndexChanged(int index)
             ui->selectStructureListWidget->insertItem(i, itm);
         }
         ui->selectStructureListWidget->repaint();
-    }
+    } // once we have food add it here
 }
 
