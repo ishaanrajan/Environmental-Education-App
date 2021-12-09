@@ -218,7 +218,7 @@ border-width: 2px;
       <height>571</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="100,0,0,0,0" columnstretch="100,0,0,0,0,0,0">
+    <layout class="QGridLayout" name="gameBoardGrid" rowstretch="96,96,96,96,96" columnstretch="96,96,96,96,96,96,96">
      <item row="3" column="5">
       <widget class="GridTile" name="listWidget4_6">
        <property name="verticalScrollBarPolicy">
