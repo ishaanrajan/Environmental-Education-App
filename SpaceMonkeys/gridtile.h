@@ -16,6 +16,7 @@ signals:
     // QWidget interface
 protected:
     void dropEvent(QDropEvent *event) override;
+    void startDrag(Qt::DropActions supportedActions);
 };
 
 
