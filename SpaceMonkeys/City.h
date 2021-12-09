@@ -156,6 +156,8 @@ private:
 
     void energyTracker(int energyUpdate);
 
+    void environmentTracker(int enviroUpdate);
+
 
     // Default calculated values
     int energyConsumptionRequired;

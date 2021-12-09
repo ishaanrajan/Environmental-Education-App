@@ -39,6 +39,7 @@ private:
     QListView* category2View = nullptr;
     City city;
 
+    int gameRound;;
 
     QAction* addAction = nullptr;
     QAction* removeAction = nullptr;
@@ -52,7 +53,8 @@ private:
     void redrawListWidget(std::vector<std::string> imageVec);
 
 
-    std::vector<GridTile *> gameSquares;
+    std::map<GridTile *, bool> allGridTiles;
+
 
     ParticleManager particleManager;
 

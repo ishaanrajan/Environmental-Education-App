@@ -15,6 +15,7 @@ City::City(int population){
 
 }
 
+
 City::City(int population, std::vector<std::string> prevBuilds){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
     energyConsumptionRequired = (5 * population)/ 100; // (in MWH per month)
@@ -43,6 +44,13 @@ City::City(int population, std::vector<std::string> prevBuilds){
 
 }
 
+void City::environmentTracker(int enviroUpdate){
+    if(environmentEffect + enviroUpdate > 99){
+        environmentEffect = 100;
+    }else{
+        environmentEffect += enviroUpdate;
+    }
+}
 void City::energyTracker(int energyUpdate){
     if(energyGenerated + energyUpdate > energyConsumptionRequired)
     {
@@ -59,8 +67,8 @@ void City::addWindFarm(){
     // Times 30 days
     int energyUpdate = (7200 * 30)/100;
     energyTracker(energyUpdate);
-
-    environmentEffect += 0;
+    int enviroUpdate = 1;
+    environmentTracker(enviroUpdate);
 
     allBuilds.push_back("windfarm");
 
@@ -72,7 +80,8 @@ void City::addCoalPlant(){
 
     energyTracker(energyUpdate);
     // some constant effect on enviornment
-    environmentEffect += 22;
+    int enviroUpdate = 22;
+    environmentTracker(enviroUpdate);
 
     allBuilds.push_back("factory1"); // TODO: difference between factor1 and factor2?
     
@@ -83,7 +92,8 @@ void City::addSolar(){
     int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-
+    int enviroUpdate = 5;
+    environmentTracker(enviroUpdate);
     allBuilds.push_back("solar");
     
 }
@@ -93,7 +103,9 @@ void City::addNuclear(){
      int energyUpdate = (95000 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-    environmentEffect += 1;
+    int enviroUpdate = 1;
+    environmentTracker(enviroUpdate);
+
     allBuilds.push_back("nuclear");
     
 }
@@ -103,20 +115,23 @@ void City::addCattleFarm(){
     // We don't have any farming categories what is this doing?? --Ishaan
     energyGenerated -= 1;
     produceGenerated += 10;
-    environmentEffect += 5;
+    int enviroUpdate = 10;
+    environmentTracker(enviroUpdate);
 
     allBuilds.push_back("CattleFarm");
 }
 
 void City::addHighDensityHousing(){
-    environmentEffect += 1;
+    int enviroUpdate = 8;
+    environmentTracker(enviroUpdate);
     housingGenerated += 40;
 
     allBuilds.push_back("highdensityapartments");
 }
 
 void City::addSuburbanHousing(){
-    environmentEffect += 10;
+    int enviroUpdate = 15;
+    environmentTracker(enviroUpdate);
     housingGenerated += 20;
 
     allBuilds.push_back("neighborhood");
@@ -124,11 +139,15 @@ void City::addSuburbanHousing(){
 
 void City::addTheater(){
     funGenerated += 50;
+    int enviroUpdate = 5;
+    environmentTracker(enviroUpdate);
     allBuilds.push_back("theater");
 }
 
 void City::addDriveIn(){
     funGenerated += 100;
+    int enviroUpdate = 7;
+    environmentTracker(enviroUpdate);
     allBuilds.push_back("drivein");
 }
 

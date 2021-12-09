@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    gameRound = 0;
+
     ui->statusBarTextBrowser->lower();
     ui->selectStructureListWidget->setAcceptDrops(true);
     ui->selectStructureListWidget->setDragEnabled(true);
@@ -38,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
 
-    for (int i = 0; i < energyImages.size(); i++)
+    for (int i = 0; i < (int)energyImages.size(); i++)
     {
         QPixmap imgPix;
         imgPix.convertFromImage(QImage(QString::fromStdString(energyImages.at(i))).scaled(109,109));
@@ -86,7 +88,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->environmentalImpactProgressBar->setValue(0);
     ui->environmentalImpactProgressBar->setMinimum(0);
-    ui->environmentalImpactProgressBar->setMaximum(100);
+    ui->environmentalImpactProgressBar->setMaximum(101);
 
 
     createListOfGameSquares();
@@ -113,52 +115,54 @@ MainWindow::~MainWindow()
 
 void MainWindow::createListOfGameSquares(){
 
-    gameSquares.push_back(ui->listWidget1_1);
-    gameSquares.push_back(ui->listWidget1_2);
-    gameSquares.push_back(ui->listWidget1_3);
-    gameSquares.push_back(ui->listWidget1_4);
-    gameSquares.push_back(ui->listWidget1_5);
-    gameSquares.push_back(ui->listWidget1_6);
-    gameSquares.push_back(ui->listWidget1_7);
-    gameSquares.push_back(ui->listWidget2_1);
-    gameSquares.push_back(ui->listWidget2_2);
-    gameSquares.push_back(ui->listWidget2_3);
-    gameSquares.push_back(ui->listWidget2_4);
-    gameSquares.push_back(ui->listWidget2_5);
-    gameSquares.push_back(ui->listWidget2_6);
-    gameSquares.push_back(ui->listWidget2_7);
-    gameSquares.push_back(ui->listWidget3_1);
-    gameSquares.push_back(ui->listWidget3_2);
-    gameSquares.push_back(ui->listWidget3_3);
-    gameSquares.push_back(ui->listWidget3_4);
-    gameSquares.push_back(ui->listWidget3_5);
-    gameSquares.push_back(ui->listWidget3_6);
-    gameSquares.push_back(ui->listWidget3_7);
-    gameSquares.push_back(ui->listWidget4_1);
-    gameSquares.push_back(ui->listWidget4_2);
-    gameSquares.push_back(ui->listWidget4_3);
-    gameSquares.push_back(ui->listWidget4_4);
-    gameSquares.push_back(ui->listWidget4_5);
-    gameSquares.push_back(ui->listWidget4_6);
-    gameSquares.push_back(ui->listWidget4_7);
-    gameSquares.push_back(ui->listWidget5_1);
-    gameSquares.push_back(ui->listWidget5_2);
-    gameSquares.push_back(ui->listWidget5_3);
-    gameSquares.push_back(ui->listWidget5_4);
-    gameSquares.push_back(ui->listWidget5_5);
-    gameSquares.push_back(ui->listWidget5_6);
-    gameSquares.push_back(ui->listWidget5_7);
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_1, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_2, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_3, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_4, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_5, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_6, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget1_7, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_1, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_2, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_3, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_4, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_5, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_6, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget2_7, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_1, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_2, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_3, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_4, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_5, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_6, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget3_7, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_1, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_2, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_3, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_4, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_5, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_6, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget4_7, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_1, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_2, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_3, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_4, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_5, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_6, true));
+    allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_7, true));
 }
 
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-    for(GridTile* tile : gameSquares)
+    gameRound += 1;
+    for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
-        if(tile->itemAt(0,0))
+        if(iter->first->itemAt(0,0) && iter->second)
         {
-            tile->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
-            std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
+            iter->second = false;
+            iter->first->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
+            std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
             else if(currBlockName == "factory1" || currBlockName == "factory2")
@@ -199,6 +203,14 @@ void MainWindow::on_nextRoundButton_clicked()
     ui->housingProgressBar->setValue(city.getHousingGenerated());
     qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
     ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+
+    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
+    }else if(ui->environmentalImpactProgressBar->value() >= 80){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+    }
     //TODO: add food categories to view
 }
 
@@ -228,6 +240,8 @@ void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
         QString buildingName = QString::fromStdString(imageVec.at(i));
         QString buildingType = QFileInfo(buildingName).baseName();
         itm->setToolTip(buildingType);
+        itm->setText(buildingType);
+        itm->setTextAlignment(Qt::AlignLeft);
         itm->setType(buildingType.toStdString());
         ui->selectStructureListWidget->insertItem(i, itm);
     }

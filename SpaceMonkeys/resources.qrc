@@ -15,5 +15,7 @@
         <file>resources/background.png</file>
         <file>resources/groundtile.png</file>
         <file>resources/trees.png</file>
+        <file>resources/smogbackground1.png</file>
+        <file>resources/smogbackground2.png</file>
     </qresource>
 </RCC>

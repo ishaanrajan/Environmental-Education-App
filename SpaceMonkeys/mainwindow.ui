@@ -14,8 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QWidget#MainWindow
+   <string notr="true">QWidget#MainWindow
 {
 	background-image: url(:/resources/background.png);
 	background-position: center;
