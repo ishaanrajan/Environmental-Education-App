@@ -2,6 +2,7 @@
 #include <QListWidget>
 #include <QDrag>
 #include "gameblock.h"
+#include <QDropEvent>
 
 GameBlockManager::GameBlockManager(QWidget *parent) : QListWidget(parent)
 {
@@ -29,4 +30,9 @@ void GameBlockManager::startDrag(Qt::DropActions supportedActions)
      }
      else
         QListWidget::startDrag(supportedActions);
+}
+
+void GameBlockManager::dropEvent(QDropEvent *event)
+{
+    event->setDropAction(Qt::DropAction::IgnoreAction);
 }

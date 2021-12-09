@@ -12,6 +12,7 @@ public:
     // QAbstractItemView interface
 protected:
     void startDrag(Qt::DropActions supportedActions);
+    void dropEvent(QDropEvent *event);
 };
 
 #endif // GAMEBLOCKMANAGER_H
