@@ -7,6 +7,10 @@
 City::City(){
     population = 1000000;
     energyConsumptionRequired = (5 * population) / 100;
+    // on average 2 people per house
+    housingRequired = (population/2)/1000;
+    produceRequired = 100;
+    funRequired = 100;
 }
 City::City(int population){
     // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
@@ -59,7 +63,31 @@ void City::energyTracker(int energyUpdate){
     {
          energyGenerated += energyUpdate;
     }
+}
 
+void City::housingTracker(int housingUpdate){
+    if(housingUpdate + housingGenerated > housingRequired){
+        housingRequired = housingRequired;
+    }else{
+        housingGenerated += housingUpdate;
+    }
+}
+
+void City::foodTracker(int foodUpdate){
+    if(foodUpdate + produceGenerated > produceRequired){
+        produceRequired = produceRequired;
+    }else{
+        produceGenerated += foodUpdate;
+    }
+}
+
+
+void City::funTracker(int funUpdate){
+    if(funUpdate + funGenerated > funRequired){
+        funRequired = funRequired;
+    }else{
+        funGenerated += funUpdate;
+    }
 }
 
 void City::addWindFarm(){
@@ -69,9 +97,7 @@ void City::addWindFarm(){
     energyTracker(energyUpdate);
     int enviroUpdate = 1;
     environmentTracker(enviroUpdate);
-
     allBuilds.push_back("windfarm");
-
 }
 
 void City::addCoalPlant(){
@@ -112,48 +138,63 @@ void City::addNuclear(){
 
 void City::addCattleFarm(){
     // some constant penalties and additions
-    energyGenerated -= 1;
-    produceGenerated += 10;
+    energyGenerated -= 10;
+    int produceGen = 60;
     int enviroUpdate = 10;
+    int funGenerate = 10;
     environmentTracker(enviroUpdate);
+    foodTracker(produceGen);
+    funTracker(funGenerate);
 
     allBuilds.push_back("CattleFarm");
+}
+
+void City::addPlantFarm(){
+    // some constant penalties and additions
+    energyGenerated -= 10;
+    int produceGen = 30;
+    int enviroUpdate = 10;
+    environmentTracker(enviroUpdate);
+    foodTracker(produceGen);
+    allBuilds.push_back("PlantFarm");
 }
 
 void City::addHighDensityHousing(){
     int enviroUpdate = 8;
     environmentTracker(enviroUpdate);
-    housingGenerated += 40;
-
+    int housingGen = 100;
+    housingTracker(housingGen);
     allBuilds.push_back("highdensityapartments");
 }
 
 void City::addSuburbanHousing(){
     int enviroUpdate = 15;
     environmentTracker(enviroUpdate);
-    housingGenerated += 20;
-
+    int housingGen = 60;
+    housingTracker(housingGen);
     allBuilds.push_back("neighborhood");
 }
 
 void City::addTheater(){
-    funGenerated += 50;
+    int funGen = 50;
     int enviroUpdate = 5;
     environmentTracker(enviroUpdate);
+    funTracker(funGen);
     allBuilds.push_back("theater");
 }
 
 void City::addDriveIn(){
-    funGenerated += 100;
+    int funGen = 100;
     int enviroUpdate = 7;
     environmentTracker(enviroUpdate);
+    funTracker(funGen);
     allBuilds.push_back("drivein");
 }
 
 void City::addStadium(){
-    funGenerated += 10;
+    int funGen = 10;
     energyGenerated -= 10;
-    
+    funTracker(funGen);
     allBuilds.push_back("Stadium");
 }
 
@@ -184,7 +225,19 @@ int City::getFoodGenerated(){
     return produceGenerated;
 }
 
-
 int City::getEnergyNeeded(){
     return energyConsumptionRequired;
+}
+
+
+int City::getFunNeeded(){
+    return funRequired;
+}
+
+int City::getProduceNeeded(){
+    return produceRequired;
+}
+
+int City::getHousingNeeded(){
+    return housingRequired;
 }
