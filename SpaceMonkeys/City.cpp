@@ -112,7 +112,6 @@ void City::addNuclear(){
 
 void City::addCattleFarm(){
     // some constant penalties and additions
-    // We don't have any farming categories what is this doing?? --Ishaan
     energyGenerated -= 1;
     produceGenerated += 10;
     int enviroUpdate = 10;
@@ -153,8 +152,6 @@ void City::addDriveIn(){
 
 void City::addStadium(){
     funGenerated += 10;
-    // look at exact value
-    // We don't have a stadium what is this doing?? --Ishaan
     energyGenerated -= 10;
     
     allBuilds.push_back("Stadium");
