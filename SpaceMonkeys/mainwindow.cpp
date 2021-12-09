@@ -40,6 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
 
+    foodImages.push_back(":/resources/plantFarm.png");
+    foodImages.push_back(":/resources/cowfactory.png");
+
+
     for (int i = 0; i < (int)energyImages.size(); i++)
     {
         QPixmap imgPix;
@@ -222,7 +226,6 @@ void MainWindow::on_nextRoundButton_clicked()
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
     }else if(ui->environmentalImpactProgressBar->value()  >= 99){
-
         gameOverPop.show();
         gameOverPop.exec();
     }
@@ -240,7 +243,9 @@ void MainWindow::on_buildingSelectionComboBox_currentIndexChanged(int index)
         redrawListWidget(housingImages);
     }else if((currItm.toStdString()) == "Energy"){
         redrawListWidget(energyImages);
-    } // once we have food add it here
+    } else if((currItm.toStdString()) == "Food"){
+        redrawListWidget(foodImages);
+    }
 }
 
 void MainWindow::redrawListWidget(std::vector<std::string> imageVec){

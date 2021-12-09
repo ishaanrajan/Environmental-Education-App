@@ -17,5 +17,7 @@
         <file>resources/trees.png</file>
         <file>resources/smogbackground1.png</file>
         <file>resources/smogbackground2.png</file>
+        <file>resources/plantFarm.png</file>
+        <file>resources/cowfactory.png</file>
     </qresource>
 </RCC>

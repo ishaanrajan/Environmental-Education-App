@@ -51,6 +51,7 @@ private:
     std::vector<std::string> energyImages;
     std::vector<std::string> amenitiesImages;
     std::vector<std::string> housingImages;
+    std::vector<std::string> foodImages;
 
     void redrawListWidget(std::vector<std::string> imageVec);
 
