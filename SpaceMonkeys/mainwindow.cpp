@@ -213,19 +213,29 @@ void MainWindow::on_nextRoundButton_clicked()
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
         int trees = 0;
-        for(QObject* const currObj : this->children()){
-            if(currObj->inherits("QTextBrowser")){
-                trees++;
-                if(trees % 4){
-                    QTextBrowser* currBrowser = (QTextBrowser*)currObj;
-                    currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
-                }
-            }
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 3){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
         }
     }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 5){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
     }else if(ui->environmentalImpactProgressBar->value()  >= 99){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
         gameOverPop.show();
         gameOverPop.exec();
     }
@@ -292,6 +302,11 @@ void MainWindow::resetGame(){
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 1px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
+    }
+    QRegularExpression re2("textBrowser_(\\d)");
+    QList<QTextBrowser*> allTrees = centralWidget()->findChildren<QTextBrowser*>(re2);
+    for(QTextBrowser* currBrowser : allTrees){
+         currBrowser->setStyleSheet("QTextBrowser{border-image: url(:resources/trees.png);}");
     }
 }
 
