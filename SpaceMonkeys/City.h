@@ -24,6 +24,13 @@ public:
     */
     City(int population, std::vector<std::string> prevBuilds);
 
+
+    /**
+     * @brief This method is used to add a plant farm
+     * 
+     */
+    void addPlantFarm();
+
     /**
      * @brief This method is used when the user decides
      * to add a windMill.
@@ -132,21 +139,30 @@ public:
      */
     std::vector<std::string> getAllBuilds();
 
-//public slots:
-//         void emitUpdateSignals();
-//signals:
-//        void updateEnergyBar(int);
-//        void updateFunBar(int);
-//        void updateFoodBar(int);
-//        void updateAmenitiesBar(int);
-//        void updateEnvironmentalImpactBar(int);
-
 
     /**
      * @brief Get the energy that needs to be generated.
      * 
      */
     int getEnergyNeeded();
+
+    /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getFunNeeded();
+
+       /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getProduceNeeded();
+
+    /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getHousingNeeded();
 
     std::vector<std::string> allBuilds;
 
@@ -158,11 +174,22 @@ private:
 
     void environmentTracker(int enviroUpdate);
 
+     /**
+     * @brief Used to update the housing.
+     * 
+     */
+    void housingTracker(int housingUpdate);
+
+    void foodTracker(int housingUpdate);
+
+    void funTracker(int housingUpdate);
+
 
     // Default calculated values
     int energyConsumptionRequired;
     int produceRequired;
     int housingRequired;
+    int funRequired;
 
     // Dynamic 
     int environmentEffect = 0;
