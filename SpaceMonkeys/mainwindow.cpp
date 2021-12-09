@@ -264,9 +264,6 @@ void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
 void MainWindow::resetGame(){
     City newCity;
     city = newCity;
-    qDebug() << city.getEnergyGenerated();
-    qDebug() << city.getEnvironmentEffect();
-
     this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");
     gameRound = 0;
     ui->housingProgressBar->setValue(0);
