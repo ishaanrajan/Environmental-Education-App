@@ -8,10 +8,11 @@
         <file>resources/factory2.png</file>
         <file>resources/highdensityhousing.png</file>
         <file>resources/neighborhood.png</file>
-        <file>resources/powerplant.png</file>
+        <file>resources/nuclear.png</file>
         <file>resources/solar.png</file>
         <file>resources/theater.png</file>
         <file>resources/windfarm.png</file>
         <file>resources/background.png</file>
+        <file>resources/groundtile.png</file>
     </qresource>
 </RCC>

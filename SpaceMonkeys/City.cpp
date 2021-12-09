@@ -34,7 +34,7 @@ City::City(int population, std::vector<std::string> prevBuilds){
         {
             addSolar();
         }
-        else if(build == "powerplant")
+        else if(build == "nuclear")
         {
             addNuclear();
         }
@@ -94,7 +94,7 @@ void City::addNuclear(){
     // some constant effect on enviornment
     energyTracker(energyUpdate);
     environmentEffect += 1;
-    allBuilds.push_back("powerplant");
+    allBuilds.push_back("nuclear");
     
 }
 

@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     images.push_back(":/resources/factory2.png");
     images.push_back(":/resources/highdensityhousing.png");
     images.push_back(":/resources/neighborhood.png");
-    images.push_back(":/resources/powerplant.png");
+    images.push_back(":/resources/nuclear.png");
     images.push_back(":/resources/solar.png");
     images.push_back(":/resources/theater.png");
     images.push_back(":/resources/windfarm.png");
@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setAcceptDrops(true);
         currWidgetPtr->setDragEnabled(true);
         currWidgetPtr->setDefaultDropAction(Qt::MoveAction);
-        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 2px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
+        currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 1px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
     //Creating the grid
@@ -153,6 +153,7 @@ void MainWindow::on_nextRoundButton_clicked()
     {
         if(tile->itemAt(0,0))
         {
+            tile->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
             std::string currBlockName = tile->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
@@ -162,7 +163,7 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addHighDensityHousing();
             else if(currBlockName == "neighborhood")
                 city.addSuburbanHousing();
-            else if(currBlockName == "powerplant")
+            else if(currBlockName == "nuclear")
                 city.addNuclear();
             else if(currBlockName == "solar")
                 city.addSolar();
