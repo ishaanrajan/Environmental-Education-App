@@ -29,7 +29,7 @@ public:
      * to add a windMill.
      * 
      */
-    void addWindMill();
+    void addWindFarm();
 
     /**
      * @brief This method is used when the user decides
@@ -50,7 +50,7 @@ public:
      * to add a solarFarm.
      * 
      */
-    void addSolarFarm();
+    void addSolar();
 
     /**
      * @brief This method is used when the user decides
@@ -64,7 +64,7 @@ public:
      * to add housing.
      * 
      */
-    void addApartmentHousing();
+    void addHighDensityHousing();
 
     /**
      * @brief This method is used when the user decides

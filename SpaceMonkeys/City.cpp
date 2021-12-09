@@ -22,17 +22,17 @@ City::City(int population, std::vector<std::string> prevBuilds){
     // loop and add appropriate values
     for(std::string build : prevBuilds)
     {
-        if(build == "windarm")
+        if(build == "windfarm")
         {
-            addWindMill();
+            addWindFarm();
         } 
-        else if(build == "factor1")
+        else if(build == "factory1" || build == "factory2")
         {
             addCoalPlant();
         }
         else if(build == "solar")
         {
-            addSolarFarm();
+            addSolar();
         }
         else if(build == "powerplant")
         {
@@ -54,7 +54,7 @@ void City::energyTracker(int energyUpdate){
 
 }
 
-void City::addWindMill(){
+void City::addWindFarm(){
     // from diagram in megaWatt hours
     // Times 30 days
     int energyUpdate = (7200 * 30)/100;
@@ -78,7 +78,7 @@ void City::addCoalPlant(){
     
 }
 
-void City::addSolarFarm(){
+void City::addSolar(){
     // some constant More research he all in MWH
     int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
@@ -108,7 +108,7 @@ void City::addCattleFarm(){
     allBuilds.push_back("CattleFarm");
 }
 
-void City::addApartmentHousing(){
+void City::addHighDensityHousing(){
     environmentEffect += 1;
     housingGenerated += 40;
 

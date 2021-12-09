@@ -159,17 +159,17 @@ void MainWindow::on_nextRoundButton_clicked()
             else if(currBlockName == "factory1" || currBlockName == "factory2")
                 city.addCoalPlant();
             else if(currBlockName == "highdensityhousing")
-                city.addApartmentHousing();
+                city.addHighDensityHousing();
             else if(currBlockName == "neighborhood")
                 city.addSuburbanHousing();
             else if(currBlockName == "powerplant")
                 city.addNuclear();
             else if(currBlockName == "solar")
-                city.addSolarFarm();
+                city.addSolar();
             else if(currBlockName == "theater")
-                city.addStadium();
+                city.addTheater();
             else if(currBlockName == "windfarm")
-                city.addWindMill();
+                city.addWindFarm();
         }
 
         //Disable game widgets for 5 seconds so we can "play" progressbar animations
