@@ -160,9 +160,7 @@ void MainWindow::on_nextRoundButton_clicked()
     {
         if(iter->first->itemAt(0,0) && iter->second)
         {
-            iter->second = false;
             iter->first->setDragEnabled(false);
-            iter->first->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
             std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
@@ -218,9 +216,12 @@ void MainWindow::on_nextRoundButton_clicked()
                 }
             }
         }
-    }else if(ui->environmentalImpactProgressBar->value() >= 80){
+    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+    }else if(ui->environmentalImpactProgressBar->value()  >= 99){
+
+
     }
     //TODO: add food categories to view
 }
@@ -251,12 +252,9 @@ void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
         QString buildingName = QString::fromStdString(imageVec.at(i));
         QString buildingType = QFileInfo(buildingName).baseName();
         itm->setToolTip(buildingType);
-        itm->setText(buildingType);
         itm->setTextAlignment(Qt::AlignLeft);
         itm->setType(buildingType.toStdString());
         ui->selectStructureListWidget->insertItem(i, itm);
     }
-    ui->selectStructureListWidget->repaint();
-
 }
 
