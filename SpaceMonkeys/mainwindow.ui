@@ -1954,6 +1954,36 @@ border-image: url(:resources/trees.png);
 }</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="buildingSelectionComboBox">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>70</y>
+      <width>131</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Energy</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amenities</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Housing</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Food</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

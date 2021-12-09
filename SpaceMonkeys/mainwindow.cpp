@@ -34,6 +34,34 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setMinimumHeight(300);
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
     ui->selectStructureListWidget->raise();
+
+    energyImages.push_back(":/resources/commercial.png");
+    energyImages.push_back(":/resources/factory1.png");
+    energyImages.push_back(":/resources/factory2.png");
+    energyImages.push_back(":/resources/nuclear.png");
+    energyImages.push_back(":/resources/solar.png");
+    energyImages.push_back(":/resources/windfarm.png");
+
+    amenitiesImages.push_back(":/resources/theater.png");
+    amenitiesImages.push_back(":/resources/drivein.png");
+
+    housingImages.push_back(":/resources/highdensityhousing.png");
+    housingImages.push_back(":/resources/neighborhood.png");
+
+    for (int i = 0; i < energyImages.size(); i++)
+    {
+        QPixmap imgPix;
+        imgPix.convertFromImage(QImage(QString::fromStdString(energyImages.at(i))).scaled(109,109));
+        GameBlock *itm = new GameBlock;
+        itm->setBackground(imgPix);
+        itm->setSizeHint(QSize(0, 108));
+        QString buildingName = QString::fromStdString(energyImages.at(i));
+        QString buildingType = QFileInfo(buildingName).baseName();
+        itm->setToolTip(buildingType);
+        itm->setType(buildingType.toStdString());
+        ui->selectStructureListWidget->insertItem(i, itm);
+    }
+
     /*Find all game board QListWidgets on the central widget.
      * NOTE: Bugs may appear here if QListWidgets are added
      * that don't represent gameboard pieces.
@@ -48,19 +76,19 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     //Creating the grid
-    for (int i = 0; i < SPRITE_COUNT; i++)
-    {
-        QPixmap imgPix;
-        imgPix.convertFromImage(QImage(QString::fromStdString(images.at(i))).scaled(109,109));
-        GameBlock *itm = new GameBlock;
-        itm->setBackground(imgPix);
-        itm->setSizeHint(QSize(0, 108));
-        QString buildingName = QString::fromStdString(images.at(i));
-        QString buildingType = QFileInfo(buildingName).baseName();
-        itm->setToolTip(buildingType);
-        itm->setType(buildingType.toStdString());
-        ui->selectStructureListWidget->insertItem(i, itm);
-    }
+//    for (int i = 0; i < SPRITE_COUNT; i++)
+//    {
+//        QPixmap imgPix;
+//        imgPix.convertFromImage(QImage(QString::fromStdString(images.at(i))).scaled(109,109));
+//        GameBlock *itm = new GameBlock;
+//        itm->setBackground(imgPix);
+//        itm->setSizeHint(QSize(0, 108));
+//        QString buildingName = QString::fromStdString(images.at(i));
+//        QString buildingType = QFileInfo(buildingName).baseName();
+//        itm->setToolTip(buildingType);
+//        itm->setType(buildingType.toStdString());
+//        ui->selectStructureListWidget->insertItem(i, itm);
+//    }
 
     ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-color: rgba(0,0,0,0);}");
 
@@ -198,4 +226,60 @@ void MainWindow::on_nextRoundButton_clicked()
     //TODO: add food categories to view
 }
 
+
+
+void MainWindow::on_buildingSelectionComboBox_currentIndexChanged(int index)
+{
+    QString currItm =ui->buildingSelectionComboBox->currentText();
+    if((currItm.toStdString()) == "Amenities"){
+        ui->selectStructureListWidget->clear();
+        for (int i = 0; i < amenitiesImages.size(); i++)
+        {
+            QPixmap imgPix;
+            imgPix.convertFromImage(QImage(QString::fromStdString(amenitiesImages.at(i))).scaled(109,109));
+            GameBlock *itm = new GameBlock;
+            itm->setBackground(imgPix);
+            itm->setSizeHint(QSize(0, 108));
+            QString buildingName = QString::fromStdString(amenitiesImages.at(i));
+            QString buildingType = QFileInfo(buildingName).baseName();
+            itm->setToolTip(buildingType);
+            itm->setType(buildingType.toStdString());
+            ui->selectStructureListWidget->insertItem(i, itm);
+        }
+        ui->selectStructureListWidget->repaint();
+    }else if((currItm.toStdString()) == "Housing"){
+        ui->selectStructureListWidget->clear();
+        for (int i = 0; i < housingImages.size(); i++)
+        {
+            QPixmap imgPix;
+            imgPix.convertFromImage(QImage(QString::fromStdString(housingImages.at(i))).scaled(109,109));
+            GameBlock *itm = new GameBlock;
+            itm->setBackground(imgPix);
+            itm->setSizeHint(QSize(0, 108));
+            QString buildingName = QString::fromStdString(housingImages.at(i));
+            QString buildingType = QFileInfo(buildingName).baseName();
+            itm->setToolTip(buildingType);
+            itm->setType(buildingType.toStdString());
+            ui->selectStructureListWidget->insertItem(i, itm);
+        }
+        ui->selectStructureListWidget->repaint();
+
+    }else if((currItm.toStdString()) == "Energy"){
+        ui->selectStructureListWidget->clear();
+        for (int i = 0; i < energyImages.size(); i++)
+        {
+            QPixmap imgPix;
+            imgPix.convertFromImage(QImage(QString::fromStdString(energyImages.at(i))).scaled(109,109));
+            GameBlock *itm = new GameBlock;
+            itm->setBackground(imgPix);
+            itm->setSizeHint(QSize(0, 108));
+            QString buildingName = QString::fromStdString(energyImages.at(i));
+            QString buildingType = QFileInfo(buildingName).baseName();
+            itm->setToolTip(buildingType);
+            itm->setType(buildingType.toStdString());
+            ui->selectStructureListWidget->insertItem(i, itm);
+        }
+        ui->selectStructureListWidget->repaint();
+    }
+}
 

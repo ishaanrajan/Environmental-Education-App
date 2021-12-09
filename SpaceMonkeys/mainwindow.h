@@ -27,15 +27,10 @@ public:
 
 private slots:
     void on_nextRoundButton_clicked();
-//    void updateAmenitiesBarView(int);
-//    void updateFoodBarView(int);
-//    void updateFunBarView(int);
-//    void updateEngeryBarView(int);
-//    void updateEnvironmentalImpactBarView(int);
 
+    void on_buildingSelectionComboBox_currentIndexChanged(int index);
 
 signals:
-
     //void nextRoundBuildingsAdded();
 
 private:
@@ -50,6 +45,11 @@ private:
 
     int SPRITE_COUNT = 10;
     std::vector<std::string> images;
+    std::vector<std::string> energyImages;
+    std::vector<std::string> amenitiesImages;
+    std::vector<std::string> housingImages;
+
+
     std::vector<GridTile *> gameSquares;
 
     ParticleManager particleManager;
