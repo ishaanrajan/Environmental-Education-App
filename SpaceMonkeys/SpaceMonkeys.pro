@@ -12,6 +12,7 @@ SOURCES += \
     city.cpp \
     gameblock.cpp \
     gameblockmanager.cpp \
+    gameoverpopup.cpp \
     gridtile.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -22,11 +23,13 @@ HEADERS += \
     gameblock.h \
     gameblockmanager.h \
     gamedata.h \
+    gameoverpopup.h \
     gridtile.h \
     mainwindow.h \
     particlemanager.h
 
 FORMS += \
+    gameoverpopup.ui \
     mainwindow.ui
 
 macx: LIBS += -L$$PWD/../box2d/build/bin/ -lbox2d

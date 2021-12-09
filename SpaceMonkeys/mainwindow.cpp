@@ -161,6 +161,7 @@ void MainWindow::on_nextRoundButton_clicked()
         if(iter->first->itemAt(0,0) && iter->second)
         {
             iter->second = false;
+            iter->first->setDragEnabled(false);
             iter->first->setStyleSheet("QListWidget{background: transparent;}QListWidget::item:selected{background: transparent;}");
             std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
@@ -207,6 +208,16 @@ void MainWindow::on_nextRoundButton_clicked()
     if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
+        int trees = 0;
+        for(QObject* const currObj : this->children()){
+            if(currObj->inherits("QTextBrowser")){
+                trees++;
+                if(trees % 4){
+                    QTextBrowser* currBrowser = (QTextBrowser*)currObj;
+                    currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+                }
+            }
+        }
     }else if(ui->environmentalImpactProgressBar->value() >= 80){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
