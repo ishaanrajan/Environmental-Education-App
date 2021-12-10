@@ -64,7 +64,7 @@ public:
      * to add a cattleFarm.
      * 
      */
-    void addCattleFarm();
+    void addCowFactory();
 
     /**
      * @brief This method is used when the user decides
@@ -116,10 +116,10 @@ public:
     int getEnergyGenerated();
 
     /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return amenities  generated
      * 
      */
-    int getFunGenerated();
+    int getAmenitiesGenerated();
 
      /**
      * @brief This method is used to return food generated
@@ -156,7 +156,7 @@ public:
      * @brief Get the energy that needs to be generated.
      * 
      */
-    int getProduceNeeded();
+    int getFoodNeeded();
 
     /**
      * @brief Get the energy that needs to be generated.
@@ -164,10 +164,9 @@ public:
      */
     int getHousingNeeded();
 
-    std::vector<std::string> allBuilds;
-
 
 private:
+    std::vector<std::string> allBuilds;
     int population;
 
     void energyTracker(int energyUpdate);
@@ -194,7 +193,7 @@ private:
     // Dynamic 
     int environmentEffect = 0;
     int energyGenerated = 0;
-    int funGenerated = 0;
+    int amenitiesGenerated = 0;
     int produceGenerated = 0;
     int housingGenerated = 0;
 };

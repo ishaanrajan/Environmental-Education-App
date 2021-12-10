@@ -184,6 +184,10 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addTheater();
             else if(currBlockName == "windfarm")
                 city.addWindFarm();
+            else if(currBlockName == "plantFarm")
+                city.addPlantFarm();
+            else if(currBlockName == "cowfactory")
+                city.addCowFactory();
         }
 
         //Disable game widgets for 5 seconds so we can "play" progressbar animations
@@ -202,10 +206,12 @@ void MainWindow::on_nextRoundButton_clicked()
 
     qDebug() << city.getEnergyGenerated();
     ui->energyProgressBar->setValue(city.getEnergyGenerated());
-    qDebug() << "FUN GENERATED: " << city.getFunGenerated();
-    ui->amenitiesProgressBar->setValue(city.getFunGenerated());
+    qDebug() << "FUN GENERATED: " << city.getAmenitiesGenerated();
+    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
     qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
     ui->housingProgressBar->setValue(city.getHousingGenerated());
+    ui->foodProgressBar->setValue(city.getFoodGenerated());
+    qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
     qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
     ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
 

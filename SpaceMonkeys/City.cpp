@@ -83,10 +83,10 @@ void City::foodTracker(int foodUpdate){
 
 
 void City::funTracker(int funUpdate){
-    if(funUpdate + funGenerated > funRequired){
+    if(funUpdate + amenitiesGenerated > funRequired){
         funRequired = funRequired;
     }else{
-        funGenerated += funUpdate;
+        amenitiesGenerated += funUpdate;
     }
 }
 
@@ -136,7 +136,7 @@ void City::addNuclear(){
     
 }
 
-void City::addCattleFarm(){
+void City::addCowFactory(){
     // some constant penalties and additions
     energyGenerated -= 10;
     int produceGen = 60;
@@ -213,8 +213,8 @@ int City::getEnvironmentEffect(){
     return environmentEffect;
 }
 
-int City::getFunGenerated(){
-    return funGenerated;
+int City::getAmenitiesGenerated(){
+    return amenitiesGenerated;
 }
 
 int City::getHousingGenerated(){
@@ -234,7 +234,7 @@ int City::getFunNeeded(){
     return funRequired;
 }
 
-int City::getProduceNeeded(){
+int City::getFoodNeeded(){
     return produceRequired;
 }
 
