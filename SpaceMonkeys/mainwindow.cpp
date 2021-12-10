@@ -34,9 +34,9 @@ MainWindow::MainWindow(QWidget *parent)
     energyImages.push_back(":/resources/solar.png");
     energyImages.push_back(":/resources/windfarm.png");
 
-    amenitiesImages.push_back(":/resources/theater.png");
+    amenitiesImages.push_back(":/resources/stadium.png");
     amenitiesImages.push_back(":/resources/drivein.png");
-    amenitiesImages.push_back(":/resources/commercial.png");
+    amenitiesImages.push_back(":/resources/park.png");
 
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
