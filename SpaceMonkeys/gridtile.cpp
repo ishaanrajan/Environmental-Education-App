@@ -47,10 +47,3 @@ void GridTile::startDrag(Qt::DropActions supportedActions)
 
     this->clear();
 }
-
-void GridTile::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
-{
-
-
-    QListView::selectionChanged(selected, deselected);
-}

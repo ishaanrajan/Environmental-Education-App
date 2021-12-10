@@ -19,3 +19,24 @@ Sprint 3
       		Victor: collision bugs
       		Audrey: hard to find sprites
       		Tanner: still cant run QT so hasn't ran the game on own
+
+    12/10/2021
+    Scrum Questions:
+    	What did you do yesterday?
+    		Ishaan: 
+      		Mikey: 
+      		Victor: 
+    		Audrey: 
+    		Tanner: 
+    	What will you do today?
+      		Ishaan: 
+      		Mikey: 
+      		Victor: 
+      		Audrey: 
+      		Tanner: 
+    	What is in your way?
+      		Ishaan: 
+      		Mikey: 
+      		Victor: 
+      		Audrey: 
+      		Tanner: 

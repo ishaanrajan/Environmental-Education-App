@@ -235,7 +235,7 @@ void MainWindow::on_nextRoundButton_clicked()
     {
         if(iter->first->itemAt(0,0) && iter->second)
         {
-            iter->first->setDragEnabled(false);
+            iter->first->setSelectionMode(QAbstractItemView::NoSelection);
             std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
