@@ -6,6 +6,7 @@
 
 class GameBlockManager : public QListWidget
 {
+
 public:
     explicit GameBlockManager(QWidget *parent = nullptr);
 
@@ -13,6 +14,7 @@ public:
 protected:
     void startDrag(Qt::DropActions supportedActions);
     void dropEvent(QDropEvent *event);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 };
 
 #endif // GAMEBLOCKMANAGER_H

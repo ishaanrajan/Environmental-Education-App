@@ -67,7 +67,7 @@ MainWindow::MainWindow(QWidget *parent)
         currWidgetPtr->setStyleSheet("QListWidget{background: transparent;border-style: dotted;border-width: 1px;border-color: rgb(77, 172, 63);color: white;border-radius: 1px;}QListWidget::item:selected{background: transparent;}");
     }
 
-    ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-color: rgba(0,0,0,0);}");
+    ui->selectStructureListWidget->setStyleSheet("QListView::item:selected{background-image: url(:resources/nuclear.png);}");
 
     ui->housingProgressBar->setValue(0);
     ui->housingProgressBar->setMinimum(0);

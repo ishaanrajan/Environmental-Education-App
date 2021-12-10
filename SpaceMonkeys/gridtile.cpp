@@ -2,6 +2,7 @@
 #include <QListView>
 #include <QDropEvent>
 #include <QDrag>
+#include <QMimeData>
 
 GridTile::GridTile(QWidget *parent) : QListWidget(parent)
 {
@@ -10,6 +11,12 @@ GridTile::GridTile(QWidget *parent) : QListWidget(parent)
 
 void GridTile::dropEvent(QDropEvent *event)
 {
+    if (event->mimeData()->hasImage()) {
+        QImage image = qvariant_cast<QImage>(event->mimeData()->imageData());
+        QPalette palette;
+        palette.setBrush(backgroundRole(), image);
+        this->setPalette(palette);
+    }
     if (this->count() == 0)
     {
         QListWidget::dropEvent(event);
@@ -39,4 +46,11 @@ void GridTile::startDrag(Qt::DropActions supportedActions)
         QListWidget::startDrag(supportedActions);
 
     this->clear();
+}
+
+void GridTile::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+
+
+    QListView::selectionChanged(selected, deselected);
 }

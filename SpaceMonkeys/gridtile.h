@@ -17,6 +17,7 @@ signals:
 protected:
     void dropEvent(QDropEvent *event) override;
     void startDrag(Qt::DropActions supportedActions);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 };
 
 

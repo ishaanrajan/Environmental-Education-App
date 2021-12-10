@@ -30,9 +30,26 @@ void GameBlockManager::startDrag(Qt::DropActions supportedActions)
      }
      else
         QListWidget::startDrag(supportedActions);
+
+
 }
 
 void GameBlockManager::dropEvent(QDropEvent *event)
 {
     event->setDropAction(Qt::DropAction::IgnoreAction);
+}
+
+void GameBlockManager::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected)
+{
+    QList<QListWidgetItem*> m_items = selectedItems();
+    if(m_items.isEmpty())
+            return;
+    GameBlock * gb = dynamic_cast <GameBlock *>(m_items.at(0));
+    std::string gbString = ":/resources/" + gb->getType();
+
+    gbString = "QListView::item:selected{background-image: url(" + gbString + ");}";
+
+   this->setStyleSheet(QString::fromStdString(gbString));
+
+    QListView::selectionChanged(selected, deselected);
 }
