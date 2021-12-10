@@ -9,6 +9,7 @@
 #include "gridtile.h"
 #include <QDebug>
 #include <functional>
+#include <QGridLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -96,18 +97,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     createListOfGameSquares();
-    // TEMP: this is bullshit just to show smoke working
-//    connect(ui->genSmokeBtn, &QPushButton::clicked, this, [this](){
-//        particleManager.simulate();
-//    });
-
-//    particleManager.addSpawner(data::Demands::CLIMATE, 100, 100, 10);
-//    particleManager.addSpawner(data::Demands::CLIMATE, 200, 250, 30);
-//    particleManager.setAttractionPoint(data::Demands::CLIMATE, 0, 0);
-//    particleManager.setWindVec(10.0f, -20.0f);
 
     ui->graphicsView->setScene(&particleManager.getScene());
-    ui->graphicsView->setSceneRect(0, 0, 461, 381);
+    ui->graphicsView->setSceneRect(0, 0, 1200, 1000);
+    particleManager.getScene().setSceneRect(0, 0, 1200, 1000);
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
@@ -156,11 +149,75 @@ void MainWindow::createListOfGameSquares(){
     allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_5, true));
     allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_6, true));
     allGridTiles.insert(std::pair<GridTile *, bool>(ui->listWidget5_7, true));
+
+    orderedGridTiles = {ui->listWidget1_1,
+                        ui->listWidget1_2,
+                        ui->listWidget1_3,
+                        ui->listWidget1_4,
+                        ui->listWidget1_5,
+                        ui->listWidget1_6,
+                        ui->listWidget1_7,
+                        ui->listWidget2_1,
+                        ui->listWidget2_2,
+                        ui->listWidget2_3,
+                        ui->listWidget2_4,
+                        ui->listWidget2_5,
+                        ui->listWidget2_6,
+                        ui->listWidget2_7,
+                        ui->listWidget3_1,
+                        ui->listWidget3_2,
+                        ui->listWidget3_3,
+                        ui->listWidget3_4,
+                        ui->listWidget3_5,
+                        ui->listWidget3_6,
+                        ui->listWidget3_7,
+                        ui->listWidget4_1,
+                        ui->listWidget4_2,
+                        ui->listWidget4_3,
+                        ui->listWidget4_4,
+                        ui->listWidget4_5,
+                        ui->listWidget4_6,
+                        ui->listWidget4_7,
+                        ui->listWidget5_1,
+                        ui->listWidget5_2,
+                        ui->listWidget5_3,
+                        ui->listWidget5_4,
+                        ui->listWidget5_5,
+                        ui->listWidget5_6,
+                        ui->listWidget5_7};
 }
 
 
+void MainWindow::initParticleManager()
+{
+    int horizontalOffset = 220;
+    int vertOffset = 110;
+    particleManager.setAttractionBound(data::Demands::CLIMATE,
+                                       ui->environmentalImpactProgressBar->pos().x(), ui->environmentalImpactProgressBar->pos().y(),
+                                       ui->environmentalImpactProgressBar->width(), ui->environmentalImpactProgressBar->height());
+    particleManager.setAttractionBound(data::Demands::FOOD,
+                                       ui->foodProgressBar->pos().x()+horizontalOffset, ui->foodProgressBar->pos().y()+vertOffset,
+                                       ui->foodProgressBar->width(), ui->foodProgressBar->height());
+    particleManager.setAttractionBound(data::Demands::HOUSING,
+                                       ui->housingProgressBar->pos().x()+horizontalOffset, ui->housingProgressBar->pos().y()+vertOffset,
+                                       ui->housingProgressBar->width(), ui->housingProgressBar->height());
+    particleManager.setAttractionBound(data::Demands::AMMENITIES,
+                                       ui->amenitiesProgressBar->pos().x()+horizontalOffset, ui->amenitiesProgressBar->pos().y()+vertOffset,
+                                       ui->amenitiesProgressBar->width(), ui->amenitiesProgressBar->height());
+    particleManager.setAttractionBound(data::Demands::ENERGY,
+                                       ui->energyProgressBar->pos().x()+horizontalOffset, ui->energyProgressBar->pos().y()+vertOffset,
+                                       ui->energyProgressBar->width(), ui->energyProgressBar->height());
+    particleManager.gridParams(140, 350, ui->listWidget1_1->width(), ui->gameBoardGrid->horizontalSpacing());
+}
+
 void MainWindow::on_nextRoundButton_clicked()
 {
+    if(gameRound == 0){
+        // Init particle manager bar attractors
+        // Must do this here as in constructor positions not yet initialized
+        initParticleManager();
+    }
+
     gameRound += 1;
     for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
@@ -185,20 +242,38 @@ void MainWindow::on_nextRoundButton_clicked()
             else if(currBlockName == "windfarm")
                 city.addWindFarm();
         }
-
-        //Disable game widgets for 5 seconds so we can "play" progressbar animations
-        QRegularExpression re("listWidget(\\d)_(\\d)");
-        QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
-        for(GridTile* currWidgetPtr : allSquares){
-            currWidgetPtr->setEnabled(false);
-            QTimer::singleShot(5000,currWidgetPtr,std::bind(&QWidget::setEnabled,currWidgetPtr,true));
-        }
-        ui->genSmokeBtn->setEnabled(false);
-        QTimer::singleShot(5000,ui->genSmokeBtn,std::bind(&QWidget::setEnabled,ui->genSmokeBtn,true));
-
-        ui->nextRoundButton->setEnabled(false);
-        QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
     }
+
+    // Config particle manager
+    particleManager.resetSim();
+
+    for(size_t tile = 0; tile < orderedGridTiles.size(); tile++){
+        if(orderedGridTiles[tile]->itemAt(0,0) && allGridTiles[orderedGridTiles[tile]]){
+            std::string currBlockName = orderedGridTiles[tile]->itemAt(0,0)->toolTip().toStdString();
+            int gridX = tile % 7 + 1;
+            int gridY = tile / 7 + 1;
+            particleManager.addTile(currBlockName, gridX, gridY);
+            // There needs to be some way to get what the values added by each thing are, if they are modified
+            // by adjacency for instance
+            //ex: TileMod m = city.addCityBlock();
+            //then: addSpawner(int x, int y, m); //can now setup spawner quantites properly
+        }
+    }
+
+    particleManager.simulate();
+
+    //Disable game widgets for 5 seconds so we can "play" progressbar animations
+    QRegularExpression re("listWidget(\\d)_(\\d)");
+    QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
+    for(GridTile* currWidgetPtr : allSquares){
+        currWidgetPtr->setEnabled(false);
+        QTimer::singleShot(5000,currWidgetPtr,std::bind(&QWidget::setEnabled,currWidgetPtr,true));
+    }
+//        ui->genSmokeBtn->setEnabled(false);
+//        QTimer::singleShot(5000,ui->genSmokeBtn,std::bind(&QWidget::setEnabled,ui->genSmokeBtn,true));
+
+    ui->nextRoundButton->setEnabled(false);
+    QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
 
     qDebug() << city.getEnergyGenerated();
     ui->energyProgressBar->setValue(city.getEnergyGenerated());
@@ -277,6 +352,7 @@ void MainWindow::redrawListWidget(std::vector<std::string> imageVec){
 }
 
 void MainWindow::resetGame(){
+    particleManager.resetSim();
     City newCity;
     city = newCity;
     this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");

@@ -26,6 +26,8 @@ public:
     ~MainWindow();
 
 
+    void initParticleManager();
+
 private slots:
     void on_nextRoundButton_clicked();
     void resetGame();
@@ -57,6 +59,7 @@ private:
 
 
     std::map<GridTile *, bool> allGridTiles;
+    std::vector<GridTile *> orderedGridTiles;
 
 
     ParticleManager particleManager;

@@ -3,18 +3,19 @@
 #include <QObject>
 #include <QTimer>
 #include <box2d/box2d.h>
-
+#include <vector>
+#include <QGraphicsRectItem>
 
 #include <iostream>
 
 using data::Demands;
+using std::vector;
 
 ParticleManager::ParticleManager()
 {
     timer = new QTimer();
 
     world = new b2World(wind);
-
     // Configure body def
     particleBodyDef.type = b2_dynamicBody;
     particleBodyDef.fixedRotation = true;
@@ -24,6 +25,32 @@ ParticleManager::ParticleManager()
     circle.m_radius = 0.5f;
     fixtureDef.shape = &circle;
     fixtureDef.density = 1.0f;
+
+    // Init colors
+    demandColors[data::Demands::CLIMATE] = QColor(100,100,100,175);
+    demandColors[data::Demands::FOOD] = QColor(0,175,0,255);
+    demandColors[data::Demands::HOUSING] = QColor(0,0,175,255);
+    demandColors[data::Demands::AMMENITIES] = QColor(175,0,175,255);
+    demandColors[data::Demands::ENERGY] = QColor(0,175,175,255);
+
+    // Init spawner templates
+    spawnerTemplates["factory1"] = {0, 0, 0, 4, 2};
+    spawnerTemplates["factory2"] = {0, 0, 0, 4, 2};
+    spawnerTemplates["highdensityhousing"] = {0, 10, 0, 0, 0};
+    spawnerTemplates["neighborhood"] = {0, 10, 0, 10, 0};
+    spawnerTemplates["nuclear"] = {0, 0, 0, 3, 10};
+    spawnerTemplates["solar"] = {0, 0, 0, 0, 5};
+    spawnerTemplates["windfarm"] = {0, 0, 0, 0, 8};
+    spawnerTemplates["drivein"] = {2, 2, 2, 2, 2};
+
+    tileOffsetMap["factory1"] = {50,10};
+    tileOffsetMap["factory2"] = {0,0};
+    tileOffsetMap["highdensityhousing"] = {0,0};
+    tileOffsetMap["neighborhood"] = {0,0};
+    tileOffsetMap["nuclear"] = {0,0};
+    tileOffsetMap["solar"] = {0,0};
+    tileOffsetMap["windfarm"] = {0,0};
+    tileOffsetMap["drivein"] = {0,0};
 
     QObject::connect(timer, &QTimer::timeout, [this](){
         timerTick();
@@ -35,43 +62,97 @@ QGraphicsScene &ParticleManager::getScene()
     return particleScene;
 }
 
+
+
 void ParticleManager::timerTick()
 {
     elapsedSimTicks++;
     spawnParticles();
-    //update(); //temp disable to test without attractors
-    world->Step(timestep, 2, 1);
+    update();
+    world->Step(timestep, 1, 1);
     world->ClearForces();
-
-    // Update scene
-    particleScene.clear();
-    for(b2Body* b = world->GetBodyList(); b; b = b->GetNext()){
-        particleScene.addRect(b->GetPosition().x,b->GetPosition().y, 4, 4, QColor(100, 100, 100, 175), QColor(100, 100, 100, 175));
+    // Box2D is evidently actually super fast, the problem is drawing to the screen which takes forever with a lot of particles
+    if(elapsedSimTicks % 10 == 0){
+        updateScene();
     }
+}
 
-    particleScene.addEllipse(demandAttractors[Demands::CLIMATE].x, demandAttractors[Demands::CLIMATE].y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 0, 255));
+void ParticleManager::updateScene()
+{
+
+    particleScene.clear();
+    for(size_t i = 0; i < particles.size(); i++){
+        Particle& particle = particles[i];
+        QColor& color = demandColors[particle.type];
+
+        float buffer = 15.0f;
+        // If out of bounds, don't draw
+        // Necessary due to QGraphicsScene slowness when drawing out of bounds
+        if(particle.body->GetPosition().x + buffer > particleScene.width()
+                || particle.body->GetPosition().x - buffer < 0
+                || particle.body->GetPosition().y + buffer > particleScene.height()
+                || particle.body->GetPosition().y - buffer < 0){
+            continue;
+        }
+
+        // Draw appropriate particle shape
+        if(particle.type != data::CLIMATE){
+            particleScene.addEllipse(particle.body->GetPosition().x, particle.body->GetPosition().y, 6, 6, color, color);
+        } else {
+            particleScene.addRect(particle.body->GetPosition().x, particle.body->GetPosition().y, particle.randSize, particle.randSize, color, color);
+        }
+    }
+    // Attraction draw
+    particleScene.addEllipse(demandAttractors[Demands::CLIMATE].attractionPoint.x, demandAttractors[Demands::CLIMATE].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 0, 255));
+    particleScene.addRect(demandAttractors[Demands::FOOD].attractionPoint.x, demandAttractors[Demands::FOOD].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 0, 255));
+    particleScene.addRect(demandAttractors[Demands::HOUSING].attractionPoint.x, demandAttractors[Demands::HOUSING].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 0, 255, 255));
+    particleScene.addRect(demandAttractors[Demands::AMMENITIES].attractionPoint.x, demandAttractors[Demands::AMMENITIES].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 255, 255));
+    particleScene.addRect(demandAttractors[Demands::ENERGY].attractionPoint.x, demandAttractors[Demands::ENERGY].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 255, 255));
 
     particleScene.update();
 }
 
+bool ParticleManager::hitAttractor(Particle &particle)
+{
+    AttractorRect& rect = demandAttractors[particle.type];
+
+    float x = particle.body->GetPosition().x;
+    float y = particle.body->GetPosition().y;
+
+    return rect.x <= x
+            && x <= rect.x+rect.w
+            && rect.y <= y
+            && y <= rect.y+rect.h;
+}
+
 void ParticleManager::simulate()
 {
-    //must stop simulation before add/retrieve
-        //check flag; if simulating, prevent call
     simulating = true;
     elapsedSimTicks = 0;
 
     timer->start(timestep);
 }
 
-void ParticleManager::stopSimulate()
+void ParticleManager::resetSim()
 {
     timer->stop();
+
+    // Clear all
+    particleScene.clear();
+    delete world;
+    spawners.clear();
+    particles.clear();
+    world = new b2World(wind);
+    elapsedSimTicks = 0;
+
     simulating = false;
-    //TODO: clear everything
-        //delete all particles
-        //reset remaining spawns
-    //etc
+}
+
+void ParticleManager::gridParams(int startX, int startY, int gridWidth, int gridSpacing)
+{
+    gridStart = {startX, startY};
+    gridTileWidth = gridWidth;
+    gridTileSpacing = gridSpacing;
 }
 
 void ParticleManager::setWindVec(float x, float y)
@@ -82,23 +163,41 @@ void ParticleManager::setWindVec(float x, float y)
 
 void ParticleManager::addSpawner(data::Demands type, int x, int y, int quantity)
 {
-    if(!simulating){
-        ParticleSpawner spawner;
-        spawner.pos = b2Vec2(x, y);
-        spawner.quantity = quantity;
-        //TODO: setup spawnsRemaining and spawnDelay for all by some calculation (?)
-        spawner.spawnDelay = 25; //temp
-        spawner.spawnsRemaining = 20;
-        spawner.type = type;
+    ParticleSpawner spawner;
+    spawner.pos = b2Vec2(x, y);
+    spawner.quantity = quantity;
+    spawner.type = type;
 
+    if(!simulating){
+        switch(type){
+        case data::FOOD:
+        case data::HOUSING:
+        case data::AMMENITIES:
+        case data::ENERGY:
+            spawner.spawnDelay = 30;
+            spawner.spawnsRemaining = 7;
+            break;
+        case data::CLIMATE:
+            spawner.spawnDelay = 40;
+            spawner.spawnsRemaining = 15;
+            break;
+
+        }
         spawners.push_back(spawner);
     }
 }
 
-void ParticleManager::setAttractionPoint(data::Demands type, int x, int y)
+void ParticleManager::setAttractionBound(data::Demands demand, float x, float y, float w, float h)
 {
     if(!simulating){
-        demandAttractors[type] = b2Vec2(x,y);
+        b2Vec2 center(x+w/2, y+h/2);
+        AttractorRect r;
+        r.attractionPoint = center;
+        r.x = x;
+        r.y = y;
+        r.w = w;
+        r.h = h;
+        demandAttractors[demand] = r;
     }
 }
 
@@ -109,7 +208,6 @@ void ParticleManager::spawnParticles()
             continue;
         }
         spawner.spawnsRemaining--;
-        std::cout << spawner.spawnsRemaining << std::endl;
 
         // Spawn 'quantity' particles
         for(int i = 0; i < spawner.quantity; i++){
@@ -139,20 +237,49 @@ void ParticleManager::spawnParticles()
     }
 }
 
+void ParticleManager::addTile(std::string buildingType, int gridX, int gridY)
+{
+    int x = gridStart.x() + (gridTileWidth + gridTileSpacing) * (gridX - 1);
+    int y = gridStart.y() + (gridTileWidth + gridTileSpacing) * (gridY - 1);
+    vector<int> prodVals = spawnerTemplates[buildingType];
+    for(int demand = 0; demand < prodVals.size(); demand++){
+        QVector2D& offset = tileOffsetMap[buildingType];
+        if(prodVals[demand] != 0){
+            addSpawner(static_cast<data::Demands>(demand), x+offset.x(), y+offset.y(), prodVals[demand]);
+        }
+    }
+}
+
 void ParticleManager::update()
 {
-
-    //TODO: create remove queue and pop them all if lifetime > maxTTL
-
-    // This approximation sucks. Try something better
+    vector<size_t> deleteParticles;
 
     // Apply attracting force to relevant particles
-    for(Particle& particle : particles){
-        b2Vec2& attractorPos = demandAttractors[particle.type];
+    for(size_t i = 0; i < particles.size(); i++){
+        Particle& particle = particles[i];
+        if(((float)particle.lifetime * timestep * 1000.0f) > maxTtl){// || hitAttractor(particle)){
+            // Delete this particle
+            deleteParticles.push_back(i);
+            continue;
+        }
+
+        b2Vec2& attractorPos = demandAttractors[particle.type].attractionPoint;
 
         // apply a force to the particle to move it towards its attractor
         b2Vec2 deltaX = attractorPos - particle.body->GetPosition();
-        float deltaT = (float)(desiredTtl - particle.lifetime)/1000.0f;
+
+        int ttl = particle.type == data::Demands::CLIMATE ? desiredTtl : desiredTtl / 2;
+        //in s
+        float deltaT = abs(((float)ttl/1000.0f - particle.lifetime*timestep));
+
+        //if deltaT is near 0, it should be inside the bar, so delete
+        // prevent blowback, but blowback looks cool
+//        if(abs(deltaT) < timestep){
+//            //particle.body->GetFixtureList()->SetSensor(true);
+//            deleteParticles.push_back(i);
+//            continue;
+//        }
+
         b2Vec2 currV = particle.body->GetLinearVelocity();
         b2Vec2 nextV = deltaX;
         nextV *= 1.0f/deltaT;
@@ -163,6 +290,13 @@ void ParticleManager::update()
         particle.body->ApplyForceToCenter(attractForce, true);
 
         particle.lifetime++;
+    }
+
+    for(size_t del : deleteParticles){
+//        world->DestroyBody(particles[del].body);
+        // Move to end and pop for efficient removal
+        std::swap(particles[del], particles.back());
+        particles.pop_back();
     }
 }
 
