@@ -93,7 +93,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->environmentalImpactProgressBar->setValue(0);
     ui->environmentalImpactProgressBar->setMinimum(0);
-    ui->environmentalImpactProgressBar->setMaximum(101);
+    ui->environmentalImpactProgressBar->setMaximum(100);
 
 
     createListOfGameSquares();
@@ -224,6 +224,19 @@ void MainWindow::initParticleManager()
 
 void MainWindow::on_nextRoundButton_clicked()
 {
+
+    std::cout << "PRINTING ALLBUILDS" << std::endl;
+    for(std::string s : city.allBuilds)
+    {
+        std::cout << s << std::endl;
+    }
+
+    city.amenitiesGenerated = 0;
+    city.foodGenerated = 0;
+    city.energyGenerated = 0;
+    city.housingGenerated = 0;
+    city.environmentEffect = 0;
+
     if(gameRound == 0){
         // Init particle manager bar attractors
         // Must do this here as in constructor positions not yet initialized
@@ -305,6 +318,7 @@ void MainWindow::on_nextRoundButton_clicked()
         ui->housingProgressBar->setValue(city.getHousingGenerated());
         ui->foodProgressBar->setValue(city.getFoodGenerated());
         ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+        checkImpactBounds();
     });
 
     qDebug() << city.getEnergyGenerated();
@@ -317,37 +331,6 @@ void MainWindow::on_nextRoundButton_clicked()
     qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
     qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
 //    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
-
-    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
-        int trees = 0;
-        QRegularExpression re("textBrowser_(\\d)");
-        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
-        for(QTextBrowser* currBrowser : allSquares){
-            trees++;
-            if(trees % 3){
-                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
-           }
-        }
-    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
-        int trees = 0;
-        QRegularExpression re("textBrowser_(\\d)");
-        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
-        for(QTextBrowser* currBrowser : allSquares){
-            trees++;
-            if(trees % 5){
-                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
-           }
-        }
-    }else if(ui->environmentalImpactProgressBar->value()  >= 99){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
-        gameOverPop.show();
-        gameOverPop.exec();
-    }
     //TODO: add food categories to view
 }
 
@@ -420,8 +403,46 @@ void MainWindow::resetGame(){
     }
 }
 
+void MainWindow::checkImpactBounds()
+{
+    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 3){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
+    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 5){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
+    }else if(ui->environmentalImpactProgressBar->value()  >= 100){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        gameOverPop.show();
+        gameOverPop.exec();
+    }
+}
+
 
 void MainWindow::on_resetGameButton_clicked()
 {
+    if(gameOverPop.isActiveWindow())
+    {
+        gameOverPop.close();
+    }
     resetGame();
 }

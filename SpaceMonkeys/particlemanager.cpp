@@ -5,7 +5,7 @@
 #include <box2d/box2d.h>
 #include <vector>
 #include <QGraphicsRectItem>
-
+#include <QDebug>
 #include <iostream>
 
 using data::Demands;

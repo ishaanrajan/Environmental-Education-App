@@ -15,7 +15,7 @@ City::City(){
 }
 
 void City::environmentTracker(int enviroUpdate){
-    if(environmentEffect + enviroUpdate > 99){
+    if(environmentEffect + enviroUpdate > 100){
         environmentEffect = 100;
     }else{
         environmentEffect += enviroUpdate;
