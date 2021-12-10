@@ -109,11 +109,14 @@ MainWindow::MainWindow(QWidget *parent)
         // Only do gradual fill up until a given amount of time, then the bars fill fully
         // To prevent stragglers from messing up the bars
         if(!animLimitReached){
-            ui->energyProgressBar->setValue(city.getEnergyGenerated() * percentages[data::Demands::ENERGY]);
-            ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated() * percentages[data::Demands::AMMENITIES]);
-            ui->housingProgressBar->setValue(city.getHousingGenerated() * percentages[data::Demands::HOUSING]);
-            ui->foodProgressBar->setValue(city.getFoodGenerated() * percentages[data::Demands::FOOD]);
-            ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect() * percentages[data::Demands::CLIMATE]);
+            ui->energyProgressBar->setValue(priorEnergy + (city.getEnergyGenerated()-priorEnergy) * percentages[data::Demands::ENERGY]);
+            ui->amenitiesProgressBar->setValue(priorAmmenities + (city.getAmenitiesGenerated()-priorAmmenities) * percentages[data::Demands::AMMENITIES]);
+            ui->housingProgressBar->setValue(priorHousing + (city.getHousingGenerated()-priorHousing) * percentages[data::Demands::HOUSING]);
+            ui->foodProgressBar->setValue(priorFood + (city.getFoodGenerated()-priorFood) * percentages[data::Demands::FOOD]);
+            ui->environmentalImpactProgressBar->setValue(priorClimate + (city.getEnvironmentEffect()-priorClimate) * percentages[data::Demands::CLIMATE]);
+
+            //TODO: diagnose why this is slow to do
+            //checkImpactBounds();
         }
     });
 }
@@ -219,17 +222,46 @@ void MainWindow::initParticleManager()
                                        ui->energyProgressBar->pos().x()+horizontalOffset, ui->energyProgressBar->pos().y()+vertOffset,
                                        ui->energyProgressBar->width(), ui->energyProgressBar->height());
     particleManager.gridParams(140, 350, ui->listWidget1_1->width(), ui->gameBoardGrid->horizontalSpacing());
+
+    // Setup animation timer
+    animTimer = new QTimer(this);
+    animTimer->setInterval(7000);
+    animTimer->setSingleShot(true);
+
+    connect(animTimer, &QTimer::timeout, [this](){
+        this->animLimitReached = true;
+        fillBarsToMax();
+    });
+}
+
+void MainWindow::fillBarsToMax()
+{
+    ui->energyProgressBar->setValue(city.getEnergyGenerated());
+    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
+    ui->housingProgressBar->setValue(city.getHousingGenerated());
+    ui->foodProgressBar->setValue(city.getFoodGenerated());
+    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+    checkImpactBounds();
 }
 
 void MainWindow::on_nextRoundButton_clicked()
 {
+    //animTimer->stop();
+    fillBarsToMax();
+
+    // Update prior values before adding new tiles
+    priorEnergy = city.getEnergyGenerated();
+    priorAmmenities = city.getAmenitiesGenerated();
+    priorFood = city.getFoodGenerated();
+    priorHousing = city.getHousingGenerated();
+    priorClimate = city.getEnvironmentEffect();
+
     city.resetGeneratedValues();
     if(gameRound == 0){
         // Init particle manager bar attractors
         // Must do this here as in constructor positions not yet initialized
         initParticleManager();
     }
-
     gameRound += 1;
     for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
@@ -262,7 +294,7 @@ void MainWindow::on_nextRoundButton_clicked()
 
     // Config particle manager
     particleManager.resetSim();
-    // to allow gradual bar fill again
+    // Done after reset so that the scene is cleared and no particles currently simulating
     animLimitReached = false;
 
     for(size_t tile = 0; tile < orderedGridTiles.size(); tile++){
@@ -297,16 +329,9 @@ void MainWindow::on_nextRoundButton_clicked()
     ui->nextRoundButton->setEnabled(false);
     QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
 
-    // Ensure that after 5 seconds the bars are completely full regardless of whether the animation is still goin
-    QTimer::singleShot(5000, this, [this](){
-        this->animLimitReached = true;
-        ui->energyProgressBar->setValue(city.getEnergyGenerated());
-        ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
-        ui->housingProgressBar->setValue(city.getHousingGenerated());
-        ui->foodProgressBar->setValue(city.getFoodGenerated());
-        ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
-        checkImpactBounds();
-    });
+    // This will first stop then restart the timer
+    // Necessary to stop so that it doesn't suddenly fill to full from a previous round if player goes too fast
+    animTimer->start();
 }
 
 
