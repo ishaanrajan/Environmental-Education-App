@@ -24,6 +24,13 @@ public:
     */
     City(int population, std::vector<std::string> prevBuilds);
 
+
+    /**
+     * @brief This method is used to add a plant farm
+     * 
+     */
+    void addPlantFarm();
+
     /**
      * @brief This method is used when the user decides
      * to add a windMill.
@@ -57,7 +64,7 @@ public:
      * to add a cattleFarm.
      * 
      */
-    void addCattleFarm();
+    void addCowFactory();
 
     /**
      * @brief This method is used when the user decides
@@ -109,10 +116,10 @@ public:
     int getEnergyGenerated();
 
     /**
-     * @brief This method is used to return fun generated
+     * @brief This method is used to return amenities  generated
      * 
      */
-    int getFunGenerated();
+    int getAmenitiesGenerated();
 
      /**
      * @brief This method is used to return food generated
@@ -132,15 +139,6 @@ public:
      */
     std::vector<std::string> getAllBuilds();
 
-//public slots:
-//         void emitUpdateSignals();
-//signals:
-//        void updateEnergyBar(int);
-//        void updateFunBar(int);
-//        void updateFoodBar(int);
-//        void updateAmenitiesBar(int);
-//        void updateEnvironmentalImpactBar(int);
-
 
     /**
      * @brief Get the energy that needs to be generated.
@@ -148,27 +146,55 @@ public:
      */
     int getEnergyNeeded();
 
-    std::vector<std::string> allBuilds;
+    /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getAmenitiesNeeded();
+
+       /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getFoodNeeded();
+
+    /**
+     * @brief Get the energy that needs to be generated.
+     * 
+     */
+    int getHousingNeeded();
 
 
 private:
+    std::vector<std::string> allBuilds;
     int population;
 
     void energyTracker(int energyUpdate);
 
     void environmentTracker(int enviroUpdate);
 
+     /**
+     * @brief Used to update the housing.
+     * 
+     */
+    void housingTracker(int housingUpdate);
+
+    void foodTracker(int housingUpdate);
+
+    void amenitiesTracker(int housingUpdate);
+
 
     // Default calculated values
     int energyConsumptionRequired;
-    int produceRequired;
+    int foodRequired;
     int housingRequired;
+    int amenitiesRequired;
 
     // Dynamic 
     int environmentEffect = 0;
     int energyGenerated = 0;
-    int funGenerated = 0;
-    int produceGenerated = 0;
+    int amenitiesGenerated = 0;
+    int foodGenerated = 0;
     int housingGenerated = 0;
 };
 

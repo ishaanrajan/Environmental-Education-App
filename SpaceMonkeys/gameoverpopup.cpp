@@ -12,3 +12,10 @@ gameOverPopup::~gameOverPopup()
 {
     delete ui;
 }
+
+void gameOverPopup::on_pushButton_clicked()
+{
+    this->close();
+    emit restartClicked();
+}
+

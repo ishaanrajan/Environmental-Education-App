@@ -7,6 +7,8 @@
 #include <QGraphicsScene>
 #include <map>
 #include <QTimer>
+#include <QAbstractGraphicsShapeItem>
+#include <QVector2D>
 
 // Perhaps we can replace this with tighter integration with the model
 // Not sure what that is going to look like yet so this is the temp solution
@@ -23,19 +25,34 @@ struct Particle{
     data::Demands type;
     // in ticks!
     int lifetime = 0;
+    int randSize = 4 + ( std::rand() % ( 12 - 4 + 1 ) );
+    bool received = false;
 };
 
-class ParticleManager
+struct AttractorRect{
+    b2Vec2 attractionPoint;
+    float x;
+    float y;
+    float w;
+    float h;
+
+    //AttractorRect(b2Vec2 p, float x, float y, float w, float h) : attractionPoint(p), x(x), y(y), w(w), h(h){}
+};
+
+class ParticleManager : public QObject
 {
+    Q_OBJECT
 
 public:
-    ParticleManager();
+    explicit ParticleManager(QObject *parent = nullptr);
 
     QGraphicsScene& getScene();
 
     void simulate();
 
-    void stopSimulate();
+    void resetSim();
+
+    void gridParams(int startX, int startY, int gridWidth, int gridSpacing);
 
     /**
      * @brief Set the desired amount of time a particle will be alive for (IE, desired to reach its attractor)
@@ -52,62 +69,71 @@ public:
 
     void addSpawner(data::Demands type, int x, int y, int quantity);
 
-    void setAttractionPoint(data::Demands type, int x, int y);
-
-//    /**
-//     * @brief Sets the rectangle that the given demand should be attracted to
-//     *
-//     * Will cause generated particles for that demand to float towards that point
-//     * @param demand
-//     * @param x
-//     * @param y
-//     */
-//    void setAttractionBound(data::Demands demand, int x, int y, int w, int h);
-
-    //TODO: some good way of determining
-//    /**
-//     * @brief Adds a position that particles should spawn from
-//     * @param demand
-//     * @param x
-//     * @param y
-//     */
-//    void setParticleSpawnPoint(data::Demands demand, int x, int y, int magnitude);
+    /**
+     * @brief Sets the rectangle that the given demand should be attracted to
+     *
+     * Will cause generated particles for that demand to float towards that point
+     * @param demand
+     * @param x
+     * @param y
+     */
+    void setAttractionBound(data::Demands demand, float x, float y, float w, float h);
 
     /**
      * @brief Perform end-of-round particle spawning
      * Particles will follow maximum/desired TTL as defined by the user
      */
-    void spawnParticles(/*data?*/);
+    void spawnParticles();
 
+    void addTile(std::string buildingType, /*std::vector<int> costs,*/ int gridX, int gridY);
+
+signals:
+    void particlesReached(std::vector<float> percentages);
 
 private:
     bool simulating = false;
     long elapsedSimTicks = 0;
+    // Simulation timestep
     float timestep = 1.0f/30.0f;
 
+    // Scene that particles are drawn to
     QGraphicsScene particleScene;
     QTimer* timer;
 
-    //in ms
-    //defines about what time we want the particles to reach the attraction bound and despawn
-    //controls the strength of the attractive force to try to satisfy this TTL
+    // In ms
+    // Defines about what time we want the particles to reach the attraction bound and despawn
+    // Controls the strength of the attractive force to try to satisfy this TTL
     int desiredTtl = 5000;
-    //in ms
-    //maximum amount of time that a particle will live before being forcibly despawned
-    int maxTtl = 10000;
+    // In ms
+    // Maximum amount of time that a particle will live before being forcibly despawned
+    int maxTtl = 30000;
     // Radius of particle spawning zone
-    int spawnRadius = 5;
+    int spawnRadius = 15;
+
+    QPoint gridStart;
+    int gridTileWidth;
+    int gridTileSpacing;
 
     std::vector<ParticleSpawner> spawners;
 
+    // Box2D vars
     b2World* world;
     b2BodyDef particleBodyDef;
     b2CircleShape circle;
     b2FixtureDef fixtureDef;
-    b2Vec2 wind = {60.0f, 80.0f}; //TODO: configure
+    b2Vec2 wind = {400.0f, -20.0f};
 
     std::vector<Particle> particles;
-    std::map<data::Demands, b2Vec2> demandAttractors;
+    std::map<data::Demands, AttractorRect> demandAttractors;
+    std::map<data::Demands, QColor> demandColors;
+
+    // TODO: we should unify the process from city --> here
+    // For now, simply using vector indexed on the Demand for the impact it has
+    std::map<std::string, std::vector<int>> spawnerTemplates;
+    std::map<std::string, QVector2D> tileOffsetMap;
+
+    std::vector<int> totalSpawns;
+    std::vector<int> receivedSpawns;
 
 
     /**
@@ -116,6 +142,9 @@ private:
     void update();
 
     void timerTick();
+    void updateScene();
+
+    inline bool hitAttractor(Particle& particle);
 };
 
 #endif // PARTICLEMANAGER_H

@@ -10,6 +10,7 @@
 #include "gameblock.h"
 #include "gridtile.h"
 #include "City.h"
+#include "gameoverpopup.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,10 +26,13 @@ public:
     ~MainWindow();
 
 
+    void initParticleManager();
+
 private slots:
     void on_nextRoundButton_clicked();
-
+    void resetGame();
     void on_buildingSelectionComboBox_currentIndexChanged(int index);
+    void on_resetGameButton_clicked();
 
 signals:
     //void nextRoundBuildingsAdded();
@@ -38,6 +42,7 @@ private:
     QListView* category1View = nullptr;
     QListView* category2View = nullptr;
     City city;
+    gameOverPopup gameOverPop;
 
     int gameRound;;
 
@@ -49,14 +54,16 @@ private:
     std::vector<std::string> energyImages;
     std::vector<std::string> amenitiesImages;
     std::vector<std::string> housingImages;
+    std::vector<std::string> foodImages;
 
     void redrawListWidget(std::vector<std::string> imageVec);
 
 
     std::map<GridTile *, bool> allGridTiles;
-
+    std::vector<GridTile *> orderedGridTiles;
 
     ParticleManager particleManager;
+    bool animLimitReached = false;
 
     void createListOfGameSquares();
 };

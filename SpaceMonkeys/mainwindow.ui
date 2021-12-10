@@ -609,10 +609,10 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>360</y>
-      <width>101</width>
-      <height>351</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1200</width>
+      <height>1000</height>
      </rect>
     </property>
     <property name="verticalScrollBarPolicy">
@@ -620,19 +620,6 @@ border-style: outset;border-width: 2px;border-color: white;color: white;border-r
     </property>
     <property name="horizontalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="genSmokeBtn">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>320</y>
-      <width>80</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Smoke</string>
     </property>
    </widget>
    <widget class="QPushButton" name="nextRoundButton">
@@ -1996,6 +1983,119 @@ border-image: url(:resources/trees.png);
      <string>Choose building type:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="resetGameButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset Game</string>
+    </property>
+   </widget>
+   <zorder>environmentalImpactProgressBar</zorder>
+   <zorder>horizontalLayoutWidget</zorder>
+   <zorder>impact_label</zorder>
+   <zorder>horizontalLayoutWidget_2</zorder>
+   <zorder>selectStructureListWidget</zorder>
+   <zorder>gridLayoutWidget</zorder>
+   <zorder>label_6</zorder>
+   <zorder>statusBarTextBrowser</zorder>
+   <zorder>nextRoundButton</zorder>
+   <zorder>textBrowser</zorder>
+   <zorder>textBrowser_2</zorder>
+   <zorder>textBrowser_3</zorder>
+   <zorder>textBrowser_4</zorder>
+   <zorder>textBrowser_5</zorder>
+   <zorder>textBrowser_6</zorder>
+   <zorder>textBrowser_7</zorder>
+   <zorder>textBrowser_8</zorder>
+   <zorder>textBrowser_9</zorder>
+   <zorder>textBrowser_10</zorder>
+   <zorder>textBrowser_11</zorder>
+   <zorder>textBrowser_12</zorder>
+   <zorder>textBrowser_13</zorder>
+   <zorder>textBrowser_14</zorder>
+   <zorder>textBrowser_15</zorder>
+   <zorder>textBrowser_16</zorder>
+   <zorder>textBrowser_17</zorder>
+   <zorder>textBrowser_18</zorder>
+   <zorder>textBrowser_19</zorder>
+   <zorder>textBrowser_20</zorder>
+   <zorder>textBrowser_21</zorder>
+   <zorder>textBrowser_22</zorder>
+   <zorder>textBrowser_23</zorder>
+   <zorder>textBrowser_24</zorder>
+   <zorder>textBrowser_25</zorder>
+   <zorder>textBrowser_26</zorder>
+   <zorder>textBrowser_27</zorder>
+   <zorder>textBrowser_28</zorder>
+   <zorder>textBrowser_29</zorder>
+   <zorder>textBrowser_30</zorder>
+   <zorder>textBrowser_31</zorder>
+   <zorder>textBrowser_32</zorder>
+   <zorder>textBrowser_33</zorder>
+   <zorder>textBrowser_34</zorder>
+   <zorder>textBrowser_35</zorder>
+   <zorder>textBrowser_36</zorder>
+   <zorder>textBrowser_37</zorder>
+   <zorder>textBrowser_38</zorder>
+   <zorder>textBrowser_39</zorder>
+   <zorder>textBrowser_40</zorder>
+   <zorder>textBrowser_41</zorder>
+   <zorder>textBrowser_42</zorder>
+   <zorder>textBrowser_43</zorder>
+   <zorder>textBrowser_44</zorder>
+   <zorder>textBrowser_45</zorder>
+   <zorder>textBrowser_46</zorder>
+   <zorder>textBrowser_47</zorder>
+   <zorder>textBrowser_48</zorder>
+   <zorder>textBrowser_49</zorder>
+   <zorder>textBrowser_50</zorder>
+   <zorder>textBrowser_51</zorder>
+   <zorder>textBrowser_52</zorder>
+   <zorder>textBrowser_53</zorder>
+   <zorder>textBrowser_54</zorder>
+   <zorder>textBrowser_55</zorder>
+   <zorder>textBrowser_56</zorder>
+   <zorder>textBrowser_57</zorder>
+   <zorder>textBrowser_58</zorder>
+   <zorder>textBrowser_59</zorder>
+   <zorder>textBrowser_60</zorder>
+   <zorder>textBrowser_61</zorder>
+   <zorder>textBrowser_62</zorder>
+   <zorder>textBrowser_63</zorder>
+   <zorder>textBrowser_64</zorder>
+   <zorder>textBrowser_65</zorder>
+   <zorder>textBrowser_66</zorder>
+   <zorder>textBrowser_67</zorder>
+   <zorder>textBrowser_68</zorder>
+   <zorder>textBrowser_69</zorder>
+   <zorder>textBrowser_70</zorder>
+   <zorder>textBrowser_71</zorder>
+   <zorder>textBrowser_72</zorder>
+   <zorder>textBrowser_73</zorder>
+   <zorder>textBrowser_74</zorder>
+   <zorder>textBrowser_75</zorder>
+   <zorder>textBrowser_76</zorder>
+   <zorder>textBrowser_77</zorder>
+   <zorder>textBrowser_78</zorder>
+   <zorder>textBrowser_79</zorder>
+   <zorder>textBrowser_80</zorder>
+   <zorder>textBrowser_81</zorder>
+   <zorder>textBrowser_82</zorder>
+   <zorder>textBrowser_83</zorder>
+   <zorder>textBrowser_84</zorder>
+   <zorder>textBrowser_85</zorder>
+   <zorder>textBrowser_86</zorder>
+   <zorder>textBrowser_87</zorder>
+   <zorder>buildingSelectionComboBox</zorder>
+   <zorder>label</zorder>
+   <zorder>resetGameButton</zorder>
+   <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -2003,7 +2103,7 @@ border-image: url(:resources/trees.png);
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
