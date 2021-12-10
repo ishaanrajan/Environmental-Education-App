@@ -23,20 +23,20 @@ Sprint 3
     12/10/2021
     Scrum Questions:
     	What did you do yesterday?
-    		Ishaan: 
-      		Mikey: 
-      		Victor: 
-    		Audrey: 
-    		Tanner: 
+    		Ishaan: Debugging, refactoring city, food progress bar
+      		Mikey: Fixed highighting when selecting items bug
+      		Victor: Integrated particle manager
+    		Audrey: Game over pop up and reset game working, fixed issues with city
+    		Tanner: Setup stuff in qt, fixed qt
     	What will you do today?
-      		Ishaan: 
-      		Mikey: 
-      		Victor: 
-      		Audrey: 
-      		Tanner: 
+      		Ishaan: Debug
+      		Mikey: Debuggin
+      		Victor: Finishing touches on particle stuff
+      		Audrey: Make start of game page with instructions
+      		Tanner: Write informational information
     	What is in your way?
-      		Ishaan: 
-      		Mikey: 
-      		Victor: 
-      		Audrey: 
-      		Tanner: 
+      		Ishaan: bugs
+      		Mikey: bugs
+      		Victor: interface with city
+      		Audrey: bugs
+      		Tanner: bugs
