@@ -20,11 +20,13 @@ ParticleManager::ParticleManager()
     particleBodyDef.type = b2_dynamicBody;
     particleBodyDef.fixedRotation = true;
     particleBodyDef.position.Set(0.0f, 0.0f);
+    particleBodyDef.linearDamping = 0.0f;
 
     // Configure fixture def
-    circle.m_radius = 0.5f;
+    circle.m_radius = 2.0f;
     fixtureDef.shape = &circle;
-    fixtureDef.density = 1.0f;
+    fixtureDef.density = 0.1f;
+    fixtureDef.restitution = 1.0f;
 
     // Init colors
     demandColors[data::Demands::CLIMATE] = QColor(100,100,100,175);
@@ -72,7 +74,7 @@ void ParticleManager::timerTick()
     world->Step(timestep, 1, 1);
     world->ClearForces();
     // Box2D is evidently actually super fast, the problem is drawing to the screen which takes forever with a lot of particles
-    if(elapsedSimTicks % 10 == 0){
+    if(elapsedSimTicks % 2 == 0){
         updateScene();
     }
 }
@@ -130,7 +132,7 @@ void ParticleManager::simulate()
     simulating = true;
     elapsedSimTicks = 0;
 
-    timer->start(timestep);
+    timer->start(timestep*50);
 }
 
 void ParticleManager::resetSim()
@@ -268,9 +270,9 @@ void ParticleManager::update()
         // apply a force to the particle to move it towards its attractor
         b2Vec2 deltaX = attractorPos - particle.body->GetPosition();
 
-        int ttl = particle.type == data::Demands::CLIMATE ? desiredTtl : desiredTtl / 2;
+        //int ttl = particle.type == data::Demands::CLIMATE ? desiredTtl : (desiredTtl / 2);
         //in s
-        float deltaT = abs(((float)ttl/1000.0f - particle.lifetime*timestep));
+        float deltaT = abs(((float)desiredTtl/1000.0f - particle.lifetime*timestep));
 
         //if deltaT is near 0, it should be inside the bar, so delete
         // prevent blowback, but blowback looks cool
@@ -284,10 +286,18 @@ void ParticleManager::update()
         b2Vec2 nextV = deltaX;
         nextV *= 1.0f/deltaT;
 
-        b2Vec2 accel = nextV - currV;
+        b2Vec2 accel = nextV;// - currV;
         b2Vec2 attractForce = accel; //m = 1, so ma = a
 
-        particle.body->ApplyForceToCenter(attractForce, true);
+        //particle.body->ApplyForceToCenter(attractForce, true);
+        particle.body->ApplyLinearImpulseToCenter(attractForce, true);
+
+//        deltaX.Normalize();
+//        float strength = 800.0f;//particle.type == data::Demands::CLIMATE ? 400.0f : 5000000.0f;
+//        deltaX *= strength;
+
+//        //particle.body->ApplyForceToCenter(deltaX, true);
+//        particle.body->ApplyLinearImpulseToCenter(deltaX, true);
 
         particle.lifetime++;
     }

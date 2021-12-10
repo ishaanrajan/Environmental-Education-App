@@ -9,43 +9,9 @@ City::City(){
     energyConsumptionRequired = (5 * population) / 100;
     // on average 2 people per house
     housingRequired = (population/2)/1000;
-    produceRequired = 100;
-    funRequired = 100;
-}
-City::City(int population){
-    // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = (5 * population) / 100; // (in MWH per month)
-    // environmental effect is in gCO2
-
-}
-
-
-City::City(int population, std::vector<std::string> prevBuilds){
-    // https://www.eia.gov/tools/faqs/faq.php?id=97 for energy consuption
-    energyConsumptionRequired = (5 * population)/ 100; // (in MWH per month)
-    environmentEffect = 0;
-    // loop and add appropriate values
-    for(std::string build : prevBuilds)
-    {
-        if(build == "windfarm")
-        {
-            addWindFarm();
-        } 
-        else if(build == "factory1" || build == "factory2")
-        {
-            addCoalPlant();
-        }
-        else if(build == "solar")
-        {
-            addSolar();
-        }
-        else if(build == "nuclear")
-        {
-            addNuclear();
-        }
-
-    }
-
+    foodRequired = 100;
+    amenitiesRequired = 100;
+    foodRequired = 200;
 }
 
 void City::environmentTracker(int enviroUpdate){
@@ -74,19 +40,19 @@ void City::housingTracker(int housingUpdate){
 }
 
 void City::foodTracker(int foodUpdate){
-    if(foodUpdate + produceGenerated > produceRequired){
-        produceRequired = produceRequired;
+    if(foodUpdate + foodGenerated > foodRequired){
+        foodRequired = foodRequired;
     }else{
-        produceGenerated += foodUpdate;
+        foodGenerated += foodUpdate;
     }
 }
 
 
-void City::funTracker(int funUpdate){
-    if(funUpdate + funGenerated > funRequired){
-        funRequired = funRequired;
+void City::amenitiesTracker(int funUpdate){
+    if(funUpdate + amenitiesGenerated > amenitiesRequired){
+        amenitiesRequired = amenitiesRequired;
     }else{
-        funGenerated += funUpdate;
+        amenitiesGenerated += funUpdate;
     }
 }
 
@@ -136,7 +102,7 @@ void City::addNuclear(){
     
 }
 
-void City::addCattleFarm(){
+void City::addCowFactory(){
     // some constant penalties and additions
     energyGenerated -= 10;
     int produceGen = 60;
@@ -144,9 +110,9 @@ void City::addCattleFarm(){
     int funGenerate = 10;
     environmentTracker(enviroUpdate);
     foodTracker(produceGen);
-    funTracker(funGenerate);
+    amenitiesTracker(funGenerate);
 
-    allBuilds.push_back("CattleFarm");
+    allBuilds.push_back("cowfactory");
 }
 
 void City::addPlantFarm(){
@@ -156,7 +122,7 @@ void City::addPlantFarm(){
     int enviroUpdate = 10;
     environmentTracker(enviroUpdate);
     foodTracker(produceGen);
-    allBuilds.push_back("PlantFarm");
+    allBuilds.push_back("plantFarm");
 }
 
 void City::addHighDensityHousing(){
@@ -179,7 +145,7 @@ void City::addTheater(){
     int funGen = 50;
     int enviroUpdate = 5;
     environmentTracker(enviroUpdate);
-    funTracker(funGen);
+    amenitiesTracker(funGen);
     allBuilds.push_back("theater");
 }
 
@@ -187,14 +153,14 @@ void City::addDriveIn(){
     int funGen = 100;
     int enviroUpdate = 7;
     environmentTracker(enviroUpdate);
-    funTracker(funGen);
+    amenitiesTracker(funGen);
     allBuilds.push_back("drivein");
 }
 
 void City::addStadium(){
     int funGen = 10;
     energyGenerated -= 10;
-    funTracker(funGen);
+    amenitiesTracker(funGen);
     allBuilds.push_back("Stadium");
 }
 
@@ -213,8 +179,8 @@ int City::getEnvironmentEffect(){
     return environmentEffect;
 }
 
-int City::getFunGenerated(){
-    return funGenerated;
+int City::getAmenitiesGenerated(){
+    return amenitiesGenerated;
 }
 
 int City::getHousingGenerated(){
@@ -222,7 +188,7 @@ int City::getHousingGenerated(){
 }
 
 int City::getFoodGenerated(){
-    return produceGenerated;
+    return foodGenerated;
 }
 
 int City::getEnergyNeeded(){
@@ -230,12 +196,12 @@ int City::getEnergyNeeded(){
 }
 
 
-int City::getFunNeeded(){
-    return funRequired;
+int City::getAmenitiesNeeded(){
+    return amenitiesRequired;
 }
 
-int City::getProduceNeeded(){
-    return produceRequired;
+int City::getFoodNeeded(){
+    return foodRequired;
 }
 
 int City::getHousingNeeded(){

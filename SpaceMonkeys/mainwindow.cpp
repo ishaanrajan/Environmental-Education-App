@@ -241,6 +241,10 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addTheater();
             else if(currBlockName == "windfarm")
                 city.addWindFarm();
+            else if(currBlockName == "plantFarm")
+                city.addPlantFarm();
+            else if(currBlockName == "cowfactory")
+                city.addCowFactory();
         }
     }
 
@@ -268,19 +272,25 @@ void MainWindow::on_nextRoundButton_clicked()
     for(GridTile* currWidgetPtr : allSquares){
         currWidgetPtr->setEnabled(false);
         QTimer::singleShot(5000,currWidgetPtr,std::bind(&QWidget::setEnabled,currWidgetPtr,true));
+
+        ui->nextRoundButton->setEnabled(false);
+        QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
+
+        ui->resetGameButton->setEnabled(false);
+        QTimer::singleShot(5000,ui->resetGameButton,std::bind(&QWidget::setEnabled,ui->resetGameButton,true));
     }
-//        ui->genSmokeBtn->setEnabled(false);
-//        QTimer::singleShot(5000,ui->genSmokeBtn,std::bind(&QWidget::setEnabled,ui->genSmokeBtn,true));
 
     ui->nextRoundButton->setEnabled(false);
     QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
 
     qDebug() << city.getEnergyGenerated();
     ui->energyProgressBar->setValue(city.getEnergyGenerated());
-    qDebug() << "FUN GENERATED: " << city.getFunGenerated();
-    ui->amenitiesProgressBar->setValue(city.getFunGenerated());
+    qDebug() << "FUN GENERATED: " << city.getAmenitiesGenerated();
+    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
     qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
     ui->housingProgressBar->setValue(city.getHousingGenerated());
+    ui->foodProgressBar->setValue(city.getFoodGenerated());
+    qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
     qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
     ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
 
@@ -386,3 +396,8 @@ void MainWindow::resetGame(){
     }
 }
 
+
+void MainWindow::on_resetGameButton_clicked()
+{
+    resetGame();
+}

@@ -1983,6 +1983,19 @@ border-image: url(:resources/trees.png);
      <string>Choose building type:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="resetGameButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset Game</string>
+    </property>
+   </widget>
    <zorder>environmentalImpactProgressBar</zorder>
    <zorder>horizontalLayoutWidget</zorder>
    <zorder>impact_label</zorder>
@@ -2081,6 +2094,7 @@ border-image: url(:resources/trees.png);
    <zorder>textBrowser_87</zorder>
    <zorder>buildingSelectionComboBox</zorder>
    <zorder>label</zorder>
+   <zorder>resetGameButton</zorder>
    <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

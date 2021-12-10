@@ -89,7 +89,7 @@ private:
     bool simulating = false;
     long elapsedSimTicks = 0;
     // Simulation timestep
-    float timestep = 1.0f/60.0f;
+    float timestep = 1.0f/30.0f;
 
     // Scene that particles are drawn to
     QGraphicsScene particleScene;
@@ -98,7 +98,7 @@ private:
     // In ms
     // Defines about what time we want the particles to reach the attraction bound and despawn
     // Controls the strength of the attractive force to try to satisfy this TTL
-    int desiredTtl = 20000;
+    int desiredTtl = 5000;
     // In ms
     // Maximum amount of time that a particle will live before being forcibly despawned
     int maxTtl = 30000;
@@ -116,7 +116,7 @@ private:
     b2BodyDef particleBodyDef;
     b2CircleShape circle;
     b2FixtureDef fixtureDef;
-    b2Vec2 wind = {10.0f, -20.0f};
+    b2Vec2 wind = {400.0f, -20.0f};
 
     std::vector<Particle> particles;
     std::map<data::Demands, AttractorRect> demandAttractors;
