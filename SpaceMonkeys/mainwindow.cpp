@@ -202,6 +202,9 @@ void MainWindow::on_nextRoundButton_clicked()
 
         ui->nextRoundButton->setEnabled(false);
         QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
+
+        ui->resetGameButton->setEnabled(false);
+        QTimer::singleShot(5000,ui->resetGameButton,std::bind(&QWidget::setEnabled,ui->resetGameButton,true));
     }
 
     qDebug() << city.getEnergyGenerated();
@@ -316,3 +319,8 @@ void MainWindow::resetGame(){
     }
 }
 
+
+void MainWindow::on_resetGameButton_clicked()
+{
+    resetGame();
+}

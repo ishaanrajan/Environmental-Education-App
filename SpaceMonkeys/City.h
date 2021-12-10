@@ -150,7 +150,7 @@ public:
      * @brief Get the energy that needs to be generated.
      * 
      */
-    int getFunNeeded();
+    int getAmenitiesNeeded();
 
        /**
      * @brief Get the energy that needs to be generated.
@@ -181,20 +181,20 @@ private:
 
     void foodTracker(int housingUpdate);
 
-    void funTracker(int housingUpdate);
+    void amenitiesTracker(int housingUpdate);
 
 
     // Default calculated values
     int energyConsumptionRequired;
-    int produceRequired;
+    int foodRequired;
     int housingRequired;
-    int funRequired;
+    int amenitiesRequired;
 
     // Dynamic 
     int environmentEffect = 0;
     int energyGenerated = 0;
     int amenitiesGenerated = 0;
-    int produceGenerated = 0;
+    int foodGenerated = 0;
     int housingGenerated = 0;
 };
 

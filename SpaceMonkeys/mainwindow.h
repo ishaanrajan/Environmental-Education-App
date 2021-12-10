@@ -30,6 +30,7 @@ private slots:
     void on_nextRoundButton_clicked();
     void resetGame();
     void on_buildingSelectionComboBox_currentIndexChanged(int index);
+    void on_resetGameButton_clicked();
 
 signals:
     //void nextRoundBuildingsAdded();

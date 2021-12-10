@@ -1996,6 +1996,19 @@ border-image: url(:resources/trees.png);
      <string>Choose building type:</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="resetGameButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>200</y>
+      <width>84</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reset Game</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -2003,7 +2016,7 @@ border-image: url(:resources/trees.png);
      <x>0</x>
      <y>0</y>
      <width>1200</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
