@@ -11,7 +11,7 @@
 using data::Demands;
 using std::vector;
 
-ParticleManager::ParticleManager()
+ParticleManager::ParticleManager(QObject * parent)
 {
     timer = new QTimer();
 
@@ -79,6 +79,15 @@ void ParticleManager::timerTick()
     // Box2D is evidently actually super fast, the problem is drawing to the screen which takes forever with a lot of particles
     if(elapsedSimTicks % 2 == 0){
         updateScene();
+    }
+
+    // Occasionally notify what current proportions are
+    if(elapsedSimTicks % 5 == 0){
+        vector<float> percentages;
+        for(int i = 0; i < totalSpawns.size(); i++){
+            percentages.push_back(((float)receivedSpawns[i])/totalSpawns[i]);
+        }
+        emit particlesReached(percentages);
     }
 }
 
@@ -289,10 +298,10 @@ void ParticleManager::update()
 //        }
 
         // Count particles when received
-        if(abs(deltaT) < timestep && !particle.received){
+        if(hitAttractor(particle) && !particle.received){
             receivedSpawns[particle.type]++;
             particle.received = true;
-            std::cout << particle.type << " " << receivedSpawns[particle.type] << "/" << totalSpawns[particle.type] << std::endl;
+            qDebug() << particle.type << " " << receivedSpawns[particle.type] << "/" << totalSpawns[particle.type];
         }
 
         b2Vec2 currV = particle.body->GetLinearVelocity();

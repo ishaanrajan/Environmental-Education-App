@@ -105,6 +105,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
     connect(&gameOverPop, &gameOverPopup::restartClicked, this, &MainWindow::resetGame);
+
+    connect(&particleManager, &ParticleManager::particlesReached, this, [this](std::vector<float> percentages){
+        // Only do gradual fill up until a given amount of time, then the bars fill fully
+        // To prevent stragglers from messing up the bars
+        if(!animLimitReached){
+            ui->energyProgressBar->setValue(city.getEnergyGenerated() * percentages[data::Demands::ENERGY]);
+            ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated() * percentages[data::Demands::AMMENITIES]);
+            ui->housingProgressBar->setValue(city.getHousingGenerated() * percentages[data::Demands::HOUSING]);
+            ui->foodProgressBar->setValue(city.getFoodGenerated() * percentages[data::Demands::FOOD]);
+            ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect() * percentages[data::Demands::CLIMATE]);
+        }
+    });
 }
 
 MainWindow::~MainWindow()
@@ -250,6 +262,8 @@ void MainWindow::on_nextRoundButton_clicked()
 
     // Config particle manager
     particleManager.resetSim();
+    // to allow gradual bar fill again
+    animLimitReached = false;
 
     for(size_t tile = 0; tile < orderedGridTiles.size(); tile++){
         if(orderedGridTiles[tile]->itemAt(0,0) && allGridTiles[orderedGridTiles[tile]]){
@@ -283,16 +297,26 @@ void MainWindow::on_nextRoundButton_clicked()
     ui->nextRoundButton->setEnabled(false);
     QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
 
+    // Ensure that after 5 seconds the bars are completely full regardless of whether the animation is still goin
+    QTimer::singleShot(5000, this, [this](){
+        this->animLimitReached = true;
+        ui->energyProgressBar->setValue(city.getEnergyGenerated());
+        ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
+        ui->housingProgressBar->setValue(city.getHousingGenerated());
+        ui->foodProgressBar->setValue(city.getFoodGenerated());
+        ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+    });
+
     qDebug() << city.getEnergyGenerated();
-    ui->energyProgressBar->setValue(city.getEnergyGenerated());
+//    ui->energyProgressBar->setValue(city.getEnergyGenerated());
     qDebug() << "FUN GENERATED: " << city.getAmenitiesGenerated();
-    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
+//    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
     qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
-    ui->housingProgressBar->setValue(city.getHousingGenerated());
-    ui->foodProgressBar->setValue(city.getFoodGenerated());
+//    ui->housingProgressBar->setValue(city.getHousingGenerated());
+//    ui->foodProgressBar->setValue(city.getFoodGenerated());
     qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
     qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
-    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+//    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
 
     if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");

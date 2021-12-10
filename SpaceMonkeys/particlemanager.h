@@ -39,11 +39,12 @@ struct AttractorRect{
     //AttractorRect(b2Vec2 p, float x, float y, float w, float h) : attractionPoint(p), x(x), y(y), w(w), h(h){}
 };
 
-class ParticleManager
+class ParticleManager : public QObject
 {
+    Q_OBJECT
 
 public:
-    ParticleManager();
+    explicit ParticleManager(QObject *parent = nullptr);
 
     QGraphicsScene& getScene();
 
@@ -85,6 +86,9 @@ public:
     void spawnParticles();
 
     void addTile(std::string buildingType, /*std::vector<int> costs,*/ int gridX, int gridY);
+
+signals:
+    void particlesReached(std::vector<float> percentages);
 
 private:
     bool simulating = false;

@@ -62,8 +62,8 @@ private:
     std::map<GridTile *, bool> allGridTiles;
     std::vector<GridTile *> orderedGridTiles;
 
-
     ParticleManager particleManager;
+    bool animLimitReached = false;
 
     void createListOfGameSquares();
 };
