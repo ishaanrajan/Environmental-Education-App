@@ -28,8 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
     ui->selectStructureListWidget->raise();
 
-    energyImages.push_back(":/resources/factory1.png");
-    energyImages.push_back(":/resources/factory2.png");
+    energyImages.push_back(":/resources/coalplant.png");
     energyImages.push_back(":/resources/nuclear.png");
     energyImages.push_back(":/resources/solar.png");
     energyImages.push_back(":/resources/windfarm.png");
@@ -248,11 +247,11 @@ void MainWindow::on_nextRoundButton_clicked()
     {
         if(iter->first->itemAt(0,0) && iter->second)
         {
-            iter->first->setDragEnabled(false);
+            iter->first->setSelectionMode(QAbstractItemView::NoSelection);
             std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
-            else if(currBlockName == "factory1" || currBlockName == "factory2")
+            else if(currBlockName == "coalplant")
                 city.addCoalPlant();
             else if(currBlockName == "highdensityhousing")
                 city.addHighDensityHousing();
@@ -320,18 +319,6 @@ void MainWindow::on_nextRoundButton_clicked()
         ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
         checkImpactBounds();
     });
-
-    qDebug() << city.getEnergyGenerated();
-//    ui->energyProgressBar->setValue(city.getEnergyGenerated());
-    qDebug() << "FUN GENERATED: " << city.getAmenitiesGenerated();
-//    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
-    qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
-//    ui->housingProgressBar->setValue(city.getHousingGenerated());
-//    ui->foodProgressBar->setValue(city.getFoodGenerated());
-    qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
-    qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
-//    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
-    //TODO: add food categories to view
 }
 
 
