@@ -26,6 +26,7 @@ struct Particle{
     // in ticks!
     int lifetime = 0;
     int randSize = 4 + ( std::rand() % ( 12 - 4 + 1 ) );
+    bool received = false;
 };
 
 struct AttractorRect{
@@ -126,6 +127,9 @@ private:
     // For now, simply using vector indexed on the Demand for the impact it has
     std::map<std::string, std::vector<int>> spawnerTemplates;
     std::map<std::string, QVector2D> tileOffsetMap;
+
+    std::vector<int> totalSpawns;
+    std::vector<int> receivedSpawns;
 
 
     /**

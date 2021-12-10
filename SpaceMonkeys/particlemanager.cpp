@@ -46,13 +46,16 @@ ParticleManager::ParticleManager()
     spawnerTemplates["drivein"] = {2, 2, 2, 2, 2};
 
     tileOffsetMap["factory1"] = {50,10};
-    tileOffsetMap["factory2"] = {0,0};
-    tileOffsetMap["highdensityhousing"] = {0,0};
-    tileOffsetMap["neighborhood"] = {0,0};
-    tileOffsetMap["nuclear"] = {0,0};
-    tileOffsetMap["solar"] = {0,0};
-    tileOffsetMap["windfarm"] = {0,0};
-    tileOffsetMap["drivein"] = {0,0};
+    tileOffsetMap["factory2"] = {50,0};
+    tileOffsetMap["highdensityhousing"] = {50,0};
+    tileOffsetMap["neighborhood"] = {50,0};
+    tileOffsetMap["nuclear"] = {50,0};
+    tileOffsetMap["solar"] = {50,0};
+    tileOffsetMap["windfarm"] = {50,0};
+    tileOffsetMap["drivein"] = {50,0};
+
+    totalSpawns = {0,0,0,0,0};
+    receivedSpawns = {0,0,0,0,0};
 
     QObject::connect(timer, &QTimer::timeout, [this](){
         timerTick();
@@ -144,6 +147,8 @@ void ParticleManager::resetSim()
     delete world;
     spawners.clear();
     particles.clear();
+    totalSpawns = {0,0,0,0,0};
+    receivedSpawns = {0,0,0,0,0};
     world = new b2World(wind);
     elapsedSimTicks = 0;
 
@@ -183,8 +188,8 @@ void ParticleManager::addSpawner(data::Demands type, int x, int y, int quantity)
             spawner.spawnDelay = 40;
             spawner.spawnsRemaining = 15;
             break;
-
         }
+        totalSpawns[type] += spawner.spawnsRemaining * quantity;
         spawners.push_back(spawner);
     }
 }
@@ -278,9 +283,17 @@ void ParticleManager::update()
         // prevent blowback, but blowback looks cool
 //        if(abs(deltaT) < timestep){
 //            //particle.body->GetFixtureList()->SetSensor(true);
+
 //            deleteParticles.push_back(i);
 //            continue;
 //        }
+
+        // Count particles when received
+        if(abs(deltaT) < timestep && !particle.received){
+            receivedSpawns[particle.type]++;
+            particle.received = true;
+            std::cout << particle.type << " " << receivedSpawns[particle.type] << "/" << totalSpawns[particle.type] << std::endl;
+        }
 
         b2Vec2 currV = particle.body->GetLinearVelocity();
         b2Vec2 nextV = deltaX;
