@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     amenitiesImages.push_back(":/resources/theater.png");
     amenitiesImages.push_back(":/resources/drivein.png");
-    amenitiesImages.push_back(":/resources/commercial.png");
 
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
@@ -223,19 +222,7 @@ void MainWindow::initParticleManager()
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-
-    std::cout << "PRINTING ALLBUILDS" << std::endl;
-    for(std::string s : city.allBuilds)
-    {
-        std::cout << s << std::endl;
-    }
-
-    city.amenitiesGenerated = 0;
-    city.foodGenerated = 0;
-    city.energyGenerated = 0;
-    city.housingGenerated = 0;
-    city.environmentEffect = 0;
-
+    city.resetGeneratedValues();
     if(gameRound == 0){
         // Init particle manager bar attractors
         // Must do this here as in constructor positions not yet initialized

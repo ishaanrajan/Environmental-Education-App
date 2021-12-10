@@ -166,6 +166,11 @@ public:
 
     std::vector<std::string> allBuilds;
 
+    /**
+     * @brief Reset generation values. This will be used round to round.
+     */
+    void resetGeneratedValues();
+
     // Dynamic
     int environmentEffect = 0;
     int energyGenerated = 0;

@@ -164,6 +164,14 @@ void City::addStadium(){
     allBuilds.push_back("Stadium");
 }
 
+void City::resetGeneratedValues(){
+    amenitiesGenerated = 0;
+    foodGenerated = 0;
+    energyGenerated = 0;
+    housingGenerated = 0;
+    environmentEffect = 0;
+}
+
 // getters for all values in the game.
 
 std::vector<std::string> City::getAllBuilds(){
