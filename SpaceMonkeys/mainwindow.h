@@ -66,5 +66,6 @@ private:
     bool animLimitReached = false;
 
     void createListOfGameSquares();
+    void checkImpactBounds();
 };
 #endif // MAINWINDOW_H

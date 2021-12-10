@@ -164,9 +164,22 @@ public:
      */
     int getHousingNeeded();
 
+    std::vector<std::string> allBuilds;
+
+    /**
+     * @brief Reset generation values. This will be used round to round.
+     */
+    void resetGeneratedValues();
+
+    // Dynamic
+    int environmentEffect = 0;
+    int energyGenerated = 0;
+    int amenitiesGenerated = 0;
+    int foodGenerated = 0;
+    int housingGenerated = 0;
+
 
 private:
-    std::vector<std::string> allBuilds;
     int population;
 
     void energyTracker(int energyUpdate);
@@ -189,13 +202,6 @@ private:
     int foodRequired;
     int housingRequired;
     int amenitiesRequired;
-
-    // Dynamic 
-    int environmentEffect = 0;
-    int energyGenerated = 0;
-    int amenitiesGenerated = 0;
-    int foodGenerated = 0;
-    int housingGenerated = 0;
 };
 
 #endif

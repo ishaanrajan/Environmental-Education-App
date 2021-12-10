@@ -15,7 +15,7 @@ City::City(){
 }
 
 void City::environmentTracker(int enviroUpdate){
-    if(environmentEffect + enviroUpdate > 99){
+    if(environmentEffect + enviroUpdate > 100){
         environmentEffect = 100;
     }else{
         environmentEffect += enviroUpdate;
@@ -32,16 +32,16 @@ void City::energyTracker(int energyUpdate){
 }
 
 void City::housingTracker(int housingUpdate){
-    if(housingUpdate + housingGenerated > housingRequired){
-        housingRequired = housingRequired;
+    if(housingUpdate + housingGenerated >= housingRequired){
+        housingRequired = 100;
     }else{
         housingGenerated += housingUpdate;
     }
 }
 
 void City::foodTracker(int foodUpdate){
-    if(foodUpdate + foodGenerated > foodRequired){
-        foodRequired = foodRequired;
+    if(foodUpdate + foodGenerated >= foodRequired){
+        foodRequired = 100;
     }else{
         foodGenerated += foodUpdate;
     }
@@ -49,8 +49,8 @@ void City::foodTracker(int foodUpdate){
 
 
 void City::amenitiesTracker(int funUpdate){
-    if(funUpdate + amenitiesGenerated > amenitiesRequired){
-        amenitiesRequired = amenitiesRequired;
+    if(funUpdate + amenitiesGenerated >= amenitiesRequired){
+        amenitiesRequired = 100;
     }else{
         amenitiesGenerated += funUpdate;
     }
@@ -75,7 +75,7 @@ void City::addCoalPlant(){
     int enviroUpdate = 22;
     environmentTracker(enviroUpdate);
 
-    allBuilds.push_back("factory1"); // TODO: difference between factor1 and factor2?
+    allBuilds.push_back("coalplant");
     
 }
 
@@ -128,7 +128,7 @@ void City::addPlantFarm(){
 void City::addHighDensityHousing(){
     int enviroUpdate = 8;
     environmentTracker(enviroUpdate);
-    int housingGen = 100;
+    int housingGen = 45;
     housingTracker(housingGen);
     allBuilds.push_back("highdensityapartments");
 }
@@ -136,7 +136,7 @@ void City::addHighDensityHousing(){
 void City::addSuburbanHousing(){
     int enviroUpdate = 15;
     environmentTracker(enviroUpdate);
-    int housingGen = 60;
+    int housingGen = 50;
     housingTracker(housingGen);
     allBuilds.push_back("neighborhood");
 }
@@ -162,6 +162,14 @@ void City::addStadium(){
     energyGenerated -= 10;
     amenitiesTracker(funGen);
     allBuilds.push_back("Stadium");
+}
+
+void City::resetGeneratedValues(){
+    amenitiesGenerated = 0;
+    foodGenerated = 0;
+    energyGenerated = 0;
+    housingGenerated = 0;
+    environmentEffect = 0;
 }
 
 // getters for all values in the game.
