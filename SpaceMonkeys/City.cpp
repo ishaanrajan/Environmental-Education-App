@@ -35,11 +35,12 @@ int City::numberDemandsSatisfied()
 }
 
 void City::environmentTracker(int enviroUpdate){
-    if(environmentEffect + enviroUpdate > 100){
-        environmentEffect = 100;
-    }else{
-        environmentEffect += enviroUpdate;
-    }
+    environmentEffect += enviroUpdate;
+//    if(environmentEffect + enviroUpdate > 100){
+//        environmentEffect = 100;
+//    }else{
+//        environmentEffect += enviroUpdate;
+//    }
 }
 void City::energyTracker(int energyUpdate){
     energyGenerated += energyUpdate;
@@ -53,28 +54,31 @@ void City::energyTracker(int energyUpdate){
 }
 
 void City::housingTracker(int housingUpdate){
-    if(housingUpdate + housingGenerated >= housingRequired){
-        housingGenerated = housingRequired;
-    }else{
-        housingGenerated += housingUpdate;
-    }
+    housingGenerated += housingUpdate;
+//    if(housingUpdate + housingGenerated >= housingRequired){
+//        housingGenerated = housingRequired;
+//    }else{
+//        housingGenerated += housingUpdate;
+//    }
 }
 
 void City::foodTracker(int foodUpdate){
-    if(foodUpdate + foodGenerated >= foodRequired){
-        foodGenerated = foodRequired;
-    }else{
-        foodGenerated += foodUpdate;
-    }
+    foodGenerated += foodUpdate;
+//    if(foodUpdate + foodGenerated >= foodRequired){
+//        foodGenerated = foodRequired;
+//    }else{
+//        foodGenerated += foodUpdate;
+//    }
 }
 
 
 void City::amenitiesTracker(int amenityUpdate){
-    if(amenityUpdate + amenitiesGenerated >= amenitiesRequired){
-        amenitiesGenerated = amenitiesRequired;
-    }else{
-        amenitiesGenerated += amenityUpdate;
-    }
+    amenitiesGenerated += amenityUpdate;
+//    if(amenityUpdate + amenitiesGenerated >= amenitiesRequired){
+//        amenitiesGenerated = amenitiesRequired;
+//    }else{
+//        amenitiesGenerated += amenityUpdate;
+//    }
 }
 
 void City::addWindFarm(){
