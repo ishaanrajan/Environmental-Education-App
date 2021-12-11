@@ -264,6 +264,8 @@ void MainWindow::on_nextRoundButton_clicked()
         initParticleManager();
     }
     gameRound += 1;
+    city.updatePopulation(1 + (0.2 * gameRound));
+    qDebug() << city.getAmenitiesNeeded();
     for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
         if(iter->first->itemAt(0,0) && iter->second)
