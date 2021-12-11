@@ -36,23 +36,31 @@ ParticleManager::ParticleManager(QObject * parent)
     demandColors[data::Demands::ENERGY] = QColor(0,175,175,255);
 
     // Init spawner templates
-    spawnerTemplates["factory1"] = {0, 0, 0, 4, 2};
+    spawnerTemplates["coalplant"] = {0, 0, 0, 4, 2};
     spawnerTemplates["factory2"] = {0, 0, 0, 4, 2};
-    spawnerTemplates["highdensityhousing"] = {0, 10, 0, 0, 0};
-    spawnerTemplates["neighborhood"] = {0, 10, 0, 10, 0};
-    spawnerTemplates["nuclear"] = {0, 0, 0, 3, 10};
-    spawnerTemplates["solar"] = {0, 0, 0, 0, 5};
-    spawnerTemplates["windfarm"] = {0, 0, 0, 0, 8};
+    spawnerTemplates["highdensityhousing"] = {0, 2, 0, 0, 0};
+    spawnerTemplates["neighborhood"] = {0, 2, 0, 2, 0};
+    spawnerTemplates["nuclear"] = {0, 0, 0, 3, 5};
+    spawnerTemplates["solar"] = {0, 0, 0, 0, 2};
+    spawnerTemplates["windfarm"] = {0, 0, 0, 0, 3};
     spawnerTemplates["drivein"] = {2, 2, 2, 2, 2};
+    spawnerTemplates["stadium"] = {0,0,3,1,0};
+    spawnerTemplates["park"] = {0,0,1,0,0};
+    spawnerTemplates["cowfactory"] = {3,0,1,3,0};
+    spawnerTemplates["plantFarm"] = {2,0,0,0,0};
 
-    tileOffsetMap["factory1"] = {50,10};
+    tileOffsetMap["coalplant"] = {50,10};
     tileOffsetMap["factory2"] = {50,0};
     tileOffsetMap["highdensityhousing"] = {50,0};
-    tileOffsetMap["neighborhood"] = {50,0};
-    tileOffsetMap["nuclear"] = {50,0};
-    tileOffsetMap["solar"] = {50,0};
-    tileOffsetMap["windfarm"] = {50,0};
-    tileOffsetMap["drivein"] = {50,0};
+    tileOffsetMap["neighborhood"] = {50,50};
+    tileOffsetMap["nuclear"] = {50,30};
+    tileOffsetMap["solar"] = {50,60};
+    tileOffsetMap["windfarm"] = {50,10};
+    tileOffsetMap["drivein"] = {50,50};
+    tileOffsetMap["stadium"] = {50,35};
+    tileOffsetMap["park"] = {50,50};
+    tileOffsetMap["cowfactory"] = {50,45};
+    tileOffsetMap["plantFarm"] = {50,50};
 
     totalSpawns = {0,0,0,0,0};
     receivedSpawns = {0,0,0,0,0};
