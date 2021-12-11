@@ -160,8 +160,10 @@ void City::addDriveIn(){
 void City::addStadium(){
     int funGen = 10;
     energyGenerated -= 10;
+    int enviroUpdate = 15;
+    environmentTracker(enviroUpdate); //TODO: clean these unnecessary lines
     amenitiesTracker(funGen);
-    allBuilds.push_back("Stadium");
+    allBuilds.push_back("stadium");
 }
 
 void City::resetGeneratedValues(){
