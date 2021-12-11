@@ -4,13 +4,12 @@
         <file>resources/delete.png</file>
         <file>resources/commercial.png</file>
         <file>resources/drivein.png</file>
-        <file>resources/factory1.png</file>
+        <file>resources/coalplant.png</file>
         <file>resources/factory2.png</file>
         <file>resources/highdensityhousing.png</file>
         <file>resources/neighborhood.png</file>
         <file>resources/nuclear.png</file>
         <file>resources/solar.png</file>
-        <file>resources/theater.png</file>
         <file>resources/windfarm.png</file>
         <file>resources/background.png</file>
         <file>resources/groundtile.png</file>
@@ -19,5 +18,7 @@
         <file>resources/smogbackground2.png</file>
         <file>resources/plantFarm.png</file>
         <file>resources/cowfactory.png</file>
+        <file>resources/park.png</file>
+        <file>resources/stadium.png</file>
     </qresource>
 </RCC>

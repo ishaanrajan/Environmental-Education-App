@@ -64,7 +64,15 @@ private:
 
     ParticleManager particleManager;
     bool animLimitReached = false;
+    QTimer * animTimer;
+    int priorEnergy = 0;
+    int priorAmmenities = 0;
+    int priorHousing = 0;
+    int priorFood = 0;
+    int priorClimate = 0;
 
     void createListOfGameSquares();
+    void checkImpactBounds();
+    void fillBarsToMax();
 };
 #endif // MAINWINDOW_H

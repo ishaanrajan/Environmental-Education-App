@@ -19,6 +19,7 @@ void GridTile::dropEvent(QDropEvent *event)
     }
     if (this->count() == 0)
     {
+
         QListWidget::dropEvent(event);
     }
 }

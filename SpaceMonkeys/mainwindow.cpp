@@ -28,15 +28,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->selectStructureListWidget->setStyleSheet("QListWidget{background: rgb(189, 187, 190);border-style: outset;border-width: 2px;border-color: white;color: white;border-radius: 15px;}");
     ui->selectStructureListWidget->raise();
 
-    energyImages.push_back(":/resources/factory1.png");
-    energyImages.push_back(":/resources/factory2.png");
+    energyImages.push_back(":/resources/coalplant.png");
     energyImages.push_back(":/resources/nuclear.png");
     energyImages.push_back(":/resources/solar.png");
     energyImages.push_back(":/resources/windfarm.png");
 
-    amenitiesImages.push_back(":/resources/theater.png");
+    amenitiesImages.push_back(":/resources/stadium.png");
     amenitiesImages.push_back(":/resources/drivein.png");
-    amenitiesImages.push_back(":/resources/commercial.png");
+    amenitiesImages.push_back(":/resources/park.png");
 
     housingImages.push_back(":/resources/highdensityhousing.png");
     housingImages.push_back(":/resources/neighborhood.png");
@@ -93,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->environmentalImpactProgressBar->setValue(0);
     ui->environmentalImpactProgressBar->setMinimum(0);
-    ui->environmentalImpactProgressBar->setMaximum(101);
+    ui->environmentalImpactProgressBar->setMaximum(100);
 
 
     createListOfGameSquares();
@@ -110,11 +109,14 @@ MainWindow::MainWindow(QWidget *parent)
         // Only do gradual fill up until a given amount of time, then the bars fill fully
         // To prevent stragglers from messing up the bars
         if(!animLimitReached){
-            ui->energyProgressBar->setValue(city.getEnergyGenerated() * percentages[data::Demands::ENERGY]);
-            ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated() * percentages[data::Demands::AMMENITIES]);
-            ui->housingProgressBar->setValue(city.getHousingGenerated() * percentages[data::Demands::HOUSING]);
-            ui->foodProgressBar->setValue(city.getFoodGenerated() * percentages[data::Demands::FOOD]);
-            ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect() * percentages[data::Demands::CLIMATE]);
+            ui->energyProgressBar->setValue(priorEnergy + (city.getEnergyGenerated()-priorEnergy) * percentages[data::Demands::ENERGY]);
+            ui->amenitiesProgressBar->setValue(priorAmmenities + (city.getAmenitiesGenerated()-priorAmmenities) * percentages[data::Demands::AMMENITIES]);
+            ui->housingProgressBar->setValue(priorHousing + (city.getHousingGenerated()-priorHousing) * percentages[data::Demands::HOUSING]);
+            ui->foodProgressBar->setValue(priorFood + (city.getFoodGenerated()-priorFood) * percentages[data::Demands::FOOD]);
+            ui->environmentalImpactProgressBar->setValue(priorClimate + (city.getEnvironmentEffect()-priorClimate) * percentages[data::Demands::CLIMATE]);
+
+            //TODO: diagnose why this is slow to do
+            //checkImpactBounds();
         }
     });
 }
@@ -220,16 +222,47 @@ void MainWindow::initParticleManager()
                                        ui->energyProgressBar->pos().x()+horizontalOffset, ui->energyProgressBar->pos().y()+vertOffset,
                                        ui->energyProgressBar->width(), ui->energyProgressBar->height());
     particleManager.gridParams(140, 350, ui->listWidget1_1->width(), ui->gameBoardGrid->horizontalSpacing());
+
+    // Setup animation timer
+    animTimer = new QTimer(this);
+    animTimer->setInterval(7000);
+    animTimer->setSingleShot(true);
+
+    connect(animTimer, &QTimer::timeout, [this](){
+        this->animLimitReached = true;
+        fillBarsToMax();
+    });
+}
+
+void MainWindow::fillBarsToMax()
+{
+    qDebug() << city.getAmenitiesGenerated();
+    ui->energyProgressBar->setValue(city.getEnergyGenerated());
+    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
+    ui->housingProgressBar->setValue(city.getHousingGenerated());
+    ui->foodProgressBar->setValue(city.getFoodGenerated());
+    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+    checkImpactBounds();
 }
 
 void MainWindow::on_nextRoundButton_clicked()
 {
+    //animTimer->stop();
+    fillBarsToMax();
+
+    // Update prior values before adding new tiles
+    priorEnergy = city.getEnergyGenerated();
+    priorAmmenities = city.getAmenitiesGenerated();
+    priorFood = city.getFoodGenerated();
+    priorHousing = city.getHousingGenerated();
+    priorClimate = city.getEnvironmentEffect();
+
+    city.resetGeneratedValues();
     if(gameRound == 0){
         // Init particle manager bar attractors
         // Must do this here as in constructor positions not yet initialized
         initParticleManager();
     }
-
     gameRound += 1;
     for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
@@ -239,7 +272,7 @@ void MainWindow::on_nextRoundButton_clicked()
             std::string currBlockName = iter->first->itemAt(0,0)->toolTip().toStdString();
             if(currBlockName == "drivein")
                 city.addDriveIn();
-            else if(currBlockName == "factory1" || currBlockName == "factory2")
+            else if(currBlockName == "coalplant")
                 city.addCoalPlant();
             else if(currBlockName == "highdensityhousing")
                 city.addHighDensityHousing();
@@ -249,20 +282,22 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addNuclear();
             else if(currBlockName == "solar")
                 city.addSolar();
-            else if(currBlockName == "theater")
-                city.addTheater();
+            else if(currBlockName == "park")
+                city.addPark();
             else if(currBlockName == "windfarm")
                 city.addWindFarm();
             else if(currBlockName == "plantFarm")
                 city.addPlantFarm();
             else if(currBlockName == "cowfactory")
                 city.addCowFactory();
+            else if(currBlockName == "stadium")
+                city.addStadium();
         }
     }
 
     // Config particle manager
     particleManager.resetSim();
-    // to allow gradual bar fill again
+    // Done after reset so that the scene is cleared and no particles currently simulating
     animLimitReached = false;
 
     for(size_t tile = 0; tile < orderedGridTiles.size(); tile++){
@@ -297,58 +332,9 @@ void MainWindow::on_nextRoundButton_clicked()
     ui->nextRoundButton->setEnabled(false);
     QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
 
-    // Ensure that after 5 seconds the bars are completely full regardless of whether the animation is still goin
-    QTimer::singleShot(5000, this, [this](){
-        this->animLimitReached = true;
-        ui->energyProgressBar->setValue(city.getEnergyGenerated());
-        ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
-        ui->housingProgressBar->setValue(city.getHousingGenerated());
-        ui->foodProgressBar->setValue(city.getFoodGenerated());
-        ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
-    });
-
-    qDebug() << city.getEnergyGenerated();
-//    ui->energyProgressBar->setValue(city.getEnergyGenerated());
-    qDebug() << "FUN GENERATED: " << city.getAmenitiesGenerated();
-//    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
-    qDebug() << "HOUSING GENERATED: " << city.getHousingGenerated();
-//    ui->housingProgressBar->setValue(city.getHousingGenerated());
-//    ui->foodProgressBar->setValue(city.getFoodGenerated());
-    qDebug() << "FOOD IMPACT: " << city.getFoodGenerated();
-    qDebug() << "ENVIRONMENTAL IMPACT: " << city.getEnvironmentEffect();
-//    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
-
-    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
-        int trees = 0;
-        QRegularExpression re("textBrowser_(\\d)");
-        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
-        for(QTextBrowser* currBrowser : allSquares){
-            trees++;
-            if(trees % 3){
-                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
-           }
-        }
-    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
-        int trees = 0;
-        QRegularExpression re("textBrowser_(\\d)");
-        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
-        for(QTextBrowser* currBrowser : allSquares){
-            trees++;
-            if(trees % 5){
-                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
-           }
-        }
-    }else if(ui->environmentalImpactProgressBar->value()  >= 99){
-        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
-        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
-        gameOverPop.show();
-        gameOverPop.exec();
-    }
-    //TODO: add food categories to view
+    // This will first stop then restart the timer
+    // Necessary to stop so that it doesn't suddenly fill to full from a previous round if player goes too fast
+    animTimer->start();
 }
 
 
@@ -420,8 +406,46 @@ void MainWindow::resetGame(){
     }
 }
 
+void MainWindow::checkImpactBounds()
+{
+    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 3){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
+    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 5){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
+    }else if(ui->environmentalImpactProgressBar->value()  >= 100){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        gameOverPop.show();
+        gameOverPop.exec();
+    }
+}
+
 
 void MainWindow::on_resetGameButton_clicked()
 {
+    if(gameOverPop.isActiveWindow())
+    {
+        gameOverPop.close();
+    }
     resetGame();
 }
