@@ -38,7 +38,7 @@ ParticleManager::ParticleManager(QObject * parent)
     // Init spawner templates
     spawnerTemplates["coalplant"] = {0, 0, 0, 4, 2};
     spawnerTemplates["factory2"] = {0, 0, 0, 4, 2};
-    spawnerTemplates["highdensityhousing"] = {0, 2, 0, 0, 0};
+    spawnerTemplates["highdensityhousing"] = {0, 2, 0, 1, 0};
     spawnerTemplates["neighborhood"] = {0, 2, 0, 2, 0};
     spawnerTemplates["nuclear"] = {0, 0, 0, 1, 5};
     spawnerTemplates["solar"] = {0, 0, 0, 0, 2};
