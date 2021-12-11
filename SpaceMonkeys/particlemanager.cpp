@@ -40,7 +40,7 @@ ParticleManager::ParticleManager(QObject * parent)
     spawnerTemplates["factory2"] = {0, 0, 0, 4, 2};
     spawnerTemplates["highdensityhousing"] = {0, 2, 0, 0, 0};
     spawnerTemplates["neighborhood"] = {0, 2, 0, 2, 0};
-    spawnerTemplates["nuclear"] = {0, 0, 0, 3, 5};
+    spawnerTemplates["nuclear"] = {0, 0, 0, 1, 5};
     spawnerTemplates["solar"] = {0, 0, 0, 0, 2};
     spawnerTemplates["windfarm"] = {0, 0, 0, 0, 3};
     spawnerTemplates["drivein"] = {2, 2, 2, 2, 2};
@@ -92,7 +92,7 @@ void ParticleManager::timerTick()
     // Occasionally notify what current proportions are
     if(elapsedSimTicks % 5 == 0){
         vector<float> percentages;
-        for(int i = 0; i < totalSpawns.size(); i++){
+        for(int i = 0; i < (int)totalSpawns.size(); i++){
             percentages.push_back(((float)receivedSpawns[i])/totalSpawns[i]);
         }
         emit particlesReached(percentages);
@@ -199,7 +199,7 @@ void ParticleManager::addSpawner(data::Demands type, int x, int y, int quantity)
         case data::AMMENITIES:
         case data::ENERGY:
             spawner.spawnDelay = 30;
-            spawner.spawnsRemaining = 7;
+            spawner.spawnsRemaining = 4;
             break;
         case data::CLIMATE:
             spawner.spawnDelay = 40;
