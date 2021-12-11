@@ -4,14 +4,34 @@
 
 #include "City.h"
 
-City::City(){
+City::City()
+{
     population = 1000000;
+    updatePopulation(1.0);
+}
+
+void City::updatePopulation(double factor)
+{
+    population = population * factor;
     energyConsumptionRequired = (5 * population) / 100;
     // on average 2 people per house
     housingRequired = (population/2)/1000;
-    foodRequired = 100;
-    amenitiesRequired = 100;
-    foodRequired = 200;
+    foodRequired = population/1000;
+    amenitiesRequired = population/10000;
+}
+
+int City::numberDemandsSatisfied()
+{
+    int sumDemands = 0;
+    if(energyGenerated >= energyConsumptionRequired)
+        sumDemands += 1;
+    if(housingGenerated >= housingRequired)
+        sumDemands += 1;
+    if(amenitiesGenerated >= amenitiesRequired)
+        sumDemands += 1;
+    if(foodGenerated >= foodRequired)
+        sumDemands += 1;
+    return sumDemands;
 }
 
 void City::environmentTracker(int enviroUpdate){
