@@ -2004,7 +2004,6 @@ border-image: url(:resources/trees.png);
    <zorder>gridLayoutWidget</zorder>
    <zorder>label_6</zorder>
    <zorder>statusBarTextBrowser</zorder>
-   <zorder>nextRoundButton</zorder>
    <zorder>textBrowser</zorder>
    <zorder>textBrowser_2</zorder>
    <zorder>textBrowser_3</zorder>
@@ -2095,6 +2094,7 @@ border-image: url(:resources/trees.png);
    <zorder>buildingSelectionComboBox</zorder>
    <zorder>label</zorder>
    <zorder>resetGameButton</zorder>
+   <zorder>nextRoundButton</zorder>
    <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
