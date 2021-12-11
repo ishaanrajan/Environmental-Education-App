@@ -82,10 +82,10 @@ public:
 
     /**
      * @brief This method is used when the user decides
-     * to add a theater.
+     * to add a park.
      * 
      */
-    void addTheater();
+    void addPark();
 
        /**
      * @brief This method is used when the user decides

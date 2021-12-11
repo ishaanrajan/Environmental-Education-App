@@ -24,16 +24,16 @@ void City::environmentTracker(int enviroUpdate){
 void City::energyTracker(int energyUpdate){
     if(energyGenerated + energyUpdate > energyConsumptionRequired)
     {
-            energyGenerated = energyConsumptionRequired;
+        energyGenerated = energyConsumptionRequired;
     }else
     {
-         energyGenerated += energyUpdate;
+        energyGenerated += energyUpdate;
     }
 }
 
 void City::housingTracker(int housingUpdate){
     if(housingUpdate + housingGenerated >= housingRequired){
-        housingRequired = 100;
+        housingGenerated = housingRequired;
     }else{
         housingGenerated += housingUpdate;
     }
@@ -41,18 +41,18 @@ void City::housingTracker(int housingUpdate){
 
 void City::foodTracker(int foodUpdate){
     if(foodUpdate + foodGenerated >= foodRequired){
-        foodRequired = 100;
+        foodGenerated = foodRequired;
     }else{
         foodGenerated += foodUpdate;
     }
 }
 
 
-void City::amenitiesTracker(int funUpdate){
-    if(funUpdate + amenitiesGenerated >= amenitiesRequired){
-        amenitiesRequired = 100;
+void City::amenitiesTracker(int amenityUpdate){
+    if(amenityUpdate + amenitiesGenerated >= amenitiesRequired){
+        amenitiesGenerated = amenitiesRequired;
     }else{
-        amenitiesGenerated += funUpdate;
+        amenitiesGenerated += amenityUpdate;
     }
 }
 
@@ -141,12 +141,12 @@ void City::addSuburbanHousing(){
     allBuilds.push_back("neighborhood");
 }
 
-void City::addTheater(){
+void City::addPark(){
     int funGen = 50;
-    int enviroUpdate = 5;
-    environmentTracker(enviroUpdate);
+//    int enviroUpdate = 5;
+//    environmentTracker(enviroUpdate);
     amenitiesTracker(funGen);
-    allBuilds.push_back("theater");
+    allBuilds.push_back("park");
 }
 
 void City::addDriveIn(){

@@ -236,6 +236,7 @@ void MainWindow::initParticleManager()
 
 void MainWindow::fillBarsToMax()
 {
+    qDebug() << city.getAmenitiesGenerated();
     ui->energyProgressBar->setValue(city.getEnergyGenerated());
     ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
     ui->housingProgressBar->setValue(city.getHousingGenerated());
@@ -281,14 +282,16 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addNuclear();
             else if(currBlockName == "solar")
                 city.addSolar();
-            else if(currBlockName == "theater")
-                city.addTheater();
+            else if(currBlockName == "park")
+                city.addPark();
             else if(currBlockName == "windfarm")
                 city.addWindFarm();
             else if(currBlockName == "plantFarm")
                 city.addPlantFarm();
             else if(currBlockName == "cowfactory")
                 city.addCowFactory();
+            else if(currBlockName == "stadium")
+                city.addStadium();
         }
     }
 
