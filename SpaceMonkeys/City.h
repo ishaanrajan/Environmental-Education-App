@@ -171,6 +171,10 @@ public:
      */
     void resetGeneratedValues();
 
+    void updatePopulation(double);
+
+    int numberDemandsSatisfied();
+
     // Dynamic
     int environmentEffect = 0;
     int energyGenerated = 0;
