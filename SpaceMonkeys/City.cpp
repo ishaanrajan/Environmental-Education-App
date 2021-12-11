@@ -6,7 +6,7 @@
 
 City::City()
 {
-    population = 1000000;
+    population = 100000;
     updatePopulation(1.0);
 }
 
@@ -42,13 +42,14 @@ void City::environmentTracker(int enviroUpdate){
     }
 }
 void City::energyTracker(int energyUpdate){
-    if(energyGenerated + energyUpdate > energyConsumptionRequired)
-    {
-        energyGenerated = energyConsumptionRequired;
-    }else
-    {
-        energyGenerated += energyUpdate;
-    }
+    energyGenerated += energyUpdate;
+//    if(energyGenerated + energyUpdate > energyConsumptionRequired)
+//    {
+//        energyGenerated = energyConsumptionRequired;
+//    }else
+//    {
+//        energyGenerated += energyUpdate;
+//    }
 }
 
 void City::housingTracker(int housingUpdate){
@@ -236,4 +237,29 @@ int City::getFoodNeeded(){
 
 int City::getHousingNeeded(){
     return housingRequired;
+}
+
+int City::getDemandEnergyGenerated()
+{
+    return energyGenerated < energyConsumptionRequired ? energyGenerated : energyConsumptionRequired;
+}
+
+int City::getDemandAmenitiesGenerated()
+{
+    return amenitiesGenerated < amenitiesRequired ? amenitiesGenerated : amenitiesRequired;
+}
+
+int City::getDemandFoodGenerated()
+{
+    return foodGenerated < foodRequired ? foodGenerated : foodRequired;
+}
+
+int City::getDemandHousingGenerated()
+{
+    return housingGenerated < housingRequired ? housingGenerated : housingRequired;
+}
+
+int City::getPopulation()
+{
+    return population;
 }

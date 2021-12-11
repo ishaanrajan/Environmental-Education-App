@@ -93,7 +93,7 @@ void ParticleManager::timerTick()
     if(elapsedSimTicks % 5 == 0){
         vector<float> percentages;
         for(int i = 0; i < (int)totalSpawns.size(); i++){
-            percentages.push_back(((float)receivedSpawns[i])/totalSpawns[i]);
+            percentages.push_back(totalSpawns[i] > 0 ? ((float)receivedSpawns[i])/totalSpawns[i] : 0);
         }
         emit particlesReached(percentages);
     }
@@ -124,12 +124,13 @@ void ParticleManager::updateScene()
             particleScene.addRect(particle.body->GetPosition().x, particle.body->GetPosition().y, particle.randSize, particle.randSize, color, color);
         }
     }
-    // Attraction draw
-    particleScene.addEllipse(demandAttractors[Demands::CLIMATE].attractionPoint.x, demandAttractors[Demands::CLIMATE].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 0, 255));
-    particleScene.addRect(demandAttractors[Demands::FOOD].attractionPoint.x, demandAttractors[Demands::FOOD].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 0, 255));
-    particleScene.addRect(demandAttractors[Demands::HOUSING].attractionPoint.x, demandAttractors[Demands::HOUSING].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 0, 255, 255));
-    particleScene.addRect(demandAttractors[Demands::AMMENITIES].attractionPoint.x, demandAttractors[Demands::AMMENITIES].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 255, 255));
-    particleScene.addRect(demandAttractors[Demands::ENERGY].attractionPoint.x, demandAttractors[Demands::ENERGY].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 255, 255));
+
+    // DEBUG: Attraction draw
+//    particleScene.addEllipse(demandAttractors[Demands::CLIMATE].attractionPoint.x, demandAttractors[Demands::CLIMATE].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 0, 255));
+//    particleScene.addRect(demandAttractors[Demands::FOOD].attractionPoint.x, demandAttractors[Demands::FOOD].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 0, 255));
+//    particleScene.addRect(demandAttractors[Demands::HOUSING].attractionPoint.x, demandAttractors[Demands::HOUSING].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 0, 255, 255));
+//    particleScene.addRect(demandAttractors[Demands::AMMENITIES].attractionPoint.x, demandAttractors[Demands::AMMENITIES].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(255, 0, 255, 255));
+//    particleScene.addRect(demandAttractors[Demands::ENERGY].attractionPoint.x, demandAttractors[Demands::ENERGY].attractionPoint.y, 5, 5, QColor(255, 0, 0, 255), QColor(0, 255, 255, 255));
 
     particleScene.update();
 }
@@ -309,7 +310,7 @@ void ParticleManager::update()
         if(hitAttractor(particle) && !particle.received){
             receivedSpawns[particle.type]++;
             particle.received = true;
-            qDebug() << particle.type << " " << receivedSpawns[particle.type] << "/" << totalSpawns[particle.type];
+            //qDebug() << particle.type << " " << receivedSpawns[particle.type] << "/" << totalSpawns[particle.type];
         }
 
         b2Vec2 currV = particle.body->GetLinearVelocity();

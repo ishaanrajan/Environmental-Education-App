@@ -65,14 +65,22 @@ private:
     ParticleManager particleManager;
     bool animLimitReached = false;
     QTimer * animTimer;
-    int priorEnergy = 0;
-    int priorAmmenities = 0;
-    int priorHousing = 0;
-    int priorFood = 0;
-    int priorClimate = 0;
+    int priorEnergyGenerated = 0;
+    int priorEnergyNeeded = 0;
+    int priorAmmenitiesGenerated = 0;
+    int priorAmmenitiesNeeded = 0;
+    int priorHousingGenerated = 0;
+    int priorHousingNeeded = 0;
+    int priorFoodGenerated = 0;
+    int priorFoodNeeded = 0;
+    int priorClimateGenerated = 0;
+
+    QString actionsFormatString = "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">Actions: %1</span></p></body></html>";
 
     void createListOfGameSquares();
     void checkImpactBounds();
     void fillBarsToMax();
+    void setBarMaximums();
+    void fillLabelsToMax();
 };
 #endif // MAINWINDOW_H

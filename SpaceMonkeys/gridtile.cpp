@@ -19,7 +19,7 @@ void GridTile::dropEvent(QDropEvent *event)
     }
     if (this->count() == 0)
     {
-
+        emit addGameBlock();
         QListWidget::dropEvent(event);
     }
 }

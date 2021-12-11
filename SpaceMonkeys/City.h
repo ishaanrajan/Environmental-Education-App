@@ -164,6 +164,16 @@ public:
      */
     int getHousingNeeded();
 
+    int getDemandEnergyGenerated();
+
+    int getDemandAmenitiesGenerated();
+
+    int getDemandFoodGenerated();
+
+    int getDemandHousingGenerated();
+
+    int getPopulation();
+
     std::vector<std::string> allBuilds;
 
     /**

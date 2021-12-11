@@ -11,7 +11,8 @@ public:
     explicit GridTile(QWidget *parent = nullptr);
 
 signals:
-    void addGameBlock(GameBlock *);
+    //void addGameBlock(GameBlock *);
+    void addGameBlock();
 
     // QWidget interface
 protected:

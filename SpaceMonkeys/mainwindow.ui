@@ -164,7 +164,7 @@ border-width: 2px;
       <x>220</x>
       <y>80</y>
       <width>731</width>
-      <height>31</height>
+      <height>89</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -1996,6 +1996,32 @@ border-image: url(:resources/trees.png);
      <string>Reset Game</string>
     </property>
    </widget>
+   <widget class="QLabel" name="actionsLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>110</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Actions: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="populationLabel">
+    <property name="geometry">
+     <rect>
+      <x>496</x>
+      <y>230</y>
+      <width>471</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pop: 0</string>
+    </property>
+   </widget>
    <zorder>environmentalImpactProgressBar</zorder>
    <zorder>horizontalLayoutWidget</zorder>
    <zorder>impact_label</zorder>
@@ -2095,6 +2121,8 @@ border-image: url(:resources/trees.png);
    <zorder>label</zorder>
    <zorder>resetGameButton</zorder>
    <zorder>nextRoundButton</zorder>
+   <zorder>actionsLabel</zorder>
+   <zorder>populationLabel</zorder>
    <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

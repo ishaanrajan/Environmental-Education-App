@@ -9,10 +9,30 @@ GameBlockManager::GameBlockManager(QWidget *parent) : QListWidget(parent)
 
 }
 
+void GameBlockManager::setActionsRemaining(int actions)
+{
+    actionsRemaining = actions;
+}
+
+void GameBlockManager::mutateActions(int delta)
+{
+    actionsRemaining += delta;
+}
+
+int GameBlockManager::getActionsRemaining()
+{
+    return actionsRemaining;
+}
+
 void GameBlockManager::startDrag(Qt::DropActions supportedActions)
 {
     if(supportedActions & Qt::CopyAction)
     {
+        // If no actions left, ignore drag
+        if(actionsRemaining == 0){
+            return;
+        }
+
         QList<QListWidgetItem*> m_items = selectedItems();
         if(m_items.isEmpty())
                 return;
@@ -28,8 +48,9 @@ void GameBlockManager::startDrag(Qt::DropActions supportedActions)
 
         m_items.at(0)->setSelected(false);
      }
-     else
+     else{
         QListWidget::startDrag(supportedActions);
+    }
 
 
 }

@@ -75,20 +75,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->housingProgressBar->setValue(0);
     ui->housingProgressBar->setMinimum(0);
-    ui->housingProgressBar->setMaximum(100);
     ui->housingProgressBar->show();
 
     ui->foodProgressBar->setValue(0);
     ui->foodProgressBar->setMinimum(0);
-    ui->foodProgressBar->setMaximum(100);
 
     ui->amenitiesProgressBar->setValue(0);
     ui->amenitiesProgressBar->setMinimum(0);
-    ui->amenitiesProgressBar->setMaximum(100);
 
     ui->energyProgressBar->setValue(0);
     ui->energyProgressBar->setMinimum(0);
-    ui->energyProgressBar->setMaximum(city.getEnergyNeeded());
+
+    setBarMaximums();
 
     ui->environmentalImpactProgressBar->setValue(0);
     ui->environmentalImpactProgressBar->setMinimum(0);
@@ -103,17 +101,32 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setStyleSheet("background: transparent; border: 0px;");
     ui->graphicsView->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
+    ui->actionsLabel->setText(actionsFormatString.arg(QString::number(ui->selectStructureListWidget->getActionsRemaining())));
+    fillLabelsToMax(); // to set them up with default city values
+
+
     connect(&gameOverPop, &gameOverPopup::restartClicked, this, &MainWindow::resetGame);
 
     connect(&particleManager, &ParticleManager::particlesReached, this, [this](std::vector<float> percentages){
         // Only do gradual fill up until a given amount of time, then the bars fill fully
         // To prevent stragglers from messing up the bars
         if(!animLimitReached){
-            ui->energyProgressBar->setValue(priorEnergy + (city.getEnergyGenerated()-priorEnergy) * percentages[data::Demands::ENERGY]);
-            ui->amenitiesProgressBar->setValue(priorAmmenities + (city.getAmenitiesGenerated()-priorAmmenities) * percentages[data::Demands::AMMENITIES]);
-            ui->housingProgressBar->setValue(priorHousing + (city.getHousingGenerated()-priorHousing) * percentages[data::Demands::HOUSING]);
-            ui->foodProgressBar->setValue(priorFood + (city.getFoodGenerated()-priorFood) * percentages[data::Demands::FOOD]);
-            ui->environmentalImpactProgressBar->setValue(priorClimate + (city.getEnvironmentEffect()-priorClimate) * percentages[data::Demands::CLIMATE]);
+            int energyDif = priorEnergyGenerated + (city.getEnergyGenerated()-priorEnergyGenerated) * percentages[data::Demands::ENERGY];
+            int amenityDif = priorAmmenitiesGenerated + (city.getAmenitiesGenerated()-priorAmmenitiesGenerated) * percentages[data::Demands::AMMENITIES];
+            int housingDif = priorHousingGenerated + (city.getHousingGenerated()-priorHousingGenerated) * percentages[data::Demands::HOUSING];
+            int foodDif = priorFoodGenerated + (city.getFoodGenerated()-priorFoodGenerated) * percentages[data::Demands::FOOD];
+            int climateDif = priorClimateGenerated + (city.getEnvironmentEffect()-priorClimateGenerated) * percentages[data::Demands::CLIMATE];;
+
+            ui->energyProgressBar->setValue(energyDif < ui->energyProgressBar->maximum() ? energyDif : ui->energyProgressBar->maximum());
+            ui->amenitiesProgressBar->setValue(amenityDif < ui->amenitiesProgressBar->maximum() ? amenityDif : ui->amenitiesProgressBar->maximum());
+            ui->housingProgressBar->setValue(housingDif < ui->housingProgressBar->maximum() ? housingDif : ui->housingProgressBar->maximum());
+            ui->foodProgressBar->setValue(foodDif < ui->foodProgressBar->maximum() ? foodDif : ui->foodProgressBar->maximum());
+            ui->environmentalImpactProgressBar->setValue(climateDif < ui->environmentalImpactProgressBar->maximum() ? climateDif : ui->environmentalImpactProgressBar->maximum());
+
+            ui->energy_label->setText("Energy: " + QString::number(energyDif) + "/" + QString::number(priorEnergyNeeded));
+            ui->food_label->setText("Food: " + QString::number(foodDif) + "/" + QString::number(priorFoodNeeded));
+            ui->housing_label->setText("Housing: " + QString::number(housingDif) + "/" + QString::number(priorHousingNeeded));
+            ui->amenities_label->setText("Amenities: " + QString::number(amenityDif) + "/" + QString::number(priorAmmenitiesNeeded));
 
             //TODO: diagnose why this is slow to do
             //checkImpactBounds();
@@ -199,8 +212,26 @@ void MainWindow::createListOfGameSquares(){
                         ui->listWidget5_5,
                         ui->listWidget5_6,
                         ui->listWidget5_7};
+
+    for(GridTile * tile : orderedGridTiles){
+        connect(tile, &GridTile::addGameBlock, this, [this](){
+            // Action succeeded, so decrease how many remain
+            // Only do here to avoid issue of consuming actions if placement did not take place after drag
+            ui->selectStructureListWidget->mutateActions(-1);
+
+            //TODO: animate?
+            ui->actionsLabel->setText(actionsFormatString.arg(QString::number(ui->selectStructureListWidget->getActionsRemaining())));
+        });
+    }
 }
 
+void MainWindow::setBarMaximums()
+{
+    ui->energyProgressBar->setMaximum(city.getEnergyNeeded());
+    ui->housingProgressBar->setMaximum(city.getHousingNeeded());
+    ui->foodProgressBar->setMaximum(city.getFoodNeeded());
+    ui->amenitiesProgressBar->setMaximum(city.getAmenitiesNeeded());
+}
 
 void MainWindow::initParticleManager()
 {
@@ -230,42 +261,77 @@ void MainWindow::initParticleManager()
 
     connect(animTimer, &QTimer::timeout, [this](){
         this->animLimitReached = true;
+        // This fill to max is to show the final state for this round
         fillBarsToMax();
+        ui->energy_label->setText("Energy: " + QString::number(city.getEnergyGenerated()) + "/" + QString::number(priorEnergyNeeded));
+        ui->food_label->setText("Food: " + QString::number(city.getFoodGenerated()) + "/" + QString::number(priorFoodNeeded));
+        ui->housing_label->setText("Housing: " + QString::number(city.getHousingGenerated()) + "/" + QString::number(priorHousingNeeded));
+        ui->amenities_label->setText("Amenities: " + QString::number(city.getAmenitiesGenerated()) + "/" + QString::number(priorAmmenitiesNeeded));
+
+
+        // Give a delay before using the new maximums
+        QTimer::singleShot(1000, this, [this](){
+            setBarMaximums();
+            // Must fill again so that we use the latest fill values with the new maximums
+            fillBarsToMax();
+            // Now show proportion for new demands
+            fillLabelsToMax();
+        });
     });
 }
 
 void MainWindow::fillBarsToMax()
 {
-    qDebug() << city.getAmenitiesGenerated();
-    ui->energyProgressBar->setValue(city.getEnergyGenerated());
-    ui->amenitiesProgressBar->setValue(city.getAmenitiesGenerated());
-    ui->housingProgressBar->setValue(city.getHousingGenerated());
-    ui->foodProgressBar->setValue(city.getFoodGenerated());
+    ui->energyProgressBar->setValue(city.getDemandEnergyGenerated());
+    ui->amenitiesProgressBar->setValue(city.getDemandAmenitiesGenerated());
+    ui->housingProgressBar->setValue(city.getDemandHousingGenerated());
+    ui->foodProgressBar->setValue(city.getDemandFoodGenerated());
     ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
     checkImpactBounds();
+}
+
+void MainWindow::fillLabelsToMax()
+{
+    ui->energy_label->setText("Energy: " + QString::number(city.getEnergyGenerated()) + "/" + QString::number(city.getEnergyNeeded()));
+    ui->amenities_label->setText("Amenities: " + QString::number(city.getAmenitiesGenerated()) + "/" + QString::number(city.getAmenitiesNeeded()));
+    ui->food_label->setText("Food: " + QString::number(city.getFoodGenerated()) + "/" + QString::number(city.getFoodNeeded()));
+    ui->housing_label->setText("Housing: " + QString::number(city.getHousingGenerated()) + "/" + QString::number(city.getHousingNeeded()));
+
+    // Also show population update
+    ui->populationLabel->setText("Pop: " + QString::number(city.getPopulation()));
 }
 
 void MainWindow::on_nextRoundButton_clicked()
 {
     //animTimer->stop();
+    setBarMaximums();
     fillBarsToMax();
+    // Now show proportion for new demands
+    fillLabelsToMax();
 
     // Update prior values before adding new tiles
-    priorEnergy = city.getEnergyGenerated();
-    priorAmmenities = city.getAmenitiesGenerated();
-    priorFood = city.getFoodGenerated();
-    priorHousing = city.getHousingGenerated();
-    priorClimate = city.getEnvironmentEffect();
+    priorEnergyGenerated = city.getEnergyGenerated();
+    priorEnergyNeeded = city.getEnergyNeeded();
+    priorAmmenitiesGenerated = city.getAmenitiesGenerated();
+    priorAmmenitiesNeeded = city.getAmenitiesNeeded();
+    priorFoodGenerated = city.getFoodGenerated();
+    priorFoodNeeded = city.getFoodNeeded();
+    priorHousingGenerated = city.getHousingGenerated();
+    priorHousingNeeded = city.getHousingNeeded();
+    priorClimateGenerated = city.getEnvironmentEffect();
 
     city.resetGeneratedValues();
+    // Need to have a city with the current population so bars are right
+    //city.updatePopulation(1 + (0.2 * gameRound));
+
     if(gameRound == 0){
         // Init particle manager bar attractors
         // Must do this here as in constructor positions not yet initialized
         initParticleManager();
     }
+
     gameRound += 1;
-    city.updatePopulation(1 + (0.2 * gameRound));
-    qDebug() << city.getAmenitiesNeeded();
+
     for (auto iter = allGridTiles.begin(); iter != allGridTiles.end(); ++iter)
     {
         if(iter->first->itemAt(0,0) && iter->second)
@@ -297,6 +363,10 @@ void MainWindow::on_nextRoundButton_clicked()
         }
     }
 
+    // Tally points
+    ui->selectStructureListWidget->setActionsRemaining(city.numberDemandsSatisfied());
+    ui->actionsLabel->setText(actionsFormatString.arg(QString::number(ui->selectStructureListWidget->getActionsRemaining())));
+
     // Config particle manager
     particleManager.resetSim();
     // Done after reset so that the scene is cleared and no particles currently simulating
@@ -323,13 +393,13 @@ void MainWindow::on_nextRoundButton_clicked()
     for(GridTile* currWidgetPtr : allSquares){
         currWidgetPtr->setEnabled(false);
         QTimer::singleShot(5000,currWidgetPtr,std::bind(&QWidget::setEnabled,currWidgetPtr,true));
-
-        ui->nextRoundButton->setEnabled(false);
-        QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
-
-        ui->resetGameButton->setEnabled(false);
-        QTimer::singleShot(5000,ui->resetGameButton,std::bind(&QWidget::setEnabled,ui->resetGameButton,true));
     }
+
+    ui->nextRoundButton->setEnabled(false);
+    QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
+
+    ui->resetGameButton->setEnabled(false);
+    QTimer::singleShot(5000,ui->resetGameButton,std::bind(&QWidget::setEnabled,ui->resetGameButton,true));
 
     ui->nextRoundButton->setEnabled(false);
     QTimer::singleShot(5000,ui->nextRoundButton,std::bind(&QWidget::setEnabled,ui->nextRoundButton,true));
@@ -337,6 +407,8 @@ void MainWindow::on_nextRoundButton_clicked()
     // This will first stop then restart the timer
     // Necessary to stop so that it doesn't suddenly fill to full from a previous round if player goes too fast
     animTimer->start();
+
+    city.updatePopulation(1 + (0.2 * gameRound));
 }
 
 
@@ -377,6 +449,9 @@ void MainWindow::resetGame(){
     particleManager.resetSim();
     City newCity;
     city = newCity;
+    ui->selectStructureListWidget->setActionsRemaining(4);
+    ui->actionsLabel->setText(actionsFormatString.arg(QString::number(ui->selectStructureListWidget->getActionsRemaining())));
+    fillLabelsToMax();
     this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");
     gameRound = 0;
     ui->housingProgressBar->setValue(0);
