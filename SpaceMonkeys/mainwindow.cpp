@@ -408,7 +408,7 @@ void MainWindow::on_nextRoundButton_clicked()
     // Necessary to stop so that it doesn't suddenly fill to full from a previous round if player goes too fast
     animTimer->start();
 
-    city.updatePopulation(1 + (0.2 * gameRound));
+    city.updatePopulation(1 + (0.1 * gameRound));
 }
 
 

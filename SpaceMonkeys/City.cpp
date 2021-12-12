@@ -13,7 +13,7 @@ City::City()
 void City::updatePopulation(double factor)
 {
     population = population * factor;
-    energyConsumptionRequired = (5 * population) / 100;
+    energyConsumptionRequired = (5 * population) / 75;
     // on average 2 people per house
     housingRequired = (population/2)/1000;
     foodRequired = population/1000;
@@ -130,7 +130,7 @@ void City::addNuclear(){
 void City::addCowFactory(){
     // some constant penalties and additions
     energyGenerated -= 10;
-    int produceGen = 60;
+    int produceGen = 75;
     int enviroUpdate = 10;
     int funGenerate = 10;
     environmentTracker(enviroUpdate);
@@ -143,7 +143,7 @@ void City::addCowFactory(){
 void City::addPlantFarm(){
     // some constant penalties and additions
     energyGenerated -= 10;
-    int produceGen = 30;
+    int produceGen = 50;
     int enviroUpdate = 10;
     environmentTracker(enviroUpdate);
     foodTracker(produceGen);
@@ -153,7 +153,7 @@ void City::addPlantFarm(){
 void City::addHighDensityHousing(){
     int enviroUpdate = 8;
     environmentTracker(enviroUpdate);
-    int housingGen = 45;
+    int housingGen = 60;
     housingTracker(housingGen);
     allBuilds.push_back("highdensityapartments");
 }
@@ -175,7 +175,7 @@ void City::addPark(){
 }
 
 void City::addDriveIn(){
-    int funGen = 100;
+    int funGen = 25;
     int enviroUpdate = 7;
     environmentTracker(enviroUpdate);
     amenitiesTracker(funGen);
@@ -183,7 +183,7 @@ void City::addDriveIn(){
 }
 
 void City::addStadium(){
-    int funGen = 10;
+    int funGen = 75;
     energyGenerated -= 10;
     int enviroUpdate = 15;
     environmentTracker(enviroUpdate); //TODO: clean these unnecessary lines
