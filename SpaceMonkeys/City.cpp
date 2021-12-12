@@ -86,7 +86,7 @@ void City::addWindFarm(){
     // Times 30 days
     int energyUpdate = (7200 * 30)/100;
     energyTracker(energyUpdate);
-    int enviroUpdate = 1;
+    int enviroUpdate = -5;
     environmentTracker(enviroUpdate);
     allBuilds.push_back("windfarm");
 }
@@ -109,7 +109,7 @@ void City::addSolar(){
     int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-    int enviroUpdate = 5;
+    int enviroUpdate = -5;
     environmentTracker(enviroUpdate);
     allBuilds.push_back("solar");
     
@@ -120,7 +120,7 @@ void City::addNuclear(){
      int energyUpdate = (95000 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-    int enviroUpdate = 1;
+    int enviroUpdate = 0;
     environmentTracker(enviroUpdate);
 
     allBuilds.push_back("nuclear");
@@ -144,7 +144,7 @@ void City::addPlantFarm(){
     // some constant penalties and additions
     energyGenerated -= 10;
     int produceGen = 50;
-    int enviroUpdate = 10;
+    int enviroUpdate = -4;
     environmentTracker(enviroUpdate);
     foodTracker(produceGen);
     allBuilds.push_back("plantFarm");
@@ -168,8 +168,8 @@ void City::addSuburbanHousing(){
 
 void City::addPark(){
     int funGen = 50;
-//    int enviroUpdate = 5;
-//    environmentTracker(enviroUpdate);
+    int enviroUpdate = -5;
+    environmentTracker(enviroUpdate);
     amenitiesTracker(funGen);
     allBuilds.push_back("park");
 }
