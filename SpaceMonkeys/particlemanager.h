@@ -18,6 +18,7 @@ struct ParticleSpawner{
     data::Demands type;
     int spawnDelay = 0; // how many ticks between spawns
     int spawnsRemaining = 0; //how many spawns left at this delay
+    bool negateClimate = false;
 };
 
 struct Particle{
@@ -27,6 +28,7 @@ struct Particle{
     int lifetime = 0;
     int randSize = 4 + ( std::rand() % ( 12 - 4 + 1 ) );
     bool received = false;
+    bool negateClimate = false;
 };
 
 struct AttractorRect{
@@ -126,6 +128,7 @@ private:
     std::vector<Particle> particles;
     std::map<data::Demands, AttractorRect> demandAttractors;
     std::map<data::Demands, QColor> demandColors;
+    QColor negateColor = QColor(200,200,200,175);
 
     // TODO: we should unify the process from city --> here
     // For now, simply using vector indexed on the Demand for the impact it has

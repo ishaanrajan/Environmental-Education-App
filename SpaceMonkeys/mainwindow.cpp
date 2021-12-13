@@ -115,13 +115,17 @@ MainWindow::MainWindow(QWidget *parent)
             int amenityDif = priorAmmenitiesGenerated + (city.getAmenitiesGenerated()-priorAmmenitiesGenerated) * percentages[data::Demands::AMMENITIES];
             int housingDif = priorHousingGenerated + (city.getHousingGenerated()-priorHousingGenerated) * percentages[data::Demands::HOUSING];
             int foodDif = priorFoodGenerated + (city.getFoodGenerated()-priorFoodGenerated) * percentages[data::Demands::FOOD];
-            int climateDif = priorClimateGenerated + (city.getEnvironmentEffect()-priorClimateGenerated) * percentages[data::Demands::CLIMATE];;
+            int climateDif = priorClimateGenerated + (city.getEnvironmentEffect()-priorClimateGenerated) * percentages[data::Demands::CLIMATE];
 
             ui->energyProgressBar->setValue(energyDif < ui->energyProgressBar->maximum() ? energyDif : ui->energyProgressBar->maximum());
             ui->amenitiesProgressBar->setValue(amenityDif < ui->amenitiesProgressBar->maximum() ? amenityDif : ui->amenitiesProgressBar->maximum());
             ui->housingProgressBar->setValue(housingDif < ui->housingProgressBar->maximum() ? housingDif : ui->housingProgressBar->maximum());
             ui->foodProgressBar->setValue(foodDif < ui->foodProgressBar->maximum() ? foodDif : ui->foodProgressBar->maximum());
-            ui->environmentalImpactProgressBar->setValue(climateDif < ui->environmentalImpactProgressBar->maximum() ? climateDif : ui->environmentalImpactProgressBar->maximum());
+
+            // So that if climate goes below 0, doesn't end up having bar stuck too high
+            int climateVal = climateDif > ui->environmentalImpactProgressBar->maximum() ? ui->environmentalImpactProgressBar->maximum() : climateDif;
+            climateVal = climateVal < 0 ? 0 : climateVal;
+            ui->environmentalImpactProgressBar->setValue(climateVal);
 
             ui->energy_label->setText("Energy: " + QString::number(energyDif) + "/" + QString::number(priorEnergyNeeded));
             ui->food_label->setText("Food: " + QString::number(foodDif) + "/" + QString::number(priorFoodNeeded));
@@ -286,7 +290,7 @@ void MainWindow::fillBarsToMax()
     ui->amenitiesProgressBar->setValue(city.getDemandAmenitiesGenerated());
     ui->housingProgressBar->setValue(city.getDemandHousingGenerated());
     ui->foodProgressBar->setValue(city.getDemandFoodGenerated());
-    ui->environmentalImpactProgressBar->setValue(city.getEnvironmentEffect());
+    ui->environmentalImpactProgressBar->setValue(city.getDemandEnvironmentGenerated());
     checkImpactBounds();
 }
 
@@ -485,7 +489,11 @@ void MainWindow::resetGame(){
 
 void MainWindow::checkImpactBounds()
 {
-    if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
+    // Once killed, trees never return
+    if(ui->environmentalImpactProgressBar->value() < 50){
+        this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");
+        ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
+    } else if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
         int trees = 0;

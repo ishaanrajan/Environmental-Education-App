@@ -86,8 +86,8 @@ void City::addWindFarm(){
     // Times 30 days
     int energyUpdate = (7200 * 30)/100;
     energyTracker(energyUpdate);
-    int enviroUpdate = -5;
-    environmentTracker(enviroUpdate);
+//    int enviroUpdate = -5;
+//    environmentTracker(enviroUpdate);
     allBuilds.push_back("windfarm");
 }
 
@@ -109,8 +109,8 @@ void City::addSolar(){
     int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-    int enviroUpdate = -5;
-    environmentTracker(enviroUpdate);
+//    int enviroUpdate = -5;
+//    environmentTracker(enviroUpdate);
     allBuilds.push_back("solar");
     
 }
@@ -184,7 +184,7 @@ void City::addDriveIn(){
 
 void City::addStadium(){
     int funGen = 75;
-    energyGenerated -= 10;
+    energyTracker(-10);
     int enviroUpdate = 15;
     environmentTracker(enviroUpdate); //TODO: clean these unnecessary lines
     amenitiesTracker(funGen);
@@ -261,6 +261,12 @@ int City::getDemandFoodGenerated()
 int City::getDemandHousingGenerated()
 {
     return housingGenerated < housingRequired ? housingGenerated : housingRequired;
+}
+
+int City::getDemandEnvironmentGenerated(){
+    int enviroVal = environmentEffect > 100 ? 100 : environmentEffect;
+    enviroVal = enviroVal < 0 ? 0 : enviroVal;
+    return enviroVal;
 }
 
 int City::getPopulation()

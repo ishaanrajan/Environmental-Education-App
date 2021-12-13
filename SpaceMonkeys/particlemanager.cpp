@@ -45,9 +45,9 @@ ParticleManager::ParticleManager(QObject * parent)
     spawnerTemplates["windfarm"] = {0, 0, 0, 0, 3};
     spawnerTemplates["drivein"] = {2, 2, 2, 2, 2};
     spawnerTemplates["stadium"] = {0,0,3,1,0};
-    spawnerTemplates["park"] = {0,0,1,0,0};
+    spawnerTemplates["park"] = {0,0,1,-1,0};
     spawnerTemplates["cowfactory"] = {3,0,1,3,0};
-    spawnerTemplates["plantFarm"] = {2,0,0,0,0};
+    spawnerTemplates["plantFarm"] = {2,0,0,-1,0};
 
     tileOffsetMap["coalplant"] = {50,10};
     tileOffsetMap["factory2"] = {50,0};
@@ -121,7 +121,8 @@ void ParticleManager::updateScene()
         if(particle.type != data::CLIMATE){
             particleScene.addEllipse(particle.body->GetPosition().x, particle.body->GetPosition().y, 6, 6, color, color);
         } else {
-            particleScene.addRect(particle.body->GetPosition().x, particle.body->GetPosition().y, particle.randSize, particle.randSize, color, color);
+            particleScene.addRect(particle.body->GetPosition().x, particle.body->GetPosition().y, particle.randSize, particle.randSize,
+                                  particle.negateClimate ? negateColor : color, particle.negateClimate ? negateColor : color);
         }
     }
 
@@ -190,6 +191,11 @@ void ParticleManager::addSpawner(data::Demands type, int x, int y, int quantity)
 {
     ParticleSpawner spawner;
     spawner.pos = b2Vec2(x, y);
+    // So we can note if it is supposed to decrease environmental impact
+    if(quantity < 0 && type == data::Demands::CLIMATE){
+        spawner.negateClimate = true;
+        quantity = -quantity;
+    }
     spawner.quantity = quantity;
     spawner.type = type;
 
@@ -238,6 +244,7 @@ void ParticleManager::spawnParticles()
         for(int i = 0; i < spawner.quantity; i++){
             Particle p;
             p.type = spawner.type;
+            p.negateClimate = spawner.negateClimate;
             p.body = world->CreateBody(&particleBodyDef);
             p.body->CreateFixture(&fixtureDef);
 

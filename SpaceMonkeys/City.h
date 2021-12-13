@@ -172,6 +172,8 @@ public:
 
     int getDemandHousingGenerated();
 
+    int getDemandEnvironmentGenerated();
+
     int getPopulation();
 
     std::vector<std::string> allBuilds;
