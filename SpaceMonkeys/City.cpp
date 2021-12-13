@@ -16,8 +16,8 @@ void City::updatePopulation(double factor)
     energyConsumptionRequired = (5 * population) / 75;
     // on average 2 people per house
     housingRequired = (population/2)/1000;
-    foodRequired = population/1000;
-    amenitiesRequired = population/10000;
+    foodRequired = population/2000;
+    amenitiesRequired = population/1000;
 }
 
 int City::numberDemandsSatisfied()
@@ -86,8 +86,8 @@ void City::addWindFarm(){
     // Times 30 days
     int energyUpdate = (7200 * 30)/100;
     energyTracker(energyUpdate);
-//    int enviroUpdate = -5;
-//    environmentTracker(enviroUpdate);
+    int enviroUpdate = -5;
+    environmentTracker(enviroUpdate);
     allBuilds.push_back("windfarm");
 }
 
@@ -109,8 +109,8 @@ void City::addSolar(){
     int energyUpdate = (7200 * 30)/100;
     // some constant effect on enviornment
     energyTracker(energyUpdate);
-//    int enviroUpdate = -5;
-//    environmentTracker(enviroUpdate);
+    int enviroUpdate = -5;
+    environmentTracker(enviroUpdate);
     allBuilds.push_back("solar");
     
 }

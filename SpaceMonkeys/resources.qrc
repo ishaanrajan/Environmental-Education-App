@@ -21,5 +21,7 @@
         <file>resources/park.png</file>
         <file>resources/stadium.png</file>
         <file>resources/template.html</file>
+        <file>resources/coalplant.html</file>
+        <file>resources/solar.html</file>
     </qresource>
 </RCC>

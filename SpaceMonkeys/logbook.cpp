@@ -16,13 +16,19 @@ Logbook::Logbook(QWidget *parent) :
         templateString = in.readAll();
     }
 
+    QFile solarFile(":resources/solar.html");
+    solarFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream solarIn(&solarFile);
     QListWidgetItem* solarEntry = new QListWidgetItem("*Solar Farm");
-    solarEntry->setData(Qt::UserRole, templateString);
+    solarEntry->setData(Qt::UserRole, solarIn.readAll());
     logMap["solar"] = solarEntry;
     ui->logList->addItem(solarEntry);
 
+    QFile coalFile(":resources/coalplant.html");
+    coalFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream coalIn(&coalFile);
     QListWidgetItem* coalEntry = new QListWidgetItem("*Coal Plant");
-    coalEntry->setData(Qt::UserRole, templateString);
+    coalEntry->setData(Qt::UserRole, coalIn.readAll());
     logMap["coalplant"] = coalEntry;
     ui->logList->addItem(coalEntry);
 
