@@ -136,6 +136,8 @@ MainWindow::MainWindow(QWidget *parent)
             //checkImpactBounds();
         }
     });
+
+    logbook.show();
 }
 
 MainWindow::~MainWindow()
@@ -364,6 +366,8 @@ void MainWindow::on_nextRoundButton_clicked()
                 city.addCowFactory();
             else if(currBlockName == "stadium")
                 city.addStadium();
+
+            logbook.showEntry(currBlockName);
         }
     }
 

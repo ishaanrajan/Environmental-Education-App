@@ -11,6 +11,7 @@
 #include "gridtile.h"
 #include "City.h"
 #include "gameoverpopup.h"
+#include "logbook.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,6 +44,7 @@ private:
     QListView* category2View = nullptr;
     City city;
     gameOverPopup gameOverPop;
+    Logbook logbook;
 
     int gameRound;;
 
