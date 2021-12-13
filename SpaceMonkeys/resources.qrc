@@ -20,5 +20,6 @@
         <file>resources/cowfactory.png</file>
         <file>resources/park.png</file>
         <file>resources/stadium.png</file>
+        <file>resources/template.html</file>
     </qresource>
 </RCC>

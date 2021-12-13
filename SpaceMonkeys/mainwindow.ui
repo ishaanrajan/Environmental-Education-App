@@ -2022,6 +2022,19 @@ border-image: url(:resources/trees.png);
      <string>Pop: 0</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="logbookButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Logbook</string>
+    </property>
+   </widget>
    <zorder>environmentalImpactProgressBar</zorder>
    <zorder>horizontalLayoutWidget</zorder>
    <zorder>impact_label</zorder>
@@ -2123,6 +2136,7 @@ border-image: url(:resources/trees.png);
    <zorder>nextRoundButton</zorder>
    <zorder>actionsLabel</zorder>
    <zorder>populationLabel</zorder>
+   <zorder>logbookButton</zorder>
    <zorder>graphicsView</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">

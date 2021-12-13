@@ -137,6 +137,8 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
 
+    connect(ui->logbookButton, &QPushButton::clicked, this, [this](){logbook.show(); /*logbook.raise(); logbook.setFocus();*/});
+
     logbook.show();
 }
 
