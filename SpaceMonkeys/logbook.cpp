@@ -32,11 +32,49 @@ Logbook::Logbook(QWidget *parent) :
     logMap["coalplant"] = coalEntry;
     ui->logList->addItem(coalEntry);
 
+    QFile nuclearFile(":resources/nuclear.html");
+    nuclearFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream nucelarIn(&nuclearFile);
+    QListWidgetItem* nuclearEntry = new QListWidgetItem("*Nuclear Plant");
+    nuclearEntry ->setData(Qt::UserRole, nucelarIn.readAll());
+    logMap["nuclear"] = nuclearEntry;
+    ui->logList->addItem(nuclearEntry);
+
+    QFile windFile(":resources/wind.html");
+    windFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream windIn(&windFile);
+    QListWidgetItem* windfarmEntry = new QListWidgetItem("*Wind Farm");
+    windfarmEntry->setData(Qt::UserRole, windIn.readAll());
+    logMap["windfarm"] = windfarmEntry;
+    ui->logList->addItem(windfarmEntry);
+
+    QFile plantFile(":resources/plant.html");
+    plantFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream plantIn(&plantFile);
+    QListWidgetItem* plantFarmEntry = new QListWidgetItem("*Plant Farm");
+    plantFarmEntry->setData(Qt::UserRole, plantIn.readAll());
+    logMap["plantFarm"] = plantFarmEntry;
+    ui->logList->addItem(plantFarmEntry);
+
+    QFile cowFile(":resources/cow.html");
+    cowFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream cowIn(&cowFile);
+    QListWidgetItem* cowfactoryEntry = new QListWidgetItem("*Cow Farm");
+    cowfactoryEntry->setData(Qt::UserRole, cowIn.readAll());
+    logMap["cowfactory"] = cowfactoryEntry;
+    ui->logList->addItem(cowfactoryEntry);
+
+    QFile driveFile(":resources/drive.html");
+    driveFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream driveIn(&driveFile);
     QListWidgetItem* driveinEntry = new QListWidgetItem("*Drive In");
-    driveinEntry->setData(Qt::UserRole, templateString);
+    driveinEntry->setData(Qt::UserRole, driveIn.readAll());
     logMap["drivein"] = driveinEntry;
     ui->logList->addItem(driveinEntry);
 
+    QFile apartmentFile(":resources/apartment.html");
+    apartmentFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream apartmentIn(&apartmentFile);
     QListWidgetItem* highdensityhousingEntry = new QListWidgetItem("*High Density Housing");
     highdensityhousingEntry->setData(Qt::UserRole, templateString);
     logMap["highdensityhousing"] = highdensityhousingEntry;
@@ -47,30 +85,10 @@ Logbook::Logbook(QWidget *parent) :
     logMap["neighborhood"] = neighborhoodEntry;
     ui->logList->addItem(neighborhoodEntry);
 
-    QListWidgetItem* nuclearEntry = new QListWidgetItem("*Nuclear Plant");
-    nuclearEntry->setData(Qt::UserRole, templateString);
-    logMap["nuclear"] = nuclearEntry;
-    ui->logList->addItem(nuclearEntry);
-
     QListWidgetItem* parkEntry = new QListWidgetItem("*Park");
     parkEntry->setData(Qt::UserRole, templateString);
     logMap["park"] = parkEntry;
     ui->logList->addItem(parkEntry);
-
-    QListWidgetItem* windfarmEntry = new QListWidgetItem("*Wind Farm");
-    windfarmEntry->setData(Qt::UserRole, templateString);
-    logMap["windfarm"] = windfarmEntry;
-    ui->logList->addItem(windfarmEntry);
-
-    QListWidgetItem* plantFarmEntry = new QListWidgetItem("*Plant Farm");
-    plantFarmEntry->setData(Qt::UserRole, templateString);
-    logMap["plantFarm"] = plantFarmEntry;
-    ui->logList->addItem(plantFarmEntry);
-
-    QListWidgetItem* cowfactoryEntry = new QListWidgetItem("*Cow Farm");
-    cowfactoryEntry->setData(Qt::UserRole, templateString);
-    logMap["cowfactory"] = cowfactoryEntry;
-    ui->logList->addItem(cowfactoryEntry);
 
     QListWidgetItem* stadiumEntry = new QListWidgetItem("*Stadium");
     stadiumEntry->setData(Qt::UserRole, templateString);

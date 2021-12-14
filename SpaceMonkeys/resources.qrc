@@ -27,5 +27,8 @@
         <file>resources/highenviro.png</file>
         <file>resources/lowbars.png</file>
         <file>resources/lowenviro.png</file>
+        <file>resources/nuclear.html</file>
+        <file>resources/wind.html</file>
+        <file>resources/plant.html</file>
     </qresource>
 </RCC>
