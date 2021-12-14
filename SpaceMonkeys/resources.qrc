@@ -30,5 +30,11 @@
         <file>resources/nuclear.html</file>
         <file>resources/wind.html</file>
         <file>resources/plant.html</file>
+        <file>resources/cow.html</file>
+        <file>resources/apartment.html</file>
+        <file>resources/suburban.html</file>
+        <file>resources/park.html</file>
+        <file>resources/stadium.html</file>
+        <file>resources/drive.html</file>
     </qresource>
 </RCC>

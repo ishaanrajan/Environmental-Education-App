@@ -163,6 +163,7 @@ void City::addSuburbanHousing(){
     environmentTracker(enviroUpdate);
     int housingGen = 50;
     housingTracker(housingGen);
+    amenitiesTracker(15);
     allBuilds.push_back("neighborhood");
 }
 

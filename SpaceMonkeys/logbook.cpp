@@ -64,6 +64,38 @@ Logbook::Logbook(QWidget *parent) :
     logMap["cowfactory"] = cowfactoryEntry;
     ui->logList->addItem(cowfactoryEntry);
 
+    QFile apartmentFile(":resources/apartment.html");
+    apartmentFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream apartmentIn(&apartmentFile);
+    QListWidgetItem* highdensityhousingEntry = new QListWidgetItem("*High Density Housing");
+    highdensityhousingEntry->setData(Qt::UserRole, apartmentIn.readAll());
+    logMap["highdensityhousing"] = highdensityhousingEntry;
+    ui->logList->addItem(highdensityhousingEntry);
+
+    QFile suburbanFile(":resources/suburban.html");
+    suburbanFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream suburbanIn(&suburbanFile);
+    QListWidgetItem* neighborhoodEntry = new QListWidgetItem("*Suburban Neighborhood");
+    neighborhoodEntry->setData(Qt::UserRole, suburbanIn.readAll());
+    logMap["neighborhood"] = neighborhoodEntry;
+    ui->logList->addItem(neighborhoodEntry);
+
+    QFile parkFile(":resources/park.html");
+    parkFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream parkIn(&parkFile);
+    QListWidgetItem* parkEntry = new QListWidgetItem("*Park");
+    parkEntry->setData(Qt::UserRole, parkIn.readAll());
+    logMap["park"] = parkEntry;
+    ui->logList->addItem(parkEntry);
+
+    QFile stadiumFile(":resources/stadium.html");
+    stadiumFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream stadiumIn(&stadiumFile);
+    QListWidgetItem* stadiumEntry = new QListWidgetItem("*Stadium");
+    stadiumEntry->setData(Qt::UserRole, stadiumIn.readAll());
+    logMap["stadium"] = stadiumEntry;
+    ui->logList->addItem(stadiumEntry);
+
     QFile driveFile(":resources/drive.html");
     driveFile.open(QFile::ReadOnly | QFile::Text);
     QTextStream driveIn(&driveFile);
@@ -71,32 +103,6 @@ Logbook::Logbook(QWidget *parent) :
     driveinEntry->setData(Qt::UserRole, driveIn.readAll());
     logMap["drivein"] = driveinEntry;
     ui->logList->addItem(driveinEntry);
-
-    QFile apartmentFile(":resources/apartment.html");
-    apartmentFile.open(QFile::ReadOnly | QFile::Text);
-    QTextStream apartmentIn(&apartmentFile);
-    QListWidgetItem* highdensityhousingEntry = new QListWidgetItem("*High Density Housing");
-    highdensityhousingEntry->setData(Qt::UserRole, templateString);
-    logMap["highdensityhousing"] = highdensityhousingEntry;
-    ui->logList->addItem(highdensityhousingEntry);
-
-    QListWidgetItem* neighborhoodEntry = new QListWidgetItem("*Suburban Neighborhood");
-    neighborhoodEntry->setData(Qt::UserRole, templateString);
-    logMap["neighborhood"] = neighborhoodEntry;
-    ui->logList->addItem(neighborhoodEntry);
-
-    QListWidgetItem* parkEntry = new QListWidgetItem("*Park");
-    parkEntry->setData(Qt::UserRole, templateString);
-    logMap["park"] = parkEntry;
-    ui->logList->addItem(parkEntry);
-
-    QListWidgetItem* stadiumEntry = new QListWidgetItem("*Stadium");
-    stadiumEntry->setData(Qt::UserRole, templateString);
-    logMap["stadium"] = stadiumEntry;
-    ui->logList->addItem(stadiumEntry);
-
-
-
 
     solarEntry->setHidden(true);
     coalEntry->setHidden(true);
