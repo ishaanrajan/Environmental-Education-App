@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     gameRound = 0;
-
+    newGamePopUp.show();
+    newGamePopUp.exec();
     ui->statusBarTextBrowser->lower();
     ui->selectStructureListWidget->setAcceptDrops(true);
     ui->selectStructureListWidget->setDragEnabled(true);

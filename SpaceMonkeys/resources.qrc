@@ -23,5 +23,9 @@
         <file>resources/template.html</file>
         <file>resources/coalplant.html</file>
         <file>resources/solar.html</file>
+        <file>resources/highbars.png</file>
+        <file>resources/highenviro.png</file>
+        <file>resources/lowbars.png</file>
+        <file>resources/lowenviro.png</file>
     </qresource>
 </RCC>

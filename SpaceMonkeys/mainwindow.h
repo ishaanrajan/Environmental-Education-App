@@ -12,6 +12,7 @@
 #include "City.h"
 #include "gameoverpopup.h"
 #include "logbook.h"
+#include "newgamepopup.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,6 +45,7 @@ private:
     QListView* category2View = nullptr;
     City city;
     gameOverPopup gameOverPop;
+    NewGamePopUp newGamePopUp;
     Logbook logbook;
 
     int gameRound;;
