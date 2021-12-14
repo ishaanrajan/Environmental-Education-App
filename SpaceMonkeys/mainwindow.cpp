@@ -526,6 +526,15 @@ void MainWindow::checkImpactBounds()
     }else if(ui->environmentalImpactProgressBar->value()  >= 100){
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
+        int trees = 0;
+        QRegularExpression re("textBrowser_(\\d)");
+        QList<QTextBrowser*> allSquares = centralWidget()->findChildren<QTextBrowser*>(re);
+        for(QTextBrowser* currBrowser : allSquares){
+            trees++;
+            if(trees % 5){
+                currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
+           }
+        }
         gameOverPop.show();
         gameOverPop.exec();
     }
