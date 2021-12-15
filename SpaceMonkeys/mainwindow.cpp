@@ -107,6 +107,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     connect(&gameOverPop, &gameOverPopup::restartClicked, this, &MainWindow::resetGame);
+    connect(&gameOverPop, &gameOverPopup::rejected, this, &MainWindow::resetGame);
 
     connect(&particleManager, &ParticleManager::particlesReached, this, [this](std::vector<float> percentages){
         // Only do gradual fill up until a given amount of time, then the bars fill fully
@@ -285,6 +286,7 @@ void MainWindow::initParticleManager()
             fillBarsToMax();
             // Now show proportion for new demands
             fillLabelsToMax();
+            checkImpactBounds();
         });
     });
 }
@@ -296,7 +298,6 @@ void MainWindow::fillBarsToMax()
     ui->housingProgressBar->setValue(city.getDemandHousingGenerated());
     ui->foodProgressBar->setValue(city.getDemandFoodGenerated());
     ui->environmentalImpactProgressBar->setValue(city.getDemandEnvironmentGenerated());
-    checkImpactBounds();
 }
 
 void MainWindow::fillLabelsToMax()
