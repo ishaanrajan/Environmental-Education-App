@@ -16,6 +16,13 @@ Logbook::Logbook(QWidget *parent) :
         templateString = in.readAll();
     }
 
+    QFile ruleFile(":resources/rules.html");
+    ruleFile.open(QFile::ReadOnly | QFile::Text);
+    QTextStream ruleIn(&ruleFile);
+    QListWidgetItem* ruleEntry = new QListWidgetItem("Rules");
+    ruleEntry->setData(Qt::UserRole, ruleIn.readAll());
+    ui->logList->addItem(ruleEntry);
+
     QFile solarFile(":resources/solar.html");
     solarFile.open(QFile::ReadOnly | QFile::Text);
     QTextStream solarIn(&solarFile);
@@ -115,6 +122,7 @@ Logbook::Logbook(QWidget *parent) :
     plantFarmEntry->setHidden(true);
     cowfactoryEntry->setHidden(true);
     stadiumEntry->setHidden(true);
+    ruleEntry->setHidden(false);
 
     connect(ui->logList, &QListWidget::itemClicked, this, &Logbook::handleLogChanged);
 }

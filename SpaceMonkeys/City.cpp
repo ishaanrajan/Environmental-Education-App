@@ -129,7 +129,7 @@ void City::addNuclear(){
 
 void City::addCowFactory(){
     // some constant penalties and additions
-    energyGenerated -= 10;
+    //energyGenerated -= 10;
     int produceGen = 75;
     int enviroUpdate = 10;
     int funGenerate = 10;
@@ -142,7 +142,7 @@ void City::addCowFactory(){
 
 void City::addPlantFarm(){
     // some constant penalties and additions
-    energyGenerated -= 10;
+    //energyGenerated -= 10;
     int produceGen = 50;
     int enviroUpdate = -4;
     environmentTracker(enviroUpdate);
@@ -185,7 +185,7 @@ void City::addDriveIn(){
 
 void City::addStadium(){
     int funGen = 75;
-    energyTracker(-10);
+    //energyTracker(-10);
     int enviroUpdate = 15;
     environmentTracker(enviroUpdate); //TODO: clean these unnecessary lines
     amenitiesTracker(funGen);

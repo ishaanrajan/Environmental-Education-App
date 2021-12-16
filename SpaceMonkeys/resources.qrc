@@ -36,5 +36,6 @@
         <file>resources/park.html</file>
         <file>resources/stadium.html</file>
         <file>resources/drive.html</file>
+        <file>resources/rules.html</file>
     </qresource>
 </RCC>
