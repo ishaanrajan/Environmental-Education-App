@@ -59,10 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->selectStructureListWidget->insertItem(i, itm);
     }
 
-    /*Find all game board QListWidgets on the central widget.
-     * NOTE: Bugs may appear here if QListWidgets are added
-     * that don't represent gameboard pieces.
-     */
+    // Find all game board QListWidgets on the central widget.
     QRegularExpression re("listWidget(\\d)_(\\d)");
     QList<GridTile*> allSquares = centralWidget()->findChildren<GridTile*>(re);
     for(GridTile* currWidgetPtr : allSquares){
@@ -135,9 +132,6 @@ MainWindow::MainWindow(QWidget *parent)
             ui->food_label->setText("Food: " + QString::number(foodDif) + "/" + QString::number(priorFoodNeeded));
             ui->housing_label->setText("Housing: " + QString::number(housingDif) + "/" + QString::number(priorHousingNeeded));
             ui->amenities_label->setText("Amenities: " + QString::number(amenityDif) + "/" + QString::number(priorAmmenitiesNeeded));
-
-            //TODO: diagnose why this is slow to do
-            //checkImpactBounds();
         }
     });
 
@@ -230,8 +224,6 @@ void MainWindow::createListOfGameSquares(){
             // Action succeeded, so decrease how many remain
             // Only do here to avoid issue of consuming actions if placement did not take place after drag
             ui->selectStructureListWidget->mutateActions(-1);
-
-            //TODO: animate?
             ui->actionsLabel->setText(actionsFormatString.arg(QString::number(ui->selectStructureListWidget->getActionsRemaining())));
         });
     }
@@ -273,7 +265,6 @@ void MainWindow::initParticleManager()
 
     connect(animTimer, &QTimer::timeout, [this](){
         this->animLimitReached = true;
-        // This fill to max is to show the final state for this round
         fillBarsToMax();
         ui->energy_label->setText("Energy: " + QString::number(city.getEnergyGenerated()) + "/" + QString::number(priorEnergyNeeded));
         ui->food_label->setText("Food: " + QString::number(city.getFoodGenerated()) + "/" + QString::number(priorFoodNeeded));
@@ -315,7 +306,6 @@ void MainWindow::fillLabelsToMax()
 
 void MainWindow::on_nextRoundButton_clicked()
 {
-    //animTimer->stop();
     setBarMaximums();
     fillBarsToMax();
     // Now show proportion for new demands
@@ -333,8 +323,6 @@ void MainWindow::on_nextRoundButton_clicked()
     priorClimateGenerated = city.getEnvironmentEffect();
 
     city.resetGeneratedValues();
-    // Need to have a city with the current population so bars are right
-    //city.updatePopulation(1 + (0.2 * gameRound));
 
     if(gameRound == 0){
         // Init particle manager bar attractors
@@ -392,10 +380,6 @@ void MainWindow::on_nextRoundButton_clicked()
             int gridX = tile % 7 + 1;
             int gridY = tile / 7 + 1;
             particleManager.addTile(currBlockName, gridX, gridY);
-            // There needs to be some way to get what the values added by each thing are, if they are modified
-            // by adjacency for instance
-            //ex: TileMod m = city.addCityBlock();
-            //then: addSpawner(int x, int y, m); //can now setup spawner quantites properly
         }
     }
 
@@ -504,10 +488,13 @@ void MainWindow::resetGame(){
 void MainWindow::checkImpactBounds()
 {
     // Once killed, trees never return
-    if(ui->environmentalImpactProgressBar->value() < 50){
+    if(ui->environmentalImpactProgressBar->value() < 50)
+    {
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/background.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(89, 163, 72);}");
-    } else if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80){
+    }
+    else if(ui->environmentalImpactProgressBar->value() > 50 && ui->environmentalImpactProgressBar->value() < 80)
+    {
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground1.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 237, 109);}");
         int trees = 0;
@@ -519,7 +506,9 @@ void MainWindow::checkImpactBounds()
                 currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
            }
         }
-    }else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99){
+    }
+    else if(ui->environmentalImpactProgressBar->value() >= 80 && ui->environmentalImpactProgressBar->value() < 99)
+    {
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
         int trees = 0;
@@ -531,7 +520,9 @@ void MainWindow::checkImpactBounds()
                 currBrowser->setStyleSheet("QTextBrowser{background: transparent;}");
            }
         }
-    }else if(ui->environmentalImpactProgressBar->value()  >= 100){
+    }
+    else if(ui->environmentalImpactProgressBar->value()  >= 100)
+    {
         this->setStyleSheet("QWidget#MainWindow{background-image: url(:/resources/smogbackground2.png);background-position: center;}");
         ui->environmentalImpactProgressBar->setStyleSheet("QProgressBar {border-color: white;border-radius: 5px;border-width: 2px;color: white;}QProgressBar::chunk {background-color: rgb(255, 23, 11);}");
         int trees = 0;
