@@ -18,7 +18,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newgamepopup.cpp \
-    particlemanager.cpp
+    particlemanager.cpp \
+    winnerpopup.cpp
 
 HEADERS += \
     city.h \
@@ -30,13 +31,15 @@ HEADERS += \
     logbook.h \
     mainwindow.h \
     newgamepopup.h \
-    particlemanager.h
+    particlemanager.h \
+    winnerpopup.h
 
 FORMS += \
     gameoverpopup.ui \
     logbook.ui \
     mainwindow.ui \
-    newgamepopup.ui
+    newgamepopup.ui \
+    winnerpopup.ui
 
 macx: LIBS += -L$$PWD/../box2d/build/bin/ -lbox2d
 

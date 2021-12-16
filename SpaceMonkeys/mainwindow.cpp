@@ -108,6 +108,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&gameOverPop, &gameOverPopup::restartClicked, this, &MainWindow::resetGame);
     connect(&gameOverPop, &gameOverPopup::rejected, this, &MainWindow::resetGame);
+    connect(&winnerPopUp, &winnerPopUp::playAgainClicked, this, &MainWindow::resetGame);
+    connect(&winnerPopUp, &winnerPopUp::rejected, this, &MainWindow::resetGame);
 
     connect(&particleManager, &ParticleManager::particlesReached, this, [this](std::vector<float> percentages){
         // Only do gradual fill up until a given amount of time, then the bars fill fully
@@ -421,6 +423,10 @@ void MainWindow::on_nextRoundButton_clicked()
     animTimer->start();
 
     city.updatePopulation(1 + (0.1 * gameRound));
+
+    if(gameRound >= 8){
+        winnerPopUp.show();
+    }
 }
 
 

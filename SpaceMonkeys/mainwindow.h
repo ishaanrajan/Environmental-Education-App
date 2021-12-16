@@ -13,6 +13,7 @@
 #include "gameoverpopup.h"
 #include "logbook.h"
 #include "newgamepopup.h"
+#include "winnerpopup.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -46,6 +47,7 @@ private:
     City city;
     gameOverPopup gameOverPop;
     NewGamePopUp newGamePopUp;
+    winnerPopUp winnerPopUp;
     Logbook logbook;
 
     int gameRound;;
