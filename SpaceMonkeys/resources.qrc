@@ -37,5 +37,7 @@
         <file>resources/stadium.html</file>
         <file>resources/drive.html</file>
         <file>resources/rules.html</file>
+        <file>resources/selectionbar.png</file>
+        <file>resources/listbox.png</file>
     </qresource>
 </RCC>

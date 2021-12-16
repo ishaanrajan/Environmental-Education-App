@@ -1,6 +1,7 @@
 #include "newgamepopup.h"
 #include "ui_newgamepopup.h"
 #include <QRegularExpression>
+#include <QCloseEvent>
 
 
 NewGamePopUp::NewGamePopUp(QWidget *parent) :
@@ -80,4 +81,3 @@ void NewGamePopUp::on_playButton_clicked()
 {
     this->close();
 }
-
