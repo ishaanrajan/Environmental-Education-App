@@ -1,0 +1,42 @@
+Sprint 3
+	12/09/2021
+ 	Scrum Questions:
+    	What did you do yesterday?
+    		Ishaan: Refactoring city, progress bars
+      		Mikey: GameBlockManager, worked on adding to city
+      		Victor: Working on particle manager to work properly with QT ui
+    		Audrey: ui change as game values change
+    		Tanner: Fixed scale of energy consumption, hooked up city to view
+    	What will you do today?
+      		Ishaan: Debugging stupid stuff
+      		Mikey: Figure out how to not highlight selected items
+      		Victor: Finish particle manager completely
+      		Audrey: Adding more sprites, debugging stuff
+      		Tanner: Figure out food values
+    	What is in your way?
+      		Ishaan: QT Drag Drop :(
+      		Mikey: no clue where highlighting is done
+      		Victor: collision bugs
+      		Audrey: hard to find sprites
+      		Tanner: still cant run QT so hasn't ran the game on own
+
+    12/10/2021
+    Scrum Questions:
+    	What did you do yesterday?
+    		Ishaan: Debugging, refactoring city, food progress bar
+      		Mikey: Fixed highighting when selecting items bug
+      		Victor: Integrated particle manager
+    		Audrey: Game over pop up and reset game working, fixed issues with city
+    		Tanner: Setup stuff in qt, fixed qt
+    	What will you do today?
+      		Ishaan: Debug
+      		Mikey: Debuggin
+      		Victor: Finishing touches on particle stuff
+      		Audrey: Make start of game page with instructions
+      		Tanner: Write informational information
+    	What is in your way?
+      		Ishaan: bugs
+      		Mikey: bugs
+      		Victor: interface with city
+      		Audrey: bugs
+      		Tanner: bugs

@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/add.png</file>
+        <file>resources/delete.png</file>
+        <file>resources/commercial.png</file>
+        <file>resources/drivein.png</file>
+        <file>resources/coalplant.png</file>
+        <file>resources/factory2.png</file>
+        <file>resources/highdensityhousing.png</file>
+        <file>resources/neighborhood.png</file>
+        <file>resources/nuclear.png</file>
+        <file>resources/solar.png</file>
+        <file>resources/windfarm.png</file>
+        <file>resources/background.png</file>
+        <file>resources/groundtile.png</file>
+        <file>resources/trees.png</file>
+        <file>resources/smogbackground1.png</file>
+        <file>resources/smogbackground2.png</file>
+        <file>resources/plantFarm.png</file>
+        <file>resources/cowfactory.png</file>
+        <file>resources/park.png</file>
+        <file>resources/stadium.png</file>
+        <file>resources/template.html</file>
+        <file>resources/coalplant.html</file>
+        <file>resources/solar.html</file>
+        <file>resources/highbars.png</file>
+        <file>resources/highenviro.png</file>
+        <file>resources/lowbars.png</file>
+        <file>resources/lowenviro.png</file>
+        <file>resources/nuclear.html</file>
+        <file>resources/wind.html</file>
+        <file>resources/plant.html</file>
+        <file>resources/cow.html</file>
+        <file>resources/apartment.html</file>
+        <file>resources/suburban.html</file>
+        <file>resources/park.html</file>
+        <file>resources/stadium.html</file>
+        <file>resources/drive.html</file>
+        <file>resources/rules.html</file>
+        <file>resources/selectionbar.png</file>
+        <file>resources/listbox.png</file>
+    </qresource>
+</RCC>

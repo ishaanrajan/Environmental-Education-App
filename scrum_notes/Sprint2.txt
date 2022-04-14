@@ -1,0 +1,44 @@
+Sprint 2
+
+12/02/2021
+
+  Scrum Questions:
+		What did you do yestarday?
+      Ishaan: Tried to get the grid working
+      Mikey: Also tried to get the grid working, and project management
+      Victor: Ripped the sprites for our game/isometric images
+      Audrey: Added progress bars to our game, changed the ui elements to be in main window
+      Tanner: Made the game background
+		What will you do today?
+      Ishaan: Tried to get the grid working
+      Mikey: Continue to work on the grid
+      Victor: Working on the smoke and game design doc
+      Audrey: Get drag and drop of sprite working
+      Tanner: Work on assigning numbers to different buildings
+		What is in your way?
+      Ishaan: Grids are represented as QListViews
+      Mikey: Understand how some new QObjects work
+      Victor: Learn how to incorporate Box2D
+      Audrey: Tricky to get stuff from one QListView to another
+      Tanner: Qt isnt working
+
+12/06/2021
+  Scrum Questions:
+    What did you do over the weekend?
+      Ishaan: Worked on the grid more, debuggin
+      Mikey: Researced drag and drop and worked on that new class to handle drag drop
+      Victor: Wrote the particle managment
+      Audrey: Debugging grid size to fit images, gave the grid an outline, prettifying
+      Tanner: Created city class and did research on enviornmental stuff
+    What will you do today?
+      Ishaan: Keep debugging grid
+      Mikey: Make a new QlistItemObject class for the objects
+      Victor: Finish particle manager for the smoke and other effects
+      Audrey: Work with tanner to set up model
+      Tanner: Work with audrey to set up model
+    What is in your way?
+      Ishaan: compiling errors
+      Mikey: New class inheritance im note familar with
+      Victor: Intereface for objects not complete
+      Audrey: Figuring out what type of building is going to be placed
+      Tanner: How to properly scale food production to a realistic game value

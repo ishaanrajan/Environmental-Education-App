@@ -1,0 +1,76 @@
+Sprint1
+
+11/29/21
+	Began setting up our project board
+
+	Added features as user stories
+
+	Scrum Questions:
+		What did you do yestarday?
+			It was a holiday weekend so no one did anything
+		What will you do today?
+			Everyone: create project board, team meeting
+			Ishaan: work on a drag drop thing for ui in game
+			Audrey: make a start screen
+			Tanner: make google drive shared folder, setup QT and Box2D
+			Michael: Setup QT and Box2D
+			Victor: Research sprites to be used in game
+		What is in your way?
+			Ishaan: Not familiar with QT drag and drop structure
+			Audrey: QT background setup
+			Tanner: Inexpierence with QT and Box2d lib
+			Michael: Inexpierence with QT and Box2d lib
+			Victor: Artistic abilities are not the best, so we will need to find some online
+
+11/30/21
+	Scrum Questions:
+		What did you do yestarday?
+			Ishaan: Worked on drag and drop buttons
+			Audrey: Finding graphic elements we can use
+			Tanner: Set up Box2d and integrated with QT
+			Victor: Searched for sprite sheets for game
+			Michael: Set up Box2d and integrated with QT
+		What will you do today?
+			Ishaan: Debugged drag and drop buttons
+			Audrey: Looking for graphical elements
+			Tanner: Looking for graphical elements, fix QT
+			Victor: Game design development
+			Michael: Game design development
+		What is in your way?
+			Ishaan: Learning new QObjects
+			Audrey: Lack of resources
+			Tanner:	QT being funky
+			Victor:	Not knowing how the game plays
+			Michael: What makes a game good
+
+	Discussed how the game will work, how it will be played, what is to be taught, and how those concepts will be taught. 
+
+	Talk does not cook rice
+
+12/1/21
+	Scrum Questions:
+		What did you do yestarday?
+			Ishaan: Worked on mechanics of drag and drop
+			Audrey: Adding resources to project
+			Tanner: Worked on fixing QT development enviornment
+			Victor: Looked for sprites that will be compatible with game
+			Michael: Worked on game mechanics and how game will be played
+		What will you do today?
+			Ishaan: Making a grid for game board
+			Audrey: Make loading bars
+			Tanner: Fix QT development enviornment, work on finding backgorund for game
+			Victor: Get sprites, look at box2d for animation
+			Michael: Make grid for game board
+		What is in your way?
+			Ishaan: Piecing all the widgets together is hard
+			Audrey: Finding loading bar sprites
+			Tanner:	QT doesn't work still
+			Victor:	Unfamiliarity with box2d
+			Michael: adding different sized blocks
+
+	Sprint 2 Discussion:
+		What is our theme?
+			Get a working game board, functionality can come later, but get the board working
+
+	Sprint 1 Accomplishments:
+		In sprint 1, we were able to get a Qt project up and running. We included and imported box2d to make sure our dependencies are set up correct. We also implemented a drag and drop feature where we are able to create and delete blocks, and move them between two columns. The blocks also change colors when they are moved from one column to another. We will expand this feature to use it as the grid system for our game.
